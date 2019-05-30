@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:QrCoder.xcodeproj">
+      location = "self:/Users/cc/workspace/QrCoder/QRCoder.xcodeproj">
    </FileRef>
 </Workspace>
