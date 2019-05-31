@@ -72,11 +72,15 @@
         <!--Test Navigation Controller-->
         <scene sceneID="YZn-Z6-nPf">
             <objects>
-                <navigationController id="Se6-Zh-gU4" userLabel="Test Navigation Controller" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="Se6-Zh-gU4" userLabel="Test Navigation Controller" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Hv-09-iJr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fEb-Oo-q6N">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Iyy-1m-oht" kind="relationship" relationship="rootViewController" id="2hD-zc-pCb"/>
                     </connections>
@@ -142,30 +146,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QrCoder" customModuleProvider="target">
-                                <rect key="frame" x="82" y="323" width="250" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fdP-eO-zNl">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os8-54-azA">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QrCoder" customModuleProvider="target">
+                                                <rect key="frame" x="82" y="237.5" width="250" height="250"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="250" id="0F1-z9-U4x"/>
+                                                    <constraint firstAttribute="width" constant="250" id="xfJ-XL-MdN"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cKY-31-e80" firstAttribute="centerX" secondItem="os8-54-azA" secondAttribute="centerX" id="axP-7G-fx0"/>
+                                            <constraint firstItem="cKY-31-e80" firstAttribute="centerY" secondItem="os8-54-azA" secondAttribute="centerY" id="z7c-Gl-fZo"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="0F1-z9-U4x"/>
-                                    <constraint firstAttribute="width" constant="250" id="xfJ-XL-MdN"/>
+                                    <constraint firstItem="os8-54-azA" firstAttribute="width" secondItem="fdP-eO-zNl" secondAttribute="width" id="zKS-Dd-0v2"/>
                                 </constraints>
-                            </view>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cKY-31-e80" firstAttribute="centerX" secondItem="Qvy-pT-hU3" secondAttribute="centerX" id="F0F-pJ-pJl"/>
-                            <constraint firstItem="cKY-31-e80" firstAttribute="centerY" secondItem="Qvy-pT-hU3" secondAttribute="centerY" id="ZwK-Rx-9Ku"/>
+                            <constraint firstItem="fdP-eO-zNl" firstAttribute="bottom" secondItem="7mV-hW-Qyv" secondAttribute="bottom" id="Yro-oa-hhI"/>
+                            <constraint firstItem="7mV-hW-Qyv" firstAttribute="leading" secondItem="fdP-eO-zNl" secondAttribute="leading" id="boC-3C-QlN"/>
+                            <constraint firstItem="fdP-eO-zNl" firstAttribute="top" secondItem="7mV-hW-Qyv" secondAttribute="top" id="hwd-uh-Fbo"/>
+                            <constraint firstItem="7mV-hW-Qyv" firstAttribute="trailing" secondItem="fdP-eO-zNl" secondAttribute="trailing" id="ykz-P1-5LN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7mV-hW-Qyv"/>
                     </view>
                     <navigationItem key="navigationItem" title="导出" id="pjr-T5-wB6"/>
                     <connections>
                         <outlet property="qrImageView" destination="cKY-31-e80" id="3Jj-Ky-1Zb"/>
+                        <outlet property="toolbar" destination="BPE-DS-XuE" id="zVV-66-Qcr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zi1-GR-nXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="BPE-DS-XuE">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem image="add-image-to-qr" id="wUc-8j-VRA"/>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="1882.608695652174" y="-168.08035714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add-image-to-qr" width="24" height="18"/>
+    </resources>
 </document>
