@@ -20,6 +20,7 @@
 		42AEA5D022A09F4800D4190E /* ShowQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA5CF22A09F4800D4190E /* ShowQRCodeViewController.swift */; };
 		42AEA5D222A0A00F00D4190E /* QRImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA5D122A0A00F00D4190E /* QRImageView.swift */; };
 		42CBFEB922A0FDEC00B8A2E9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */; };
+		42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		42AEA5CF22A09F4800D4190E /* ShowQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowQRCodeViewController.swift; path = ../../QRCoder/QRCoder/ShowQRCodeViewController.swift; sourceTree = "<group>"; };
 		42AEA5D122A0A00F00D4190E /* QRImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRImageView.swift; path = ../../QRCoder/QRCoder/QRImageView.swift; sourceTree = "<group>"; };
 		42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../QRCoder/QRCoder/Extensions.swift; sourceTree = "<group>"; };
+		42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QROperation.swift; path = ../../QRCoder/QRCoder/QROperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				42AEA5CF22A09F4800D4190E /* ShowQRCodeViewController.swift */,
 				42AEA5D122A0A00F00D4190E /* QRImageView.swift */,
 				42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */,
+				42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */,
 			);
 			path = QRCoder;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */,
 				42AEA5CE229FFC9200D4190E /* AddLinkViewController.swift in Sources */,
 				42AEA5CB229F7E7200D4190E /* ActionCell.swift in Sources */,
 				42AEA5D022A09F4800D4190E /* ShowQRCodeViewController.swift in Sources */,

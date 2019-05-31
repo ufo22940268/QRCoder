@@ -23,7 +23,6 @@ class ShowQRCodeViewController: UIViewController {
     }
     
     @IBAction func onAddImage(sender: UIBarButtonItem) {
-        print("onAddImage")
         let imagePickerVC = UIImagePickerController()
         imagePickerVC.sourceType = .photoLibrary
         imagePickerVC.mediaTypes = [kUTTypeImage as String]
@@ -47,7 +46,8 @@ extension ShowQRCodeViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let image = info.first(where: { $0.key == UIImagePickerController.InfoKey.originalImage })?.value as? UIImage {
-            qrImageView.decorate(withImage: image)
+            let operation = AddCenterImageOperation(qrImageView: qrImageView, image: image)
+            operation.execution()
         }
     }
     

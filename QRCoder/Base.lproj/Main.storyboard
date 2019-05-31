@@ -138,7 +138,7 @@
             </objects>
             <point key="canvasLocation" x="1214.4927536231885" y="-163.39285714285714"/>
         </scene>
-        <!--导出-->
+        <!--ShowQR Code View Controller-->
         <scene sceneID="42X-2b-TOM">
             <objects>
                 <viewController id="Iyy-1m-oht" customClass="ShowQRCodeViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
@@ -181,7 +181,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7mV-hW-Qyv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="导出" id="pjr-T5-wB6"/>
+                    <navigationItem key="navigationItem" id="pjr-T5-wB6">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="redo" id="9D7-1N-PGc" userLabel="Redo"/>
+                            <barButtonItem title="Item" image="undo" id="9kQ-Py-5NI" userLabel="Undo"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="qrImageView" destination="cKY-31-e80" id="3Jj-Ky-1Zb"/>
                         <outlet property="toolbar" destination="BPE-DS-XuE" id="zVV-66-Qcr"/>
@@ -192,7 +197,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem image="add-image-to-qr" id="wUc-8j-VRA">
+                        <barButtonItem image="add-image-to-qr" id="wUc-8j-VRA" userLabel="Center Image">
                             <connections>
                                 <action selector="onAddImageWithSender:" destination="Iyy-1m-oht" id="QAJ-rB-XEd"/>
                             </connections>
@@ -205,5 +210,7 @@
     </scenes>
     <resources>
         <image name="add-image-to-qr" width="24" height="18"/>
+        <image name="redo" width="25" height="25"/>
+        <image name="undo" width="25" height="25"/>
     </resources>
 </document>

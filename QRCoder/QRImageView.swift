@@ -61,14 +61,6 @@ class QRImageView: UIView {
         }
     }
     
-    
-    func decorate(withImage image: UIImage) {
-        let image = UIGraphicsImageRenderer(size: CGSize(width: 100, height: 100)).image { (context) in
-            image.draw(in: CGRect(origin: .zero, size: context.format.bounds.size))
-        }
-        centerImage = image
-    }
-
     override func awakeFromNib() {
         addSubview(qrView)
         qrView.sameSizeAsParent()
@@ -88,4 +80,16 @@ class QRImageView: UIView {
             centerImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
     }
+    
+    func decorate(withImage image: UIImage) {
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 100, height: 100)).image { (context) in
+            image.draw(in: CGRect(origin: .zero, size: context.format.bounds.size))
+        }
+        centerImage = image
+    }
+    
+    func removeCenterImage() {
+        centerImage = nil
+    }
+
 }
