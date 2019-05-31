@@ -22,9 +22,13 @@ class QRImageView: UIView {
             view.widthAnchor.constraint(equalToConstant: 60),
             view.heightAnchor.constraint(equalToConstant: 60)
             ])
-        view.isHidden = true
+        view.clipsToBounds = true
+        view.layer.cornerRadius = centerRadius
+        view.contentMode = .scaleAspectFill
         return view
     }()
+    
+    var centerRadius: CGFloat = 8
     
     var qrText: String! {
         didSet {
@@ -37,13 +41,22 @@ class QRImageView: UIView {
         }
     }
     
+    lazy var centerImageContainer: UIView = {
+        let view = UIView().useAutolayout()
+        view.isHidden = true
+        view.clipsToBounds = true
+        view.layer.cornerRadius = centerRadius
+        view.backgroundColor = .white
+        return view
+    }()
+    
     var centerImage: UIImage? {
         didSet {
             if let centerImage = centerImage {
                 centerImageView.image = centerImage
-                centerImageView.isHidden = false
+                centerImageContainer.isHidden = false
             } else {
-                centerImageView.isHidden = true
+                centerImageContainer.isHidden = true
             }
         }
     }
@@ -60,7 +73,16 @@ class QRImageView: UIView {
         addSubview(qrView)
         qrView.sameSizeAsParent()
         
-        addSubview(centerImageView)
+        addSubview(centerImageContainer)
+        centerImageContainer.addSubview(centerImageView)
+        
+        NSLayoutConstraint.activate([
+            centerImageContainer.widthAnchor.constraint(equalTo: centerImageView.widthAnchor, multiplier: 1.0, constant: 8),
+            centerImageContainer.heightAnchor.constraint(equalTo: centerImageView.heightAnchor, multiplier: 1.0, constant: 8),
+            centerImageContainer.centerXAnchor.constraint(equalTo: centerImageView.centerXAnchor),
+            centerImageContainer.centerYAnchor.constraint(equalTo: centerImageView.centerYAnchor)
+            ])
+        
         NSLayoutConstraint.activate([
             centerImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             centerImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
