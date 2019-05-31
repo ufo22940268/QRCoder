@@ -21,9 +21,6 @@
             </view>
             <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-            </userDefinedRuntimeAttributes>
         </collectionViewCell>
     </objects>
 </document>

@@ -16,8 +16,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        collectionLayout.itemSize = CGSize(width: 140, height: 80)
+
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+
+        let itemWidth = (view.bounds.width - 16*2 - 10)/2
+        collectionLayout.itemSize = CGSize(width: itemWidth, height: 80)
+        collectionLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         collectionView.register(UINib(nibName: "ActionCell", bundle: nil), forCellWithReuseIdentifier: "cell")
     }
 }
@@ -34,9 +38,8 @@ extension MainViewController: UICollectionViewDataSource {
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let sideGap = (collectionView.bounds.width - 2*(collectionViewLayout as! UICollectionViewFlowLayout).itemSize.width)/3
-        return UIEdgeInsets(top: 10, left: sideGap, bottom: 10, right: sideGap)
+ 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("select \(indexPath)")
     }
 }
-
