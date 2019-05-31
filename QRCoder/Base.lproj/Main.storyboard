@@ -192,7 +192,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="18"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem image="add-image-to-qr" id="wUc-8j-VRA"/>
+                        <barButtonItem image="add-image-to-qr" id="wUc-8j-VRA">
+                            <connections>
+                                <action selector="onAddImageWithSender:" destination="Iyy-1m-oht" id="QAJ-rB-XEd"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </objects>

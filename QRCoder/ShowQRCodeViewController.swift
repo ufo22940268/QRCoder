@@ -21,7 +21,10 @@ class ShowQRCodeViewController: UIViewController {
         toolbarItems = toolbar.items
     }
     
-
+    @IBAction func onAddImage(sender: UIBarButtonItem) {
+        print("onAddImage")
+    }
+    
     /*
     // MARK: - Navigation
 
