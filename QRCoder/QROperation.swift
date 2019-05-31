@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol Operation {
-    func execution()
+    func execute()
     func undo()
 }
 
@@ -18,7 +18,7 @@ struct AddCenterImageOperation: Operation {
     var qrImageView: QRImageView
     var image: UIImage
     
-    func execution() {
+    func execute() {
         qrImageView.decorate(withImage: image)
     }
     

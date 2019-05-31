@@ -13,7 +13,21 @@ class ShowQRCodeViewController: UIViewController {
 
     @IBOutlet weak var qrImageView: QRImageView!
     @IBOutlet var toolbar: UIToolbar!
+    @IBOutlet var redoButton: UIBarButtonItem!
+    @IBOutlet var undoButton: UIBarButtonItem!
     
+    var undoStack: [Operation] = [Operation]() {
+        didSet {
+            undoButton.isEnabled = !undoStack.isEmpty
+        }
+    }
+    
+    var redoStack: [Operation] = [Operation]() {
+        didSet {
+            redoButton.isEnabled = !redoStack.isEmpty
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +42,20 @@ class ShowQRCodeViewController: UIViewController {
         imagePickerVC.mediaTypes = [kUTTypeImage as String]
         imagePickerVC.delegate = self
         present(imagePickerVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func onRedoClicked(_ sender: Any) {
+        if let op = redoStack.popLast() {
+            op.execute()
+            undoStack.append(op)
+        }
+    }
+    
+    @IBAction func onUndoClicked(_ sender: Any) {
+        if let op = undoStack.popLast() {
+            op.undo()
+            redoStack.append(op)
+        }
     }
     
     /*
@@ -47,11 +75,13 @@ extension ShowQRCodeViewController: UIImagePickerControllerDelegate, UINavigatio
         picker.dismiss(animated: true, completion: nil)
         if let image = info.first(where: { $0.key == UIImagePickerController.InfoKey.originalImage })?.value as? UIImage {
             let operation = AddCenterImageOperation(qrImageView: qrImageView, image: image)
-            operation.execution()
+            undoStack.append(operation)
+            redoStack.removeAll()
+            operation.execute()
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
+        picker.dismiss(animated: true, completion: nil)
     }
 }

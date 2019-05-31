@@ -183,13 +183,23 @@
                     </view>
                     <navigationItem key="navigationItem" id="pjr-T5-wB6">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="redo" id="9D7-1N-PGc" userLabel="Redo"/>
-                            <barButtonItem title="Item" image="undo" id="9kQ-Py-5NI" userLabel="Undo"/>
+                            <barButtonItem enabled="NO" title="Item" image="redo" id="9D7-1N-PGc" userLabel="Redo">
+                                <connections>
+                                    <action selector="onRedoClicked:" destination="Iyy-1m-oht" id="jvo-Ga-xgg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Item" image="undo" id="9kQ-Py-5NI" userLabel="Undo">
+                                <connections>
+                                    <action selector="onUndoClicked:" destination="Iyy-1m-oht" id="Uzf-0o-7gD"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="qrImageView" destination="cKY-31-e80" id="3Jj-Ky-1Zb"/>
+                        <outlet property="redoButton" destination="9D7-1N-PGc" id="yad-YB-MCo"/>
                         <outlet property="toolbar" destination="BPE-DS-XuE" id="zVV-66-Qcr"/>
+                        <outlet property="undoButton" destination="9kQ-Py-5NI" id="d6o-RH-DaQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zi1-GR-nXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
