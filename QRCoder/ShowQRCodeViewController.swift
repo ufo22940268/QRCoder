@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class ShowQRCodeViewController: UIViewController {
 
@@ -23,6 +24,11 @@ class ShowQRCodeViewController: UIViewController {
     
     @IBAction func onAddImage(sender: UIBarButtonItem) {
         print("onAddImage")
+        let imagePickerVC = UIImagePickerController()
+        imagePickerVC.sourceType = .photoLibrary
+        imagePickerVC.mediaTypes = [kUTTypeImage as String]
+        imagePickerVC.delegate = self
+        present(imagePickerVC, animated: true, completion: nil)
     }
     
     /*
@@ -35,4 +41,17 @@ class ShowQRCodeViewController: UIViewController {
     }
     */
 
+}
+
+extension ShowQRCodeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let image = info.first(where: { $0.key == UIImagePickerController.InfoKey.originalImage })?.value as? UIImage {
+            qrImageView.decorate(withImage: image)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+    }
 }
