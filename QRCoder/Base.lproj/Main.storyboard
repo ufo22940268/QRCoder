@@ -152,7 +152,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os8-54-azA">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QrCoder" customModuleProvider="target">
+                                            <view verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QrCoder" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="237.5" width="250" height="250"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -179,6 +179,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="pjr-T5-wB6">
                         <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="CZn-Kb-Mzb">
+                                <connections>
+                                    <action selector="onShareClicked:" destination="Iyy-1m-oht" id="EaI-SP-pE0"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem enabled="NO" title="Item" image="redo" id="9D7-1N-PGc" userLabel="Redo">
                                 <connections>
                                     <action selector="onRedoClicked:" destination="Iyy-1m-oht" id="jvo-Ga-xgg"/>

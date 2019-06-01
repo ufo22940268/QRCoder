@@ -67,6 +67,12 @@ class ShowQRCodeViewController: UIViewController {
         }
     }
     
+    @IBAction func onShareClicked(_ sender: Any) {
+        let image = qrImageView.snapshot()
+        print(image)
+        let shareVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(shareVC, animated: true, completion: nil)
+    }
 }
 
 extension ShowQRCodeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

@@ -110,7 +110,7 @@ class QRImageView: UIStackView {
         if var image = image {
             image = UIGraphicsImageRenderer(size: CGSize(width: 100, height: 100)).image { (context) in
                 image.draw(in: CGRect(origin: .zero, size: context.format.bounds.size))
-            }
+             }
             centerImage = image
         } else {
             centerImage = nil
@@ -119,5 +119,11 @@ class QRImageView: UIStackView {
     
     func decorate(withTitle title: String?) {
         self.title = title
+    }
+    
+    func snapshot() -> UIImage {
+        return UIGraphicsImageRenderer(bounds: bounds).image { (context) in
+            self.layer.render(in: context.cgContext)
+        }
     }
 }
