@@ -9,10 +9,14 @@
 import UIKit
 import CoreImage
 
-class QRImageView: UIView {
+class QRImageView: UIStackView {
     
     lazy var qrView: UIImageView = {
         let view = UIImageView().useAutolayout()
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 250),
+            view.heightAnchor.constraint(equalToConstant: 250)
+            ])
         return view
     }()
     
@@ -41,6 +45,25 @@ class QRImageView: UIView {
         }
     }
     
+    var title: String! {
+        didSet {
+            if let title = self.title, !title.isEmpty {
+                titleView.text = title
+                titleView.isHidden = false
+            } else {
+                titleView.isHidden = true
+            }
+        }
+    }
+    
+    lazy var titleView: UILabel! = {
+       let view = UILabel().useAutolayout()
+        view.isHidden = true
+        view.textAlignment = .center
+        view.font = UIFont.boldSystemFont(ofSize: 20)
+        return view
+    }()
+    
     lazy var centerImageContainer: UIView = {
         let view = UIView().useAutolayout()
         view.isHidden = true
@@ -62,9 +85,9 @@ class QRImageView: UIView {
     }
     
     override func awakeFromNib() {
-        addSubview(qrView)
-        qrView.sameSizeAsParent()
+        addArrangedSubview(qrView)
         
+        axis = .vertical
         addSubview(centerImageContainer)
         centerImageContainer.addSubview(centerImageView)
         
@@ -76,20 +99,25 @@ class QRImageView: UIView {
             ])
         
         NSLayoutConstraint.activate([
-            centerImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            centerImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            centerImageView.centerXAnchor.constraint(equalTo: qrView.centerXAnchor),
+            centerImageView.centerYAnchor.constraint(equalTo: qrView.centerYAnchor)
             ])
+        
+        addArrangedSubview(titleView)
     }
     
-    func decorate(withImage image: UIImage) {
-        let image = UIGraphicsImageRenderer(size: CGSize(width: 100, height: 100)).image { (context) in
-            image.draw(in: CGRect(origin: .zero, size: context.format.bounds.size))
+    func decorate(withImage image: UIImage?) {
+        if var image = image {
+            image = UIGraphicsImageRenderer(size: CGSize(width: 100, height: 100)).image { (context) in
+                image.draw(in: CGRect(origin: .zero, size: context.format.bounds.size))
+            }
+            centerImage = image
+        } else {
+            centerImage = nil
         }
-        centerImage = image
     }
     
-    func removeCenterImage() {
-        centerImage = nil
+    func decorate(withTitle title: String?) {
+        self.title = title
     }
-
 }

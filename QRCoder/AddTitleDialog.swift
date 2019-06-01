@@ -24,7 +24,6 @@ class AddTitleDialog {
         }
         dialog.addAction(UIAlertAction(title: "确认", style: .default, handler: { (UIAlertAction) in
             if let text = textView.text {
-                print(text)
                 confirm(text)
             }
         }))

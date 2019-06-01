@@ -46,13 +46,15 @@ class ShowQRCodeViewController: UIViewController {
 
     
     @IBAction func onAddTitle(_ sender: Any) {
-        AddTitleDialog().present(by: self) { _ in
-            
+        AddTitleDialog().present(by: self) { text in
+            var op = AddTitleOperation(qrImageView: self.qrImageView, title: text)
+            op.execute()
+            self.undoStack.append(op)
         }
     }
     
     @IBAction func onRedoClicked(_ sender: Any) {
-        if let op = redoStack.popLast() {
+        if var op = redoStack.popLast() {
             op.execute()
             undoStack.append(op)
         }
@@ -71,7 +73,7 @@ extension ShowQRCodeViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let image = info.first(where: { $0.key == UIImagePickerController.InfoKey.originalImage })?.value as? UIImage {
-            let operation = AddCenterImageOperation(qrImageView: qrImageView, image: image)
+            var operation = AddCenterImageOperation(qrImageView: qrImageView, image: image)
             undoStack.append(operation)
             redoStack.removeAll()
             operation.execute()
