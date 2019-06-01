@@ -43,6 +43,13 @@ class ShowQRCodeViewController: UIViewController {
         imagePickerVC.delegate = self
         present(imagePickerVC, animated: true, completion: nil)
     }
+
+    
+    @IBAction func onAddTitle(_ sender: Any) {
+        AddTitleDialog().present(by: self) { _ in
+            
+        }
+    }
     
     @IBAction func onRedoClicked(_ sender: Any) {
         if let op = redoStack.popLast() {
@@ -58,16 +65,6 @@ class ShowQRCodeViewController: UIViewController {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ShowQRCodeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

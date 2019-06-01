@@ -212,6 +212,12 @@
                                 <action selector="onAddImageWithSender:" destination="Iyy-1m-oht" id="QAJ-rB-XEd"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="2jn-Ri-3SE"/>
+                        <barButtonItem title="Item" image="font" id="any-30-1Hb" userLabel="Title">
+                            <connections>
+                                <action selector="onAddTitle:" destination="Iyy-1m-oht" id="ubs-S4-Lpq"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
             </objects>
@@ -220,6 +226,7 @@
     </scenes>
     <resources>
         <image name="add-image-to-qr" width="24" height="18"/>
+        <image name="font" width="23" height="25"/>
         <image name="redo" width="25" height="25"/>
         <image name="undo" width="25" height="25"/>
     </resources>
