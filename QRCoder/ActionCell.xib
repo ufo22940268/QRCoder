@@ -10,17 +10,71 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActionCell" customModule="QrCoder" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ActionCell" customModule="QrCoder" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="338" height="173"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="338" height="173"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView verifyAmbiguity="off" opaque="NO" contentMode="scaleToFill" ambiguous="YES" preservesSuperviewLayoutMargins="YES" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Ydd-ut-4Cs">
+                        <rect key="frame" x="0.0" y="-14" width="338" height="200"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pV6-Nz-SUD">
+                                <rect key="frame" x="0.0" y="0.0" width="298" height="43.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hLd-xt-PIp">
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="ELx-Qv-ot8"/>
+                                            <constraint firstAttribute="width" constant="22" id="GpO-6k-SHd"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hLd-xt-PIp" firstAttribute="top" secondItem="pV6-Nz-SUD" secondAttribute="top" id="FXF-wf-zXb"/>
+                                    <constraint firstItem="hLd-xt-PIp" firstAttribute="leading" secondItem="pV6-Nz-SUD" secondAttribute="leading" id="t4G-XX-hQi"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9sF-vw-am0">
+                                <rect key="frame" x="0.0" y="43.5" width="298" height="43.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R7-SB-eMj">
+                                        <rect key="frame" x="0.0" y="0.0" width="306" height="47.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5R7-SB-eMj" secondAttribute="bottom" id="OuE-to-c6d"/>
+                                    <constraint firstItem="5R7-SB-eMj" firstAttribute="leading" secondItem="9sF-vw-am0" secondAttribute="leading" id="kv5-2a-ZQE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="IHv-oq-4o3"/>
+                    </stackView>
+                </subviews>
             </view>
             <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+            <constraints>
+                <constraint firstAttribute="trailingMargin" secondItem="Ydd-ut-4Cs" secondAttribute="trailing" constant="4" id="Fme-9n-xuU"/>
+                <constraint firstItem="Ydd-ut-4Cs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" constant="4" id="bp1-Oj-mTS"/>
+                <constraint firstItem="Ydd-ut-4Cs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" constant="4" id="hjV-TH-fl2"/>
+                <constraint firstAttribute="bottomMargin" secondItem="Ydd-ut-4Cs" secondAttribute="bottom" constant="4" id="s9t-qk-l4L"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="338" height="173"/>
+            <connections>
+                <outlet property="iconView" destination="hLd-xt-PIp" id="hHw-RA-N42"/>
+                <outlet property="titleView" destination="5R7-SB-eMj" id="BL1-yl-y2n"/>
+            </connections>
+            <point key="canvasLocation" x="266.66666666666669" y="145.64732142857142"/>
         </collectionViewCell>
     </objects>
 </document>
