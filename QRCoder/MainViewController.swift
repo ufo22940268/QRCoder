@@ -23,6 +23,12 @@ class MainViewController: UIViewController {
         collectionLayout.itemSize = CGSize(width: itemWidth, height: 80)
         collectionLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         collectionView.register(UINib(nibName: "ActionCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        
+        self.navigationController?.view.backgroundColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.visibleCells.forEach { collectionView.deselectItem(at: collectionView.indexPath(for: $0)!, animated: false) }
     }
 }
 
