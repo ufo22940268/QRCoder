@@ -33,6 +33,7 @@ class ShowQRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationController?.isToolbarHidden = false
         qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
     }
