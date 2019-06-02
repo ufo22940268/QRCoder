@@ -31,6 +31,7 @@ extension MainViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ActionCell
         let item = ActionCell.Item.allCases[indexPath.row]
         cell.item = item
+        cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
         return cell
     }
     
