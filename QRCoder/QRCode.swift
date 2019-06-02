@@ -14,10 +14,18 @@ protocol QRCodeMaterial {
 
 struct LinkMaterial: QRCodeMaterial {
     
-    var str: String
+    var url: String!
+    
+    init(str: String) {
+        if str.range(of: #"[^:]+://.+"#, options: .regularExpression, range: nil, locale: nil) == nil {
+            url = "http://" + str
+        } else {
+            url = str
+        }
+    }
     
     func toString() -> String {
-        return str
+        return url
     }
 }
 

@@ -17,6 +17,7 @@ class AddLinkViewController: UITableViewController {
 
         // Do any additional setup after loading the view.
         navigationItem.largeTitleDisplayMode = .never
+        linkField.becomeFirstResponder()
     }
     
 
@@ -39,6 +40,6 @@ class AddLinkViewController: UITableViewController {
 
 extension AddLinkViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        navigationItem.rightBarButtonItem?.isEnabled = textView.text.count > 0
+        navigationItem.rightBarButtonItem?.isEnabled = textView.text.count > 0 && textView.text.isURL()
     }
 }
