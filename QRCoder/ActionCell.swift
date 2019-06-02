@@ -52,7 +52,7 @@ class ActionCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowOpacity = 0.45
         layer.shadowRadius = 8.0
-                
+        
         clipsToBounds = false
         
         selectedBackgroundView = UIView(frame: bounds)

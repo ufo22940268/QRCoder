@@ -38,11 +38,16 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ActionCell.Item.allCases.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch ActionCell.Item.allCases[indexPath.row] {
+        case .link:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "addLink")
+            navigationController?.pushViewController(vc!, animated: true)
+        }
+    }
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
  
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("select \(indexPath)")
-    }
 }

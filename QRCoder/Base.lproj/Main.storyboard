@@ -92,7 +92,7 @@
         <!--链接-->
         <scene sceneID="NLK-rt-cDc">
             <objects>
-                <tableViewController title="链接" id="gZY-49-3yi" customClass="AddLinkViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addLink" title="链接" id="gZY-49-3yi" customClass="AddLinkViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wfw-P2-tdH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
