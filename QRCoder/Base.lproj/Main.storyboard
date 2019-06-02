@@ -34,7 +34,6 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1Gw-4g-4an" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="IgX-Os-Mfv"/>
                             <constraint firstAttribute="trailing" secondItem="1Gw-4g-4an" secondAttribute="trailing" id="Ozg-iJ-QcX"/>
@@ -107,11 +106,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BNm-3I-YXx">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BNm-3I-YXx">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="gZY-49-3yi" id="6I2-eD-3uY"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -131,8 +134,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="链接" id="syp-DU-O0N">
-                        <barButtonItem key="rightBarButtonItem" title="下一步" style="done" id="Sxh-hs-GgG"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="下一步" style="done" id="Sxh-hs-GgG">
+                            <connections>
+                                <action selector="onNextClicked:" destination="gZY-49-3yi" id="gQW-4I-qVy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="linkField" destination="BNm-3I-YXx" id="r6b-r9-Dxk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6E-NZ-uXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,7 +151,7 @@
         <!--ShowQR Code View Controller-->
         <scene sceneID="42X-2b-TOM">
             <objects>
-                <viewController id="Iyy-1m-oht" customClass="ShowQRCodeViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showQRCode" id="Iyy-1m-oht" customClass="ShowQRCodeViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qvy-pT-hU3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

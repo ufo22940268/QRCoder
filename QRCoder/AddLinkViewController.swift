@@ -9,7 +9,9 @@
 import UIKit
 
 class AddLinkViewController: UITableViewController {
-
+    
+    @IBOutlet weak var linkField: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,4 +30,15 @@ class AddLinkViewController: UITableViewController {
     }
     */
 
+    @IBAction func onNextClicked(_ sender: Any) {
+        let vc =  storyboard?.instantiateViewController(withIdentifier: "showQRCode") as? ShowQRCodeViewController
+        vc?.qrCodeMaterial = LinkMaterial(str: linkField.text)
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+}
+
+extension AddLinkViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        navigationItem.rightBarButtonItem?.isEnabled = textView.text.count > 0
+    }
 }

@@ -15,6 +15,7 @@ class ShowQRCodeViewController: UIViewController {
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var redoButton: UIBarButtonItem!
     @IBOutlet var undoButton: UIBarButtonItem!
+    var qrCodeMaterial: QRCodeMaterial!
     
     var undoStack: [Operation] = [Operation]() {
         didSet {
@@ -32,7 +33,7 @@ class ShowQRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        qrImageView.qrText = "adsfafd"
+        qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
     }
     

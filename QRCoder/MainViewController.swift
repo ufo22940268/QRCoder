@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view
 
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
 

@@ -37,7 +37,7 @@ class QRImageView: UIStackView {
     var qrText: String! {
         didSet {
             let filter = CIFilter(name: "CIQRCodeGenerator")!
-            filter.setValue("http://v2ex.com".data(using: .isoLatin1), forKey: "inputMessage")
+            filter.setValue(self.qrText.data(using: .isoLatin1), forKey: "inputMessage")
             guard var ciImage = filter.outputImage else { return }
             let scale = self.bounds.width/ciImage.extent.width
             ciImage = ciImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
