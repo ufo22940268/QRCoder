@@ -67,19 +67,20 @@ class ShowQRCodeViewController: UIViewController {
     }
     
     @IBAction func onUndoClicked(_ sender: Any) {
-        if let op = self.undoStack.popLast() {
-            op.undo()
-            self.redoStack.append(op)
-        }
+//        if let op = self.undoStack.popLast() {
+//            op.undo()
+//            self.redoStack.append(op)
+//        }
 //        UIView.transition(from: qrImageView, to: qrImageView, duration: 0.15, options: .showHideTransitionViews) { (success) in
 //
 //        }
-//        UIView.transition(with: qrImageView.centerImageContainer, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-//            if let op = self.undoStack.popLast() {
-//                op.undo()
-//                self.redoStack.append(op)
-//            }
-//        }, completion: nil)
+        UIView.transition(with: qrImageView, duration: 0.5, options: [.transitionCrossDissolve, .showHideTransitionViews, .allowAnimatedContent, .layoutSubviews], animations: {
+            if let op = self.undoStack.popLast() {
+                op.undo()
+                self.redoStack.append(op)
+            }
+            self.qrImageView.layoutIfNeeded()
+        }, completion: nil)
     }
     
     @IBAction func onShareClicked(_ sender: Any) {
