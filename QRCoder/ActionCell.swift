@@ -80,9 +80,9 @@ class ActionCell: UICollectionViewCell {
         
         layer.cornerRadius = 8
         layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2)
-        layer.shadowOpacity = 0.45
+        layer.shadowOpacity = 0.4
         layer.shadowRadius = 8.0
         
         clipsToBounds = false
