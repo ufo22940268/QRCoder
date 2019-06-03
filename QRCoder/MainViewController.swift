@@ -70,7 +70,11 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "showQRCode") as! ShowQRCodeViewController
+            vc.qrCodeMaterial = ContactMaterial(contact: contact)
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
     }
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {

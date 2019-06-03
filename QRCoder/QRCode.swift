@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Contacts
 
 protocol QRCodeMaterial {
     func toString() -> String
@@ -35,5 +36,15 @@ struct NoteMaterial: QRCodeMaterial {
     
     func  toString() -> String {
         return note
+    }
+}
+
+struct ContactMaterial: QRCodeMaterial {
+    var contact: CNContact!
+    
+    func toString() -> String {
+        let data = try! CNContactVCardSerialization.data(with: [contact])
+        let vcard = String(data: data, encoding: .utf8)
+        return vcard!
     }
 }
