@@ -14,13 +14,39 @@ class ActionCell: UICollectionViewCell {
     enum Item: CaseIterable {
         
         case link
+        case note
         
         var icon: UIImage {
-            return #imageLiteral(resourceName: "link.png")
+            switch  self {
+            case .link:
+                return #imageLiteral(resourceName: "link.png")
+            case .note:
+                return #imageLiteral(resourceName: "file-solid.png")
+            }
         }
         
         var title: String {
-            return "链接"
+            switch self {
+            case .link:
+                return "链接"
+            case .note:
+                return "文本"
+            }
+        }
+        
+        private static let allBackgroundColors: [UIColor] = [
+            UIColor.fromHexString(hex: "ff3b30"),
+            UIColor.fromHexString(hex: "ff9500"),
+            UIColor.fromHexString(hex: "ffcc00"),
+            UIColor.fromHexString(hex: "4ed964"),
+            UIColor.fromHexString(hex: "5ac8fa"),
+            UIColor.fromHexString(hex: "007aff"),
+            UIColor.fromHexString(hex: "5756d6"),
+        ]
+        
+        var backgroundColor: UIColor {
+            let index = ActionCell.Item.allCases.firstIndex { $0 == self }
+            return ActionCell.Item.allBackgroundColors[index!%ActionCell.Item.allBackgroundColors.count]
         }
     }
     
@@ -28,6 +54,7 @@ class ActionCell: UICollectionViewCell {
         didSet {
             iconView.image = item.icon
             titleView.text = item.title
+            backgroundColor = item.backgroundColor
         }
     }
     
@@ -49,7 +76,7 @@ class ActionCell: UICollectionViewCell {
         layer.cornerRadius = 8
         layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowOpacity = 0.45
         layer.shadowRadius = 8.0
         
