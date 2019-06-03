@@ -33,6 +33,10 @@ class ShowQRCodeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if isInitial() {
+            qrCodeMaterial = LinkMaterial(str: "v2ex.com")
+        }
         navigationController?.isToolbarHidden = false
         qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
@@ -63,10 +67,19 @@ class ShowQRCodeViewController: UIViewController {
     }
     
     @IBAction func onUndoClicked(_ sender: Any) {
-        if let op = undoStack.popLast() {
+        if let op = self.undoStack.popLast() {
             op.undo()
-            redoStack.append(op)
+            self.redoStack.append(op)
         }
+//        UIView.transition(from: qrImageView, to: qrImageView, duration: 0.15, options: .showHideTransitionViews) { (success) in
+//
+//        }
+//        UIView.transition(with: qrImageView.centerImageContainer, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+//            if let op = self.undoStack.popLast() {
+//                op.undo()
+//                self.redoStack.append(op)
+//            }
+//        }, completion: nil)
     }
     
     @IBAction func onShareClicked(_ sender: Any) {

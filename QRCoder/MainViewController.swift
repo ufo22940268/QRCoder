@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ContactsUI
 
 class MainViewController: UIViewController {
 
@@ -25,6 +26,7 @@ class MainViewController: UIViewController {
         collectionView.register(UINib(nibName: "ActionCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         
         self.navigationController?.view.backgroundColor = .white
+        self.navigationController?.isToolbarHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,10 +55,25 @@ extension MainViewController: UICollectionViewDataSource {
         case .note:
             let vc = storyboard?.instantiateViewController(withIdentifier: "addNote")
             navigationController?.pushViewController(vc!, animated: true)
+        case .contact:
+            let vc = CNContactPickerViewController()
+            vc.delegate = self
+            present(vc, animated: true, completion: nil)
+            break
         }
     }
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
  
+}
+
+extension MainViewController: CNContactPickerDelegate {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
