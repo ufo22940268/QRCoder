@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class ActionCell: UICollectionViewCell {
     
     enum Item: CaseIterable {
@@ -39,33 +38,43 @@ class ActionCell: UICollectionViewCell {
             }
         }
         
-        private static let allBackgroundColors: [UIColor] = [
-            UIColor.fromHexString(hex: "ff3b30"),
-            UIColor.fromHexString(hex: "ff9500"),
-            UIColor.fromHexString(hex: "ffcc00"),
-            UIColor.fromHexString(hex: "4ed964"),
-            UIColor.fromHexString(hex: "5ac8fa"),
-            UIColor.fromHexString(hex: "007aff"),
-            UIColor.fromHexString(hex: "5756d6"),
+        private static let allBackgroundColors: [(UIColor, UIColor)] = [
+            (UIColor.fromHexString(hex: "ff3b30"), UIColor.fromHexString(hex: "E40F03")),
+            (UIColor.fromHexString(hex: "ff9500"), UIColor.fromHexString(hex: "864F01")),
+            (UIColor.fromHexString(hex: "ffcc00"), UIColor.fromHexString(hex: "A58402")),
+            (UIColor.fromHexString(hex: "4ed964"), UIColor.fromHexString(hex: "4ed964")),
+            (UIColor.fromHexString(hex: "5ac8fa"), UIColor.fromHexString(hex: "5ac8fa")),
+            (UIColor.fromHexString(hex: "007aff"), UIColor.fromHexString(hex: "007aff")),
+            (UIColor.fromHexString(hex: "5756d6"), UIColor.fromHexString(hex: "5756d6")),
         ]
         
-        var backgroundColor: UIColor {
+        var backgroundStartColor: UIColor {
             let index = ActionCell.Item.allCases.firstIndex { $0 == self }
-            return ActionCell.Item.allBackgroundColors[index!%ActionCell.Item.allBackgroundColors.count]
+            return ActionCell.Item.allBackgroundColors[index!%ActionCell.Item.allBackgroundColors.count].0
         }
+        
+        var backgroundEndColor: UIColor {
+            let index = ActionCell.Item.allCases.firstIndex { $0 == self }
+            return ActionCell.Item.allBackgroundColors[index!%ActionCell.Item.allBackgroundColors.count].1
+        }
+
     }
     
     var item: Item! {
         didSet {
             iconView.image = item.icon
             titleView.text = item.title
-            backgroundColor = item.backgroundColor
+            gradientLayer.colors = [
+                item.backgroundStartColor.withAlphaComponent(0.7).cgColor,
+                item.backgroundStartColor.cgColor
+            ]
         }
     }
     
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var stackView: UIStackView!
+    var gradientLayer: CAGradientLayer!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -82,13 +91,25 @@ class ActionCell: UICollectionViewCell {
         layer.masksToBounds = false
         layer.shadowColor = UIColor.lightGray.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2)
-        layer.shadowOpacity = 0.4
+        layer.shadowOpacity = 0.7
         layer.shadowRadius = 8.0
+        
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        gradientLayer.cornerRadius = 8
+        layer.insertSublayer(gradientLayer, at: 0)
         
         clipsToBounds = false
         
         selectedBackgroundView = UIView(frame: bounds)
         selectedBackgroundView?.layer.cornerRadius = 8
         selectedBackgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+    }
+    
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        gradientLayer.frame = bounds
     }
 }

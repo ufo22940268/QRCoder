@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UGQ-NS-vJp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Se6-Zh-gU4">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -42,7 +42,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="二维码" largeTitleDisplayMode="always" id="d1R-Uk-4FW"/>
+                    <navigationItem key="navigationItem" title="二维码" largeTitleDisplayMode="always" id="d1R-Uk-4FW">
+                        <barButtonItem key="rightBarButtonItem" image="history" id="8Sf-zx-5yY"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionLayout" destination="uWd-yS-uhy" id="AfJ-r3-83q"/>
                         <outlet property="collectionView" destination="1Gw-4g-4an" id="Ezx-qW-8SC"/>
@@ -50,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118.840579710145" y="782.8125"/>
+            <point key="canvasLocation" x="1383" y="565"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D7v-uv-QEC">
@@ -70,7 +72,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pC5-ye-EmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-228" y="783"/>
+            <point key="canvasLocation" x="481" y="565"/>
         </scene>
         <!--Test Navigation Controller-->
         <scene sceneID="YZn-Z6-nPf">
@@ -85,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Iyy-1m-oht" kind="relationship" relationship="rootViewController" id="TEb-4r-mXX"/>
+                        <segue destination="bTf-9I-Gqs" kind="relationship" relationship="rootViewController" id="ejX-l8-66r"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPa-fC-NCJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,10 +163,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fdP-eO-zNl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os8-54-azA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <view verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QrCoder" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="237.5" width="250" height="250"/>
@@ -299,10 +301,86 @@
             </objects>
             <point key="canvasLocation" x="541" y="-163"/>
         </scene>
+        <!--历史记录-->
+        <scene sceneID="0vd-iP-XuE">
+            <objects>
+                <tableViewController title="历史记录" id="bTf-9I-Gqs" customClass="HistoryViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kPT-jl-l5w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="AOu-ud-3o7" customClass="HistoryCell" customModule="QrCoder" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AOu-ud-3o7" id="4el-mq-1S9">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="iEV-US-63I">
+                                            <rect key="frame" x="20" y="5" width="64" height="33.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgF-7P-5Kg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="vdb-cm-iht">
+                                                    <rect key="frame" x="0.0" y="19" width="64" height="14.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52y-r6-DY8" customClass="CategoryLabelView" customModule="QrCoder" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="31" height="14.5"/>
+                                                            <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAe-sg-hoE">
+                                                            <rect key="frame" x="33" y="0.0" width="31" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iEV-US-63I" firstAttribute="top" secondItem="4el-mq-1S9" secondAttribute="top" constant="5" id="0Lo-sz-D3S"/>
+                                        <constraint firstAttribute="bottom" secondItem="iEV-US-63I" secondAttribute="bottom" constant="5" id="Nc6-Dh-V0D"/>
+                                        <constraint firstItem="iEV-US-63I" firstAttribute="leading" secondItem="4el-mq-1S9" secondAttribute="leading" constant="20" id="QnN-AM-p20"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="category" destination="52y-r6-DY8" id="ZfN-6f-9Fg"/>
+                                    <outlet property="extra" destination="aAe-sg-hoE" id="d5a-E0-a7Y"/>
+                                    <outlet property="title" destination="FgF-7P-5Kg" id="LtI-j7-pHx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bTf-9I-Gqs" id="TWb-6U-4h7"/>
+                            <outlet property="delegate" destination="bTf-9I-Gqs" id="ceu-1Y-sKU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="NBb-aV-gZu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6L-sR-nTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-420" y="565"/>
+        </scene>
     </scenes>
     <resources>
         <image name="add-image-to-qr" width="24" height="18"/>
         <image name="font" width="23" height="25"/>
+        <image name="history" width="24" height="24"/>
         <image name="redo" width="25" height="25"/>
         <image name="undo" width="25" height="25"/>
     </resources>

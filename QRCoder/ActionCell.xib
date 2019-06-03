@@ -61,7 +61,6 @@
                     </stackView>
                 </subviews>
             </view>
-            <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
             <constraints>
                 <constraint firstAttribute="trailingMargin" secondItem="Ydd-ut-4Cs" secondAttribute="trailing" constant="4" id="Fme-9n-xuU"/>
                 <constraint firstItem="Ydd-ut-4Cs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" constant="4" id="bp1-Oj-mTS"/>
