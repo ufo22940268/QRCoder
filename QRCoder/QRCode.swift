@@ -29,3 +29,11 @@ struct LinkMaterial: QRCodeMaterial {
     }
 }
 
+struct NoteMaterial: QRCodeMaterial {
+    
+    var note: String!
+    
+    func  toString() -> String {
+        return note
+    }
+}

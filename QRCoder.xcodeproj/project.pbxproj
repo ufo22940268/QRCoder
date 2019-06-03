@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4211EF5522A1F8F30062E37A /* AddTitleDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211EF5422A1F8F30062E37A /* AddTitleDialog.swift */; };
 		4211EF5722A3BAEE0062E37A /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211EF5622A3BAEE0062E37A /* QRCode.swift */; };
+		4211EF5922A4A8B30062E37A /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211EF5822A4A8B30062E37A /* AddNoteViewController.swift */; };
 		42AEA59C229F6E7200D4190E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59B229F6E7200D4190E /* AppDelegate.swift */; };
 		42AEA59E229F6E7200D4190E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59D229F6E7200D4190E /* MainViewController.swift */; };
 		42AEA5A1229F6E7200D4190E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AEA59F229F6E7200D4190E /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		4211EF5422A1F8F30062E37A /* AddTitleDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTitleDialog.swift; sourceTree = "<group>"; };
 		4211EF5622A3BAEE0062E37A /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		4211EF5822A4A8B30062E37A /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		42AEA598229F6E7200D4190E /* QrCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QrCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AEA59B229F6E7200D4190E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42AEA59D229F6E7200D4190E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */,
 				4211EF5422A1F8F30062E37A /* AddTitleDialog.swift */,
 				4211EF5622A3BAEE0062E37A /* QRCode.swift */,
+				4211EF5822A4A8B30062E37A /* AddNoteViewController.swift */,
 			);
 			path = QRCoder;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4211EF5922A4A8B30062E37A /* AddNoteViewController.swift in Sources */,
 				42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */,
 				42AEA5CE229FFC9200D4190E /* AddLinkViewController.swift in Sources */,
 				42AEA5CB229F7E7200D4190E /* ActionCell.swift in Sources */,

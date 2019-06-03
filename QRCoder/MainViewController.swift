@@ -51,7 +51,8 @@ extension MainViewController: UICollectionViewDataSource {
             let vc = storyboard?.instantiateViewController(withIdentifier: "addLink")
             navigationController?.pushViewController(vc!, animated: true)
         case .note:
-            break
+            let vc = storyboard?.instantiateViewController(withIdentifier: "addNote")
+            navigationController?.pushViewController(vc!, animated: true)
         }
     }
 }
