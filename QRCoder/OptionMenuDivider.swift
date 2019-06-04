@@ -28,7 +28,7 @@ class OptionMenuDivider: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 30, height: 50)
+        return CGSize(width: 10, height: 50)
     }
     
     override func draw(_ rect: CGRect) {

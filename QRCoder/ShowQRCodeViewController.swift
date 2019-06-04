@@ -50,7 +50,7 @@ class ShowQRCodeViewController: UIViewController {
     }
     
     func showMenu(_ menu: QRCodeOptionMenu) {
-        let menu = ColorPaletteMenu().useAutolayout()
+        let menu = ColorPaletteMenu(host: self).useAutolayout()
         optionMenuContainer.addSubview(menu)
         NSLayoutConstraint.activate([
             optionMenuContainer.layoutMarginsGuide.leadingAnchor.constraint(equalTo: menu.leadingAnchor),

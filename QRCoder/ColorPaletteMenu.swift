@@ -20,17 +20,20 @@ class ColorPaletteMenu: UIStackView {
         return view
     }()
     
-    lazy var switcher: UIImageView = {
-        let view = UIImageView().useAutolayout()
-        view.contentMode = .center
-        view.image = #imageLiteral(resourceName: "cog.png")
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onMoreClicked(sender:))))
+    lazy var switcher: UIButton = {
+        let view = UIButton().useAutolayout()
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 60)])
+        view.setImage(#imageLiteral(resourceName: "cog.png"), for: .normal)
+        view.addTarget(self, action: #selector(onMoreClicked(sender:)), for: .touchUpInside)
         return view
     }()
     
-    override init(frame: CGRect) {
+    var hostViewController: UIViewController!
+    
+    init(host: UIViewController) {
         super.init(frame: .zero)
+        hostViewController = host
         axis = .horizontal
         addArrangedSubview(colorCollectionView)
         addArrangedSubview(divider)
@@ -44,5 +47,20 @@ class ColorPaletteMenu: UIStackView {
 
     @objc func onMoreClicked(sender: UITapGestureRecognizer) {
         print("onMoreClicked")
+        let vc = ColorPalettePopupViewController()
+        vc.modalPresentationStyle = .popover
+        vc.popoverPresentationController?.sourceView = switcher
+        vc.popoverPresentationController?.sourceRect = switcher.bounds.applying(CGAffineTransform(translationX: 0, y: 10))
+        vc.popoverPresentationController?.delegate = self
+        vc.popoverPresentationController?.permittedArrowDirections = .down
+        vc.preferredContentSize = CGSize(width: 100, height: 100)
+        
+        hostViewController.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension ColorPaletteMenu: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
