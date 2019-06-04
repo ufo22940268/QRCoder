@@ -24,6 +24,8 @@ class ColorPaletteMenu: UIStackView {
         let view = UIImageView().useAutolayout()
         view.contentMode = .center
         view.image = #imageLiteral(resourceName: "cog.png")
+        view.isUserInteractionEnabled = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onMoreClicked(sender:))))
         return view
     }()
     
@@ -39,13 +41,8 @@ class ColorPaletteMenu: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
+    @objc func onMoreClicked(sender: UITapGestureRecognizer) {
+        print("onMoreClicked")
+    }
 }

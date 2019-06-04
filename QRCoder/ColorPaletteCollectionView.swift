@@ -52,6 +52,4 @@ extension ColorPaletteCollectionView: UICollectionViewDataSource {
         cell.color = allColors[indexPath.row]
         return cell
     }
-    
-    
 }
