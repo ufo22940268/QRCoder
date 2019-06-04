@@ -329,7 +329,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vdb-cm-iht">
                                                     <rect key="frame" x="0.0" y="19" width="70" height="14.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52y-r6-DY8" customClass="CategoryLabelView" customModule="QrCoder" customModuleProvider="target">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52y-r6-DY8" customClass="CategoryLabelView" customModule="QrCoder" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="31" height="14.5"/>
                                                             <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>

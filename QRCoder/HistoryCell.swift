@@ -17,6 +17,7 @@ class HistoryCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        category.sizeToFit()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
