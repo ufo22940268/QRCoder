@@ -80,7 +80,7 @@ class QRCodeModel: Object {
     var formatTitle: String {
         switch categoryEntity {
         case .contact:
-            let contact = try! CNContactVCardSerialization.contacts(with: text.data(using: .isoLatin1)!).first!
+            let contact = try! CNContactVCardSerialization.contacts(with: text.data(using: .utf8)!).first!
             return contact.givenName
         default:
             return text
@@ -98,7 +98,7 @@ class QRCodeModel: Object {
         case .note:
             return NoteMaterial(note: text)
         case .contact:
-            return ContactMaterial(contact: try! CNContactVCardSerialization.contacts(with: text.data(using: .isoLatin1)!).first!)
+            return ContactMaterial(contact: try! CNContactVCardSerialization.contacts(with: text.data(using: .utf8)!).first!)
         }
     }
 }
