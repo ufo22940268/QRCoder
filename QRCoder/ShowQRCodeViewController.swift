@@ -52,7 +52,12 @@ class ShowQRCodeViewController: UIViewController {
     func showMenu(_ menu: QRCodeOptionMenu) {
         let menu = ColorPaletteMenu().useAutolayout()
         optionMenuContainer.addSubview(menu)
-        menu.sameSizeAsParent()
+        NSLayoutConstraint.activate([
+            optionMenuContainer.layoutMarginsGuide.leadingAnchor.constraint(equalTo: menu.leadingAnchor),
+            optionMenuContainer.layoutMarginsGuide.trailingAnchor.constraint(equalTo: menu.trailingAnchor),
+            optionMenuContainer.topAnchor.constraint(equalTo: menu.topAnchor),
+            optionMenuContainer.bottomAnchor.constraint(equalTo: menu.bottomAnchor)
+            ])
     }
     
     @IBAction func onAddImage(sender: UIBarButtonItem) {

@@ -29,7 +29,7 @@ class ColorPaletteCollectionView: UICollectionView {
         layout.scrollDirection = .horizontal
         super.init(frame: .zero, collectionViewLayout: layout)
 
-        contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        showsHorizontalScrollIndicator = false
         backgroundColor = .clear
         dataSource = self
         register(ColorPaletteCircle.self, forCellWithReuseIdentifier: "cell")

@@ -15,10 +15,25 @@ class ColorPaletteMenu: UIStackView {
         return view
     }()
     
+    lazy var divider: OptionMenuDivider = {
+        let view = OptionMenuDivider()
+        return view
+    }()
+    
+    lazy var switcher: UIImageView = {
+        let view = UIImageView().useAutolayout()
+        view.contentMode = .center
+        view.image = #imageLiteral(resourceName: "cog.png")
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        addSubview(colorCollectionView)
-        colorCollectionView.sameSizeAsParent()
+        axis = .horizontal
+        addArrangedSubview(colorCollectionView)
+        addArrangedSubview(divider)
+        divider.setContentHuggingPriority(.required, for: .horizontal)
+        addArrangedSubview(switcher)
     }
     
     required init(coder: NSCoder) {
