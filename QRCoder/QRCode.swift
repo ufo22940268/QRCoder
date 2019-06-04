@@ -9,6 +9,7 @@
 import Foundation
 import Contacts
 import RealmSwift
+import Contacts
 
 protocol QRCodeMaterial {
     func toString() -> String
@@ -77,7 +78,13 @@ class QRCodeModel: Object {
     @objc dynamic var createdDate: Date = Date()
     
     var formatTitle: String {
-        return text
+        switch categoryEntity {
+        case .contact:
+            let contact = try! CNContactVCardSerialization.contacts(with: text.data(using: .isoLatin1)!).first!
+            return contact.givenName
+        default:
+            return text
+        }
     }
     
     var categoryEntity: ActionCell.Category {

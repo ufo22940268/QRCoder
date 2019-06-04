@@ -11,7 +11,7 @@ import RealmSwift
 
 class CategoryLabelView: UILabel {
     
-    var sideInset: CGFloat = 0
+    var sideInset: CGFloat = 4
     
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.insetBy(dx: sideInset, dy: 0))
