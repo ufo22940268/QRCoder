@@ -59,9 +59,11 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
+    
+    static let separator = UIColor.fromHexString(hex: "D1D1D4")
 }
 
-extension UIViewController {
+extension UIViewController {    
     func isInitial() -> Bool {
         //        guard UIDevice.isSimulator else { fatalError() }
         let initialVC =  storyboard!.instantiateInitialViewController()!

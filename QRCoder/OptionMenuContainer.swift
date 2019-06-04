@@ -16,7 +16,7 @@ class OptionMenuContainer: UIView {
         path.move(to: .zero)
         path.addLine(to: CGPoint(x: rect.width, y: 0))
         path.lineWidth = 1
-        UIColor.fromHexString(hex: "D1D1D4").setStroke()
+        UIColor.separator.setStroke()
         path.stroke()
     }
 }

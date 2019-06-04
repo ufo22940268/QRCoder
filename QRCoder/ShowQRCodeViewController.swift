@@ -10,6 +10,10 @@ import UIKit
 import MobileCoreServices
 import RealmSwift
 
+enum QRCodeOptionMenu {
+    case palette
+}
+
 class ShowQRCodeViewController: UIViewController {
 
     @IBOutlet weak var qrImageView: QRImageView!
@@ -42,6 +46,13 @@ class ShowQRCodeViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
+        showMenu(.palette)
+    }
+    
+    func showMenu(_ menu: QRCodeOptionMenu) {
+        let menu = ColorPaletteMenu().useAutolayout()
+        optionMenuContainer.addSubview(menu)
+        menu.sameSizeAsParent()
     }
     
     @IBAction func onAddImage(sender: UIBarButtonItem) {
