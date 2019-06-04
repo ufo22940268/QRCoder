@@ -17,6 +17,12 @@ class ColorPaletteCircle: UICollectionViewCell {
         }
     }
     
+    override var isSelected: Bool {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
@@ -29,8 +35,15 @@ class ColorPaletteCircle: UICollectionViewCell {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        let path = UIBezierPath(ovalIn: rect.insetBy(dx: 5, dy: 5))
+        let path = UIBezierPath(ovalIn: rect.insetBy(dx: 4, dy: 4))
         color.setFill()
         path.fill()
+        
+        if isSelected {
+            let hightlightPath = UIBezierPath(ovalIn: rect.insetBy(dx: 0.5, dy: 0.5))
+            tintColor.setStroke()
+            hightlightPath.lineWidth = 1
+            hightlightPath.stroke()
+        }
     }
 }
