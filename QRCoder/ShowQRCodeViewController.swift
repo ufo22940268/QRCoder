@@ -29,7 +29,8 @@ class ShowQRCodeViewController: UIViewController {
             redoButton.isEnabled = !redoStack.isEmpty
         }
     }
-
+    @IBOutlet weak var optionMenuContainer: OptionMenuContainer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
