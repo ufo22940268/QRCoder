@@ -90,4 +90,15 @@ class QRCodeModel: Object {
     var categoryEntity: ActionCell.Category {
         return ActionCell.Category.allCases.first { $0.rawValue == category }!
     }
+    
+    var material: QRCodeMaterial {
+        switch categoryEntity {
+        case .link:
+            return LinkMaterial(str: text)
+        case .note:
+            return NoteMaterial(note: text)
+        case .contact:
+            return ContactMaterial(contact: try! CNContactVCardSerialization.contacts(with: text.data(using: .isoLatin1)!).first!)
+        }
+    }
 }

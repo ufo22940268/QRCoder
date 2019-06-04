@@ -30,7 +30,7 @@ class HistoryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.setValue(false, forKey: "hidesShadow")
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = true
         tableView.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: view.bounds.width, height: 1)))
@@ -67,5 +67,12 @@ class HistoryViewController: UITableViewController {
         cell.extra.text = formatter.string(from: qrcode.createdDate)
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "showQRCode") as! ShowQRCodeViewController
+        let qrcode = qrcodes![indexPath.row]
+        vc.qrCodeMaterial = qrcode.material
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

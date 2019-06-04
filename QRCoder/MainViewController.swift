@@ -18,8 +18,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view
 
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-
         let itemWidth = (view.bounds.width - 16*2 - 10)/2
         collectionLayout.itemSize = CGSize(width: itemWidth, height: 80)
         collectionLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
@@ -30,6 +28,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         collectionView.visibleCells.forEach { collectionView.deselectItem(at: collectionView.indexPath(for: $0)!, animated: false) }
     }
 }

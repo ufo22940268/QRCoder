@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Se6-Zh-gU4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UGQ-NS-vJp">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -43,7 +43,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="二维码" largeTitleDisplayMode="always" id="d1R-Uk-4FW">
-                        <barButtonItem key="rightBarButtonItem" image="history" id="8Sf-zx-5yY"/>
+                        <barButtonItem key="rightBarButtonItem" image="history" id="8Sf-zx-5yY">
+                            <connections>
+                                <segue destination="bTf-9I-Gqs" kind="show" id="1vQ-Mj-Lt1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionLayout" destination="uWd-yS-uhy" id="AfJ-r3-83q"/>
@@ -306,7 +310,7 @@
             <objects>
                 <tableViewController title="历史记录" id="bTf-9I-Gqs" customClass="HistoryViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kPT-jl-l5w">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -318,18 +322,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="iEV-US-63I">
-                                            <rect key="frame" x="20" y="5" width="70" height="33.5"/>
+                                            <rect key="frame" x="20" y="5" width="356" height="33.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgF-7P-5Kg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="356" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vdb-cm-iht">
-                                                    <rect key="frame" x="0.0" y="19" width="70" height="14.5"/>
+                                                    <rect key="frame" x="0.0" y="19" width="356" height="14.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52y-r6-DY8" customClass="CategoryLabelView" customModule="QrCoder" customModuleProvider="target">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52y-r6-DY8" customClass="CategoryLabelView" customModule="QrCoder" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="31" height="14.5"/>
                                                             <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -342,7 +346,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAe-sg-hoE">
-                                                            <rect key="frame" x="39" y="0.0" width="31" height="14.5"/>
+                                                            <rect key="frame" x="39" y="0.0" width="317" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -354,6 +358,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="iEV-US-63I" firstAttribute="top" secondItem="4el-mq-1S9" secondAttribute="top" constant="5" id="0Lo-sz-D3S"/>
+                                        <constraint firstAttribute="trailing" secondItem="iEV-US-63I" secondAttribute="trailing" id="6Ig-J0-vhi"/>
                                         <constraint firstAttribute="bottom" secondItem="iEV-US-63I" secondAttribute="bottom" constant="5" id="Nc6-Dh-V0D"/>
                                         <constraint firstItem="iEV-US-63I" firstAttribute="leading" secondItem="4el-mq-1S9" secondAttribute="leading" constant="20" id="QnN-AM-p20"/>
                                     </constraints>
@@ -370,7 +375,7 @@
                             <outlet property="delegate" destination="bTf-9I-Gqs" id="ceu-1Y-sKU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="NBb-aV-gZu"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NBb-aV-gZu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6L-sR-nTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -384,4 +389,7 @@
         <image name="redo" width="25" height="25"/>
         <image name="undo" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1vQ-Mj-Lt1"/>
+    </inferredMetricsTieBreakers>
 </document>
