@@ -10,11 +10,11 @@ import UIKit
 
 class ActionCell: UICollectionViewCell {
     
-    enum Item: CaseIterable {
+    enum Category: Int, CaseIterable {
         
-        case link
-        case note
-        case contact
+        case link = 0
+        case note = 1
+        case contact = 2
         
         var icon: UIImage {
             switch  self {
@@ -49,18 +49,18 @@ class ActionCell: UICollectionViewCell {
         ]
         
         var backgroundStartColor: UIColor {
-            let index = ActionCell.Item.allCases.firstIndex { $0 == self }
-            return ActionCell.Item.allBackgroundColors[index!%ActionCell.Item.allBackgroundColors.count].0
+            let index = ActionCell.Category.allCases.firstIndex { $0 == self }
+            return ActionCell.Category.allBackgroundColors[index!%ActionCell.Category.allBackgroundColors.count].0
         }
         
         var backgroundEndColor: UIColor {
-            let index = ActionCell.Item.allCases.firstIndex { $0 == self }
-            return ActionCell.Item.allBackgroundColors[index!%ActionCell.Item.allBackgroundColors.count].1
+            let index = ActionCell.Category.allCases.firstIndex { $0 == self }
+            return ActionCell.Category.allBackgroundColors[index!%ActionCell.Category.allBackgroundColors.count].1
         }
 
     }
     
-    var item: Item! {
+    var item: Category! {
         didSet {
             iconView.image = item.icon
             titleView.text = item.title

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 extension UIView {
     @discardableResult
@@ -69,6 +70,10 @@ extension UIViewController {
         } else {
             return type(of: initialVC) == type(of: self)
         }
+    }
+    
+    var realm: Realm? {
+        return try! Realm()
     }
 }
 

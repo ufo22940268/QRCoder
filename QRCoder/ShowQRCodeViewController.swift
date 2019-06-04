@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import RealmSwift
 
 class ShowQRCodeViewController: UIViewController {
 
@@ -85,9 +86,13 @@ class ShowQRCodeViewController: UIViewController {
     
     @IBAction func onShareClicked(_ sender: Any) {
         let image = qrImageView.snapshot()
-        print(image)
         let shareVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        present(shareVC, animated: true, completion: nil)
+        present(shareVC, animated: true, completion: {
+            let model = self.qrCodeMaterial.exportToModel()
+            try! self.realm?.write {
+                self.realm?.add(model)
+            }
+        })
     }
 }
 

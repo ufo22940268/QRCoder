@@ -318,16 +318,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="iEV-US-63I">
-                                            <rect key="frame" x="20" y="5" width="64" height="33.5"/>
+                                            <rect key="frame" x="20" y="5" width="70" height="33.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgF-7P-5Kg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="vdb-cm-iht">
-                                                    <rect key="frame" x="0.0" y="19" width="64" height="14.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vdb-cm-iht">
+                                                    <rect key="frame" x="0.0" y="19" width="70" height="14.5"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52y-r6-DY8" customClass="CategoryLabelView" customModule="QrCoder" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="31" height="14.5"/>
@@ -342,7 +342,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAe-sg-hoE">
-                                                            <rect key="frame" x="33" y="0.0" width="31" height="14.5"/>
+                                                            <rect key="frame" x="39" y="0.0" width="31" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>

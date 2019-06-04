@@ -37,18 +37,18 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ActionCell
-        let item = ActionCell.Item.allCases[indexPath.row]
+        let item = ActionCell.Category.allCases[indexPath.row]
         cell.item = item
         cell.layer.shadowPath = UIBezierPath(rect: cell.bounds).cgPath
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ActionCell.Item.allCases.count
+        return ActionCell.Category.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch ActionCell.Item.allCases[indexPath.row] {
+        switch ActionCell.Category.allCases[indexPath.row] {
         case .link:
             let vc = storyboard?.instantiateViewController(withIdentifier: "addLink")
             navigationController?.pushViewController(vc!, animated: true)

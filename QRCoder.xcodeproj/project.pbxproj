@@ -12,6 +12,8 @@
 		4211EF5722A3BAEE0062E37A /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211EF5622A3BAEE0062E37A /* QRCode.swift */; };
 		4211EF5922A4A8B30062E37A /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4211EF5822A4A8B30062E37A /* AddNoteViewController.swift */; };
 		423253BE22A5E7E200B44929 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423253BD22A5E7E200B44929 /* HistoryCell.swift */; };
+		423253C622A5F41800B44929 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423253C522A5F41800B44929 /* Realm.framework */; };
+		423253C822A5F41D00B44929 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423253C722A5F41D00B44929 /* RealmSwift.framework */; };
 		42AEA59C229F6E7200D4190E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59B229F6E7200D4190E /* AppDelegate.swift */; };
 		42AEA59E229F6E7200D4190E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59D229F6E7200D4190E /* MainViewController.swift */; };
 		42AEA5A1229F6E7200D4190E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AEA59F229F6E7200D4190E /* Main.storyboard */; };
@@ -51,6 +53,10 @@
 		4211EF5622A3BAEE0062E37A /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		4211EF5822A4A8B30062E37A /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 		423253BD22A5E7E200B44929 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		423253C122A5F32400B44929 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		423253C222A5F32500B44929 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		423253C522A5F41800B44929 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		423253C722A5F41D00B44929 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		42AEA598229F6E7200D4190E /* QrCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QrCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AEA59B229F6E7200D4190E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42AEA59D229F6E7200D4190E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423253C622A5F41800B44929 /* Realm.framework in Frameworks */,
+				423253C822A5F41D00B44929 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		423253C422A5F41800B44929 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				423253C722A5F41D00B44929 /* RealmSwift.framework */,
+				423253C522A5F41800B44929 /* Realm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		42AEA58F229F6E7200D4190E = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +122,7 @@
 				42AEA5AF229F6E7400D4190E /* QRCoderTests */,
 				42AEA5BA229F6E7400D4190E /* QRCoderUITests */,
 				42AEA599229F6E7200D4190E /* Products */,
+				423253C422A5F41800B44929 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +189,7 @@
 				42AEA594229F6E7200D4190E /* Sources */,
 				42AEA595229F6E7200D4190E /* Frameworks */,
 				42AEA596229F6E7200D4190E /* Resources */,
+				423253C322A5F36500B44929 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -247,6 +266,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 42AEA58F229F6E7200D4190E;
 			productRefGroup = 42AEA599229F6E7200D4190E /* Products */;
@@ -287,6 +307,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		423253C322A5F36500B44929 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		42AEA594229F6E7200D4190E /* Sources */ = {
@@ -345,6 +389,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				42AEA5A0229F6E7200D4190E /* Base */,
+				423253C122A5F32400B44929 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -353,6 +398,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				42AEA5A5229F6E7400D4190E /* Base */,
+				423253C222A5F32500B44929 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -364,6 +410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -425,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -482,6 +530,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S833P2K5YV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = QrCoder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -500,6 +552,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S833P2K5YV;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = QrCoder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

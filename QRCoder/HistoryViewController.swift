@@ -7,20 +7,26 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CategoryLabelView: UILabel {
+    
+    var sideInset: CGFloat = 0
+    
     override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.insetBy(dx: 4, dy: 0))
+        super.drawText(in: rect.insetBy(dx: sideInset, dy: 0))
     }
     
     override var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
-        size.width = size.width + 4*2
+        size.width = size.width + sideInset*2
         return size
     }
 }
 
 class HistoryViewController: UITableViewController {
+    
+    var qrcodes: Results<QRCodeModel>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +34,12 @@ class HistoryViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = true
         tableView.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: view.bounds.width, height: 1)))
+        
+        loadData()
+    }
+    
+    func loadData() {
+        qrcodes = realm?.objects(QRCodeModel.self)
     }
 
     // MARK: - Table view data source
@@ -39,15 +51,20 @@ class HistoryViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        guard let qrcodes = qrcodes else { return 0 }
+        return qrcodes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryCell
         
-        cell.title.text = "ijiajsdfadf"
-        cell.category.text = "TCC"
-        cell.extra.text = "- 2019-01-01"
+        let qrcode = qrcodes![indexPath.row]
+        cell.title.text = qrcode.formatTitle
+        cell.category.text = qrcode.categoryEntity.title
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        cell.extra.text = formatter.string(from: qrcode.createdDate)
 
         return cell
     }
