@@ -53,7 +53,7 @@ class ColorPaletteMenu: UIStackView {
         vc.popoverPresentationController?.sourceRect = switcher.bounds.applying(CGAffineTransform(translationX: 0, y: 10))
         vc.popoverPresentationController?.delegate = self
         vc.popoverPresentationController?.permittedArrowDirections = .down
-        vc.preferredContentSize = CGSize(width: 100, height: 100)
+        vc.preferredContentSize = CGSize(width: 150, height: 88)
         
         hostViewController.present(vc, animated: true, completion: nil)
     }
@@ -62,5 +62,14 @@ class ColorPaletteMenu: UIStackView {
 extension ColorPaletteMenu: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
+    }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        print("should")
+        return false
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        print("dismiss")
     }
 }
