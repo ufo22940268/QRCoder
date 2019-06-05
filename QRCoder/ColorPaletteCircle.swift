@@ -39,11 +39,10 @@ class ColorPaletteCircle: UICollectionViewCell {
         color.setFill()
         path.fill()
         
-        if isSelected {
-            let hightlightPath = UIBezierPath(ovalIn: rect.insetBy(dx: 0.5, dy: 0.5))
-            tintColor.setStroke()
-            hightlightPath.lineWidth = 1
-            hightlightPath.stroke()
-        }
+        let circleColor = isSelected ? tintColor : .lightGray
+        let hightlightPath = UIBezierPath(ovalIn: rect.insetBy(dx: 0.5, dy: 0.5))
+        circleColor!.setStroke()
+        hightlightPath.lineWidth = isSelected ? 1 : 0.2
+        hightlightPath.stroke()
     }
 }

@@ -66,7 +66,7 @@ extension ColorPaletteMenu: UIPopoverPresentationControllerDelegate {
     
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
         print("should")
-        return false
+        return true
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
