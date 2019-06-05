@@ -43,7 +43,7 @@ class QRImageView: UIStackView {
     }
     
     var backColor: UIColor = defaultQRImageBackColor {
-        didSet {            
+        didSet {
             qrView.image = buildQRImage()
         }
     }
@@ -124,8 +124,8 @@ class QRImageView: UIStackView {
         
         let colorFilter = CIFilter(name: "CIFalseColor")!
         colorFilter.setValue(ciImage, forKey: "inputImage")
-        colorFilter.setValue(backColor.coreImageColor, forKey: "inputColor0")
-        colorFilter.setValue(frontColor.coreImageColor, forKey: "inputColor1")
+        colorFilter.setValue(backColor.coreImageColor, forKey: "inputColor1")
+        colorFilter.setValue(frontColor.coreImageColor, forKey: "inputColor0")
         ciImage = colorFilter.outputImage!
         
         let scale = self.bounds.width/ciImage.extent.width

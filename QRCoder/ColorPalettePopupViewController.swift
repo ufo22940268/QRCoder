@@ -59,8 +59,6 @@ class ColorPalettePopupViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(ColorPalettePopupCell.self, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
-        
-        selectedCanvas = .front
         tableView.allowsSelection = true
     }
     
@@ -83,5 +81,6 @@ class ColorPalettePopupViewController: UITableViewController {
         tableView.reloadData()
         
         delegate?.onCanvasChanged(canvas: selectedCanvas)
+        dismiss(animated: true, completion: nil)
     }
 }

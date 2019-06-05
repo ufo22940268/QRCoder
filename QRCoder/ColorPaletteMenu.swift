@@ -62,7 +62,6 @@ class ColorPaletteMenu: UIStackView {
     }
 
     @objc func onMoreClicked(sender: UITapGestureRecognizer) {
-        print("onMoreClicked")
         let vc = ColorPalettePopupViewController()
         vc.modalPresentationStyle = .popover
         vc.popoverPresentationController?.sourceView = switcher
