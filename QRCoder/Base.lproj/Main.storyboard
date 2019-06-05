@@ -166,14 +166,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fdP-eO-zNl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11a-1z-KhW">
+                                <rect key="frame" x="0.0" y="83" width="414" height="730"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os8-54-azA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="730"/>
                                         <subviews>
                                             <view verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QrCoder" customModuleProvider="target">
-                                                <rect key="frame" x="82" y="237.5" width="250" height="250"/>
+                                                <rect key="frame" x="82" y="238" width="250" height="250"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -184,25 +184,30 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iip-2G-wbn" userLabel="Option Menu Container" customClass="OptionMenuContainer" customModule="QrCoder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="670" width="414" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Bh4-NH-Dqh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Iip-2G-wbn" firstAttribute="leading" secondItem="fdP-eO-zNl" secondAttribute="leading" id="5Ax-0G-ILM"/>
-                                    <constraint firstAttribute="trailing" secondItem="Iip-2G-wbn" secondAttribute="trailing" id="cyX-bL-j65"/>
-                                    <constraint firstItem="os8-54-azA" firstAttribute="width" secondItem="fdP-eO-zNl" secondAttribute="width" id="zKS-Dd-0v2"/>
+                                    <constraint firstItem="os8-54-azA" firstAttribute="leading" secondItem="11a-1z-KhW" secondAttribute="leading" id="8ki-Qc-Yz3"/>
+                                    <constraint firstItem="Iip-2G-wbn" firstAttribute="leading" secondItem="11a-1z-KhW" secondAttribute="leading" id="D37-Xb-eps"/>
+                                    <constraint firstItem="os8-54-azA" firstAttribute="width" secondItem="11a-1z-KhW" secondAttribute="width" id="HcQ-1b-uKm"/>
+                                    <constraint firstItem="os8-54-azA" firstAttribute="height" secondItem="11a-1z-KhW" secondAttribute="height" id="HtC-ej-n6y"/>
+                                    <constraint firstAttribute="trailing" secondItem="Iip-2G-wbn" secondAttribute="trailing" id="UUr-gd-wYg"/>
+                                    <constraint firstItem="os8-54-azA" firstAttribute="top" secondItem="11a-1z-KhW" secondAttribute="top" id="aWa-SY-g9g"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iip-2G-wbn" secondAttribute="bottom" id="evR-NA-1Gj"/>
                                 </constraints>
-                            </stackView>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="fdP-eO-zNl" firstAttribute="bottom" secondItem="7mV-hW-Qyv" secondAttribute="bottom" id="Yro-oa-hhI"/>
-                            <constraint firstItem="7mV-hW-Qyv" firstAttribute="leading" secondItem="fdP-eO-zNl" secondAttribute="leading" id="boC-3C-QlN"/>
-                            <constraint firstItem="fdP-eO-zNl" firstAttribute="top" secondItem="7mV-hW-Qyv" secondAttribute="top" id="hwd-uh-Fbo"/>
-                            <constraint firstItem="7mV-hW-Qyv" firstAttribute="trailing" secondItem="fdP-eO-zNl" secondAttribute="trailing" id="ykz-P1-5LN"/>
+                            <constraint firstItem="7mV-hW-Qyv" firstAttribute="bottom" secondItem="11a-1z-KhW" secondAttribute="bottom" id="NUY-k3-3ml"/>
+                            <constraint firstItem="11a-1z-KhW" firstAttribute="centerY" secondItem="Qvy-pT-hU3" secondAttribute="centerY" id="gge-gf-6Xh"/>
+                            <constraint firstItem="11a-1z-KhW" firstAttribute="leading" secondItem="Qvy-pT-hU3" secondAttribute="leading" id="lcZ-P5-Vv9"/>
+                            <constraint firstAttribute="trailing" secondItem="11a-1z-KhW" secondAttribute="trailing" id="qXh-7R-nWj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7mV-hW-Qyv"/>
                     </view>
