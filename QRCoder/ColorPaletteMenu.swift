@@ -30,6 +30,15 @@ class ColorPaletteMenu: UIStackView {
     }()
     
     var hostViewController: UIViewController!
+    var canvas: ColorPaletteCanvas = .front {
+        didSet {
+            colorCollectionView.canvas = canvas
+            colorCollectionView.selectColor(color: canvas == .front ? frontColor : backColor)
+        }
+    }
+    
+    var backColor = UIColor.white
+    var frontColor = UIColor.black
     
     init(host: UIViewController) {
         super.init(frame: .zero)
@@ -54,6 +63,8 @@ class ColorPaletteMenu: UIStackView {
         vc.popoverPresentationController?.delegate = self
         vc.popoverPresentationController?.permittedArrowDirections = .down
         vc.preferredContentSize = CGSize(width: 150, height: 88)
+        vc.selectedCanvas = canvas
+        vc.delegate = self
         
         hostViewController.present(vc, animated: true, completion: nil)
     }
@@ -71,5 +82,11 @@ extension ColorPaletteMenu: UIPopoverPresentationControllerDelegate {
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
         print("dismiss")
+    }
+}
+
+extension ColorPaletteMenu: ColorPalettePopupDelegate {
+    func onCanvasChanged(canvas: ColorPaletteCanvas) {
+        self.canvas = canvas
     }
 }

@@ -41,9 +41,14 @@ enum ColorPaletteCanvas: CaseIterable {
     }
 }
 
+protocol ColorPalettePopupDelegate: class {
+    func onCanvasChanged(canvas: ColorPaletteCanvas)
+}
+
 class ColorPalettePopupViewController: UITableViewController {
     
     var canvases = ColorPaletteCanvas.allCases
+    weak var delegate: ColorPalettePopupDelegate?
     var selectedCanvas = ColorPaletteCanvas.front {
         didSet {
             tableView.reloadData()
@@ -76,5 +81,7 @@ class ColorPalettePopupViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCanvas = canvases[indexPath.row]
         tableView.reloadData()
+        
+        delegate?.onCanvasChanged(canvas: selectedCanvas)
     }
 }

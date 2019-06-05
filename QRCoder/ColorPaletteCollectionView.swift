@@ -21,7 +21,21 @@ class ColorPaletteCollectionView: UICollectionView {
         UIColor.fromHexString(hex: "5756d6")
     ]
     
-    var selectedIndex = 0
+    var canvas: ColorPaletteCanvas = .front {
+        didSet {
+            switch canvas {
+            case .front:
+                allColors[0] = .black
+            case .back:
+                allColors[0] = .white
+            }
+            reloadData()
+        }
+    }
+    
+    func selectColor(color: UIColor) {
+        selectItem(at: IndexPath(row: allColors.firstIndex(of: color)!, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+    }
     
     init() {
         let layout = UICollectionViewFlowLayout()
