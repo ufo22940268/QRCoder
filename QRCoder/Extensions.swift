@@ -61,6 +61,14 @@ extension UIColor {
     }
     
     static let separator = UIColor.fromHexString(hex: "D1D1D4")
+    
+    var coreImageColor: CIColor {
+        return CIColor(color: self)
+    }
+    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        let color = coreImageColor
+        return (color.red, color.green, color.blue, color.alpha)
+    }
 }
 
 extension UIViewController {    

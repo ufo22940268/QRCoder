@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol  ColorPaletteMenuDelegate: class {
+    func onColorSelected(canvas: ColorPaletteCanvas, color: UIColor)
+}
+
 class ColorPaletteMenu: UIStackView {
     
     lazy var colorCollectionView: ColorPaletteCollectionView = {
         let view = ColorPaletteCollectionView().useAutolayout()
+        view.delegate = self
         return view
     }()
     
@@ -36,6 +41,8 @@ class ColorPaletteMenu: UIStackView {
             colorCollectionView.selectColor(color: canvas == .front ? frontColor : backColor)
         }
     }
+    
+    weak var delegate: ColorPaletteMenuDelegate?
     
     var backColor = UIColor.white
     var frontColor = UIColor.black
@@ -76,17 +83,21 @@ extension ColorPaletteMenu: UIPopoverPresentationControllerDelegate {
     }
     
     func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        print("should")
         return true
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        print("dismiss")
     }
 }
 
 extension ColorPaletteMenu: ColorPalettePopupDelegate {
     func onCanvasChanged(canvas: ColorPaletteCanvas) {
         self.canvas = canvas
+    }
+}
+
+extension ColorPaletteMenu: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.onColorSelected(canvas: canvas, color: colorCollectionView.allColors[indexPath.row])
     }
 }

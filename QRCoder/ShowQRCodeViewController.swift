@@ -38,8 +38,6 @@ class ShowQRCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         if isInitial() {
             qrCodeMaterial = LinkMaterial(str: "v2ex.com")
         }
@@ -51,6 +49,7 @@ class ShowQRCodeViewController: UIViewController {
     
     func showMenu(_ menu: QRCodeOptionMenu) {
         let menu = ColorPaletteMenu(host: self).useAutolayout()
+        menu.delegate = self
         optionMenuContainer.addSubview(menu)
         NSLayoutConstraint.activate([
             optionMenuContainer.layoutMarginsGuide.leadingAnchor.constraint(equalTo: menu.leadingAnchor),
@@ -85,13 +84,6 @@ class ShowQRCodeViewController: UIViewController {
     }
     
     @IBAction func onUndoClicked(_ sender: Any) {
-//        if let op = self.undoStack.popLast() {
-//            op.undo()
-//            self.redoStack.append(op)
-//        }
-//        UIView.transition(from: qrImageView, to: qrImageView, duration: 0.15, options: .showHideTransitionViews) { (success) in
-//
-//        }
         UIView.transition(with: qrImageView, duration: 0.5, options: [.transitionCrossDissolve, .showHideTransitionViews, .allowAnimatedContent, .layoutSubviews], animations: {
             if let op = self.undoStack.popLast() {
                 op.undo()
@@ -126,5 +118,19 @@ extension ShowQRCodeViewController: UIImagePickerControllerDelegate, UINavigatio
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ShowQRCodeViewController: ColorPaletteMenuDelegate {
+    func onColorSelected(canvas: ColorPaletteCanvas, color: UIColor) {
+        var operation: Operation!
+        switch canvas {
+        case .back:
+            operation = ChangeBackColorOperation(qrImageView: qrImageView, color: color)
+        case .front:
+            operation = ChangeFrontColorOperation(qrImageView: qrImageView, color: color)
+        }
+        operation.execute()
+        undoStack.append(operation)
     }
 }

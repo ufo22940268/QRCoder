@@ -10,6 +10,9 @@ import UIKit
 import CoreImage
 import AVKit
 
+let defaultQRImageFrontColor: UIColor = .black
+let defaultQRImageBackColor: UIColor = .white
+
 class QRImageView: UIStackView {
     
     lazy var qrView: UIImageView = {
@@ -33,16 +36,23 @@ class QRImageView: UIStackView {
         return view
     }()
     
+    var frontColor: UIColor = defaultQRImageFrontColor {
+        didSet {
+            qrView.image = buildQRImage()
+        }
+    }
+    
+    var backColor: UIColor = defaultQRImageBackColor {
+        didSet {            
+            qrView.image = buildQRImage()
+        }
+    }
+
     var centerRadius: CGFloat = 8
     
     var qrText: String! {
         didSet {
-            let filter = CIFilter(name: "CIQRCodeGenerator")!
-            filter.setValue(self.qrText.data(using: .utf8), forKey: "inputMessage")
-            guard var ciImage = filter.outputImage else { return }
-            let scale = self.bounds.width/ciImage.extent.width
-            ciImage = ciImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
-            qrView.image = UIImage(ciImage: ciImage)
+            qrView.image = buildQRImage()
         }
     }
     
@@ -105,6 +115,22 @@ class QRImageView: UIStackView {
             ])
         
         addArrangedSubview(titleView)
+    }
+    
+    func buildQRImage() -> UIImage {
+        let filter = CIFilter(name: "CIQRCodeGenerator")!
+        filter.setValue(self.qrText.data(using: .utf8), forKey: "inputMessage")
+        guard var ciImage = filter.outputImage else { fatalError() }
+        
+        let colorFilter = CIFilter(name: "CIFalseColor")!
+        colorFilter.setValue(ciImage, forKey: "inputImage")
+        colorFilter.setValue(backColor.coreImageColor, forKey: "inputColor0")
+        colorFilter.setValue(frontColor.coreImageColor, forKey: "inputColor1")
+        ciImage = colorFilter.outputImage!
+        
+        let scale = self.bounds.width/ciImage.extent.width
+        ciImage = ciImage.transformed(by: CGAffineTransform(scaleX: scale, y: scale))
+        return UIImage(ciImage: ciImage)
     }
     
     func decorate(withImage image: UIImage?) {

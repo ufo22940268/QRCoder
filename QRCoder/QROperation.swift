@@ -53,3 +53,45 @@ struct AddTitleOperation: Operation {
         qrImageView.decorate(withTitle: previousTitle)
     }
 }
+
+struct ChangeFrontColorOperation: Operation {
+    
+    var color: UIColor!
+    var previousColor: UIColor = defaultQRImageFrontColor
+    var qrImageView: QRImageView
+
+    init(qrImageView: QRImageView, color: UIColor) {
+        self.qrImageView = qrImageView
+        self.color = color
+    }
+    
+    mutating func execute() {
+        previousColor = qrImageView.frontColor
+        qrImageView.frontColor = color
+    }
+    
+    func undo() {
+        qrImageView.frontColor = previousColor
+    }
+}
+
+struct ChangeBackColorOperation: Operation {
+    
+    var color: UIColor!
+    var previousColor: UIColor = defaultQRImageBackColor
+    var qrImageView: QRImageView
+    
+    init(qrImageView: QRImageView, color: UIColor) {
+        self.qrImageView = qrImageView
+        self.color = color
+    }
+    
+    mutating func execute() {
+        previousColor = qrImageView.backColor
+        qrImageView.backColor = color
+    }
+    
+    func undo() {
+        qrImageView.backColor = previousColor
+    }
+}
