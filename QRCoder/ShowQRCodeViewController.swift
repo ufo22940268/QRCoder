@@ -12,6 +12,7 @@ import RealmSwift
 
 enum QRCodeOptionMenu: Int, CaseIterable {
     case palette = 1
+    case text = 2
 }
 
 class ShowQRCodeViewController: UIViewController {
@@ -46,19 +47,29 @@ class ShowQRCodeViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
+        
+        showMenu(.text)
     }
     
     func showMenu(_ menu: QRCodeOptionMenu) {
         self.menu = menu
-        let menu = ColorPaletteMenu(host: self).useAutolayout()
-        menu.delegate = self
+        let menuView: UIView!
+        switch menu {
+        case .palette:
+            let paletteView = ColorPaletteMenu(host: self).useAutolayout()
+            paletteView.delegate = self
+            menuView = paletteView
+        case .text:
+            let textView = TextMenu().useAutolayout()
+            menuView = textView
+        }
         optionMenuContainer.isHidden = false
-        optionMenuContainer.addSubview(menu)
+        optionMenuContainer.addSubview(menuView)
         NSLayoutConstraint.activate([
-            optionMenuContainer.layoutMarginsGuide.leadingAnchor.constraint(equalTo: menu.leadingAnchor),
-            optionMenuContainer.layoutMarginsGuide.trailingAnchor.constraint(equalTo: menu.trailingAnchor),
-            optionMenuContainer.topAnchor.constraint(equalTo: menu.topAnchor),
-            optionMenuContainer.bottomAnchor.constraint(equalTo: menu.bottomAnchor)
+            optionMenuContainer.layoutMarginsGuide.leadingAnchor.constraint(equalTo: menuView.leadingAnchor),
+            optionMenuContainer.layoutMarginsGuide.trailingAnchor.constraint(equalTo: menuView.trailingAnchor),
+            optionMenuContainer.topAnchor.constraint(equalTo: menuView.topAnchor),
+            optionMenuContainer.bottomAnchor.constraint(equalTo: menuView.bottomAnchor)
             ])
     }
     
@@ -114,14 +125,14 @@ class ShowQRCodeViewController: UIViewController {
     }
     
     @IBAction func onToolbarClicked(_ sender: UIBarButtonItem) {
-//        let clickedMenu = QRCodeOptionMenu.allCases.first { $0.rawValue == sender.tag }!
+        let clickedMenu = QRCodeOptionMenu.allCases.first { $0.rawValue == sender.tag }!
         toolbarButtons.filter { $0 != sender }.forEach { $0.tintColor = .lightGray }
         let isOpen = menu != nil
         if isOpen {
             hideMenu()
             sender.tintColor = .lightGray
         } else {
-            showMenu(.palette)
+            showMenu(clickedMenu)
             sender.tintColor = view.tintColor
         }
     }
