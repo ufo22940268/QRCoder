@@ -60,7 +60,7 @@ class ShowQRCodeViewController: UIViewController {
             paletteView.delegate = self
             menuView = paletteView
         case .text:
-            let textView = TextMenu().useAutolayout()
+            let textView = TextMenu(host: self).useAutolayout()
             menuView = textView
         }
         optionMenuContainer.isHidden = false

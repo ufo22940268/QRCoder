@@ -21,6 +21,8 @@
 		423253D222A6888E00B44929 /* OptionMenuDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423253D122A6888E00B44929 /* OptionMenuDivider.swift */; };
 		423253D422A733A400B44929 /* ColorPalettePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423253D322A733A400B44929 /* ColorPalettePopupViewController.swift */; };
 		42581B7F22A7B2EB00F1D0C5 /* TextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42581B7E22A7B2EB00F1D0C5 /* TextMenu.swift */; };
+		42581B8122A8807300F1D0C5 /* TextMenuInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42581B8022A8807300F1D0C5 /* TextMenuInputViewController.swift */; };
+		42581B8322A893D900F1D0C5 /* TextMenuInputTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42581B8222A893D900F1D0C5 /* TextMenuInputTransition.swift */; };
 		42AEA59C229F6E7200D4190E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59B229F6E7200D4190E /* AppDelegate.swift */; };
 		42AEA59E229F6E7200D4190E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59D229F6E7200D4190E /* MainViewController.swift */; };
 		42AEA5A1229F6E7200D4190E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AEA59F229F6E7200D4190E /* Main.storyboard */; };
@@ -71,6 +73,8 @@
 		423253D122A6888E00B44929 /* OptionMenuDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionMenuDivider.swift; sourceTree = "<group>"; };
 		423253D322A733A400B44929 /* ColorPalettePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalettePopupViewController.swift; sourceTree = "<group>"; };
 		42581B7E22A7B2EB00F1D0C5 /* TextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMenu.swift; sourceTree = "<group>"; };
+		42581B8022A8807300F1D0C5 /* TextMenuInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMenuInputViewController.swift; sourceTree = "<group>"; };
+		42581B8222A893D900F1D0C5 /* TextMenuInputTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMenuInputTransition.swift; sourceTree = "<group>"; };
 		42AEA598229F6E7200D4190E /* QrCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QrCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AEA59B229F6E7200D4190E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42AEA59D229F6E7200D4190E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 				423253D122A6888E00B44929 /* OptionMenuDivider.swift */,
 				423253D322A733A400B44929 /* ColorPalettePopupViewController.swift */,
 				42581B7E22A7B2EB00F1D0C5 /* TextMenu.swift */,
+				42581B8022A8807300F1D0C5 /* TextMenuInputViewController.swift */,
+				42581B8222A893D900F1D0C5 /* TextMenuInputTransition.swift */,
 			);
 			path = QRCoder;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				423253CE22A654B000B44929 /* ColorPaletteMenu.swift in Sources */,
 				4211EF5922A4A8B30062E37A /* AddNoteViewController.swift in Sources */,
 				42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */,
+				42581B8322A893D900F1D0C5 /* TextMenuInputTransition.swift in Sources */,
 				42AEA5CE229FFC9200D4190E /* AddLinkViewController.swift in Sources */,
 				423253D022A65A5C00B44929 /* ColorPaletteCircle.swift in Sources */,
 				423253BE22A5E7E200B44929 /* HistoryCell.swift in Sources */,
@@ -373,6 +380,7 @@
 				4211EF5722A3BAEE0062E37A /* QRCode.swift in Sources */,
 				42AEA5D222A0A00F00D4190E /* QRImageView.swift in Sources */,
 				423253D222A6888E00B44929 /* OptionMenuDivider.swift in Sources */,
+				42581B8122A8807300F1D0C5 /* TextMenuInputViewController.swift in Sources */,
 				423253CC22A653FA00B44929 /* ColorPaletteCollectionView.swift in Sources */,
 				423253CA22A64D4E00B44929 /* OptionMenuContainer.swift in Sources */,
 				423253D422A733A400B44929 /* ColorPalettePopupViewController.swift in Sources */,

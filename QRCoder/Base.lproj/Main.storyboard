@@ -156,7 +156,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6E-NZ-uXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1214.4927536231885" y="-163.39285714285714"/>
+            <point key="canvasLocation" x="1493" y="-163"/>
         </scene>
         <!--ShowQR Code View Controller-->
         <scene sceneID="42X-2b-TOM">
@@ -269,7 +269,7 @@
                     </items>
                 </toolbar>
             </objects>
-            <point key="canvasLocation" x="1882.608695652174" y="-168.08035714285714"/>
+            <point key="canvasLocation" x="2613" y="-163"/>
         </scene>
         <!--文本-->
         <scene sceneID="LSe-SF-c1r">
@@ -421,6 +421,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6L-sR-nTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-420" y="565"/>
+        </scene>
+        <!--Text Menu Input View Controller-->
+        <scene sceneID="yJy-VJ-Jaa">
+            <objects>
+                <viewController storyboardIdentifier="textMenuInput" id="S1U-2n-8Za" customClass="TextMenuInputViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gus-ce-2IM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KA0-ji-jmI">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4h6-zx-gs2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0W-Sg-EjF">
+                                            <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6r-Js-xp0">
+                                                    <rect key="frame" x="371" y="0.0" width="35" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="完成">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onComplete:" destination="S1U-2n-8Za" eventType="touchUpInside" id="pja-jY-ikS"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="R6r-Js-xp0" firstAttribute="top" secondItem="o0W-Sg-EjF" secondAttribute="top" id="N38-oP-z1n"/>
+                                                <constraint firstItem="R6r-Js-xp0" firstAttribute="height" secondItem="o0W-Sg-EjF" secondAttribute="height" id="cDC-xP-gek"/>
+                                                <constraint firstAttribute="height" constant="44" id="db2-cq-jK8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="R6r-Js-xp0" secondAttribute="trailing" id="lVf-ne-dee"/>
+                                            </constraints>
+                                        </view>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="etv-JE-H6O">
+                                            <rect key="frame" x="202" y="222" width="10" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="72P-AS-bzL"/>
+                                            </constraints>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="o0W-Sg-EjF" firstAttribute="width" secondItem="4h6-zx-gs2" secondAttribute="width" id="4bO-5Z-tI4"/>
+                                        <constraint firstItem="o0W-Sg-EjF" firstAttribute="leading" secondItem="4h6-zx-gs2" secondAttribute="leading" id="VOK-w7-k5o"/>
+                                        <constraint firstItem="etv-JE-H6O" firstAttribute="top" secondItem="4h6-zx-gs2" secondAttribute="top" constant="222" id="Y9P-dF-TmX"/>
+                                        <constraint firstItem="etv-JE-H6O" firstAttribute="centerX" secondItem="4h6-zx-gs2" secondAttribute="centerX" id="w9w-ck-vfB"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="KA0-ji-jmI" firstAttribute="leading" secondItem="gus-ce-2IM" secondAttribute="leading" id="996-uf-TiF"/>
+                            <constraint firstAttribute="bottom" secondItem="KA0-ji-jmI" secondAttribute="bottom" id="ELL-HB-6UM"/>
+                            <constraint firstItem="CM9-6f-jAi" firstAttribute="top" secondItem="o0W-Sg-EjF" secondAttribute="top" id="Eo6-43-7aK"/>
+                            <constraint firstItem="KA0-ji-jmI" firstAttribute="top" secondItem="gus-ce-2IM" secondAttribute="top" id="EoK-dD-gOB"/>
+                            <constraint firstAttribute="trailing" secondItem="KA0-ji-jmI" secondAttribute="trailing" id="RYF-ia-5sP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CM9-6f-jAi"/>
+                    </view>
+                    <connections>
+                        <outlet property="editText" destination="etv-JE-H6O" id="nVM-DT-j0k"/>
+                        <outlet property="topTools" destination="o0W-Sg-EjF" id="iNO-Oy-t2j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tmf-zQ-0I0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2562" y="565"/>
         </scene>
     </scenes>
     <resources>

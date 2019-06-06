@@ -34,7 +34,7 @@ class ColorPaletteMenu: UIStackView {
         return view
     }()
     
-    var hostViewController: UIViewController!
+    weak var hostViewController: UIViewController?
     var canvas: ColorPaletteCanvas = .front {
         didSet {
             colorCollectionView.canvas = canvas
@@ -72,7 +72,7 @@ class ColorPaletteMenu: UIStackView {
         vc.selectedCanvas = canvas
         vc.delegate = self
         
-        hostViewController.present(vc, animated: true, completion: nil)
+        hostViewController?.present(vc, animated: true, completion: nil)
     }
 }
 

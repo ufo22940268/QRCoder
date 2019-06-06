@@ -10,6 +10,8 @@ import UIKit
 
 class TextMenu: UIStackView {
     
+    var customTransitioningDelegate = TextMenuInputTransitioningDelegate()
+    
     lazy var opStackView: UIStackView = {
         let view = UIStackView().useAutolayout()
         view.isLayoutMarginsRelativeArrangement = true
@@ -33,8 +35,11 @@ class TextMenu: UIStackView {
         return view
     }()
     
-    init() {
+    weak var host: UIViewController?
+    
+    init(host: UIViewController) {
         super.init(frame: .zero)
+        self.host = host
         axis = .horizontal
         addArrangedSubview(opStackView)
         
@@ -46,13 +51,19 @@ class TextMenu: UIStackView {
         NSLayoutConstraint.activate([
             setting.widthAnchor.constraint(equalToConstant: 60)])
         setting.setImage(#imageLiteral(resourceName: "cog.png"), for: .normal)
-        //        setting.addTarget(self, action: #selector(onMoreClicked(sender:)), for: .touchUpInside)
+        setting.addTarget(self, action: #selector(onSettingClicked(sender:)), for: .touchUpInside)
         addArrangedSubview(setting)
-        
-
-    }    
+    }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func onSettingClicked(sender: UIButton) {
+        let vc = host?.storyboard?.instantiateViewController(withIdentifier: "textMenuInput") as? TextMenuInputViewController
+        vc?.modalTransitionStyle = .crossDissolve
+        vc?.modalPresentationStyle = .custom
+        vc?.transitioningDelegate = customTransitioningDelegate
+        host?.present(vc!, animated: true, completion: nil)
     }
 }
