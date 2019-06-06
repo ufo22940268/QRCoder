@@ -9,7 +9,14 @@
 import UIKit
 
 protocol TextMenuDelegate: TextMenuInputDelegate {
+    func onChange(align: TextAlign)
+}
+
+enum TextAlign {
+    case top
+    case bottom
     
+    static let `default` = TextAlign.top
 }
 
 class TextMenu: UIStackView {
@@ -96,5 +103,13 @@ class TextMenu: UIStackView {
         let index = opStackView.subviews.firstIndex(of: sender)
         let item = Item.allCases.first { $0.rawValue == index }!
         selectedItem = item
+        switch item {
+        case .remove:
+            delegate?.onChange(text: nil)
+        case .bottom:
+            delegate?.onChange(align: .bottom)
+        case .top:
+            delegate?.onChange(align: .top)
+        }
     }
 }

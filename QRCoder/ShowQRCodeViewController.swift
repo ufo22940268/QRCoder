@@ -172,6 +172,14 @@ extension ShowQRCodeViewController: ColorPaletteMenuDelegate {
 
 extension ShowQRCodeViewController: TextMenuDelegate {
     func onChange(text: String?) {
-        qrImageView.title = text
+        var op = TextOperation(qrImageView: qrImageView, text: text)
+        op.execute()
+        undoStack.append(op)
+    }
+    
+    func onChange(align: TextAlign) {        
+        var op = TextAlignOperation(qrImageView: qrImageView, align: align)
+        op.execute()
+        undoStack.append(op)
     }
 }

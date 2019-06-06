@@ -95,3 +95,48 @@ struct ChangeBackColorOperation: Operation {
         qrImageView.backColor = previousColor
     }
 }
+
+
+struct TextOperation: Operation {
+    
+    var qrImageView: QRImageView
+    var previousText: String!
+    var text: String?
+    
+    init(qrImageView: QRImageView, text: String?) {
+        self.qrImageView = qrImageView
+        self.text = text
+    }
+    
+    mutating func execute() {
+        previousText = qrImageView.title
+        qrImageView.title = text
+    }
+    
+    func undo() {
+        qrImageView.title = previousText
+    }
+}
+
+
+
+struct TextAlignOperation: Operation {
+    
+    var qrImageView: QRImageView
+    var previousAlign: TextAlign!
+    var align: TextAlign!
+    
+    init(qrImageView: QRImageView, align: TextAlign) {
+        self.qrImageView = qrImageView
+        self.align = align
+    }
+    
+    mutating func execute() {
+        previousAlign = qrImageView.titleAlign
+        qrImageView.titleAlign = align
+    }
+    
+    func undo() {
+        qrImageView.titleAlign = previousAlign
+    }
+}

@@ -67,6 +67,12 @@ class QRImageView: UIStackView {
         }
     }
     
+    var titleAlign: TextAlign! = TextAlign.default {
+        didSet {
+            
+        }
+    }
+    
     lazy var titleView: UILabel! = {
        let view = UILabel().useAutolayout()
         view.isHidden = true
