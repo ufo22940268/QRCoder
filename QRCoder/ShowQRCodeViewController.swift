@@ -61,6 +61,8 @@ class ShowQRCodeViewController: UIViewController {
             menuView = paletteView
         case .text:
             let textView = TextMenu(host: self).useAutolayout()
+            textView.selectedItem = .top
+            textView.delegate = self
             menuView = textView
         }
         optionMenuContainer.isHidden = false
@@ -165,5 +167,11 @@ extension ShowQRCodeViewController: ColorPaletteMenuDelegate {
         }
         operation.execute()
         undoStack.append(operation)
+    }
+}
+
+extension ShowQRCodeViewController: TextMenuDelegate {
+    func onChange(text: String?) {
+        qrImageView.title = text
     }
 }

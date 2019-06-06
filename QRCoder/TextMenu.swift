@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol TextMenuDelegate: TextMenuInputDelegate {
+    
+}
+
 class TextMenu: UIStackView {
     
     var customTransitioningDelegate = TextMenuInputTransitioningDelegate()
+    
+    enum Item: Int, CaseIterable {
+        case remove = 0, top = 1, bottom = 2
+    }
     
     lazy var opStackView: UIStackView = {
         let view = UIStackView().useAutolayout()
@@ -23,19 +31,35 @@ class TextMenu: UIStackView {
         let removeButton = UIButton().useAutolayout()
         removeButton.setImage(#imageLiteral(resourceName: "ban.png"), for: .normal)
         view.addArrangedSubview(removeButton)
+        removeButton.addTarget(self, action: #selector(onSelectItem(sender:)), for: .touchUpInside)
         
         let alignTopButton = UIButton().useAutolayout()
         alignTopButton.setImage(#imageLiteral(resourceName: "align-top.png"), for: .normal)
         view.addArrangedSubview(alignTopButton)
-        
+        alignTopButton.addTarget(self, action: #selector(onSelectItem(sender:)), for: .touchUpInside)
+
         let alignBottomButton = UIButton().useAutolayout()
         alignBottomButton.setImage(#imageLiteral(resourceName: "align-bottom.png"), for: .normal)
         view.addArrangedSubview(alignBottomButton)
-        
+        alignBottomButton.addTarget(self, action: #selector(onSelectItem(sender:)), for: .touchUpInside)
+
         return view
     }()
     
     weak var host: UIViewController?
+    weak var delegate: TextMenuDelegate?
+    var selectedItem: Item! {
+        didSet {
+            Item.allCases.forEach {
+                let view = opStackView.subviews[$0.rawValue]
+                if $0 == selectedItem {
+                    view.tintColor = tintColor
+                } else {
+                    view.tintColor = .black
+                }
+            }
+        }
+    }
     
     init(host: UIViewController) {
         super.init(frame: .zero)
@@ -64,6 +88,13 @@ class TextMenu: UIStackView {
         vc?.modalTransitionStyle = .crossDissolve
         vc?.modalPresentationStyle = .custom
         vc?.transitioningDelegate = customTransitioningDelegate
+        vc?.delegate = delegate
         host?.present(vc!, animated: true, completion: nil)
+    }
+    
+    @objc func onSelectItem(sender: UIButton) {
+        let index = opStackView.subviews.firstIndex(of: sender)
+        let item = Item.allCases.first { $0.rawValue == index }!
+        selectedItem = item
     }
 }
