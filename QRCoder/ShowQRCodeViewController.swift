@@ -61,7 +61,6 @@ class ShowQRCodeViewController: UIViewController {
             menuView = paletteView
         case .text:
             let textView = TextMenu(host: self).useAutolayout()
-            textView.selectedItem = .top
             textView.delegate = self
             menuView = textView
         }
@@ -106,6 +105,7 @@ class ShowQRCodeViewController: UIViewController {
     }
     
     @IBAction func onUndoClicked(_ sender: Any) {
+        hideMenu()
         UIView.transition(with: qrImageView, duration: 0.5, options: [.transitionCrossDissolve, .showHideTransitionViews, .allowAnimatedContent, .layoutSubviews], animations: {
             if let op = self.undoStack.popLast() {
                 op.undo()

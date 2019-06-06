@@ -118,8 +118,6 @@ struct TextOperation: Operation {
     }
 }
 
-
-
 struct TextAlignOperation: Operation {
     
     var qrImageView: QRImageView

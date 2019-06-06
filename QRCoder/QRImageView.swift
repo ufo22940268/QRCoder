@@ -69,7 +69,14 @@ class QRImageView: UIStackView {
     
     var titleAlign: TextAlign! = TextAlign.default {
         didSet {
-            
+            switch titleAlign! {
+            case .top:
+                removeArrangedSubview(titleView)
+                insertArrangedSubview(titleView, at: 0)
+            case .bottom:
+                removeArrangedSubview(titleView)
+                insertArrangedSubview(titleView, at: arrangedSubviews.count)
+            }
         }
     }
     

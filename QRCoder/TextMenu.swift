@@ -16,7 +16,7 @@ enum TextAlign {
     case top
     case bottom
     
-    static let `default` = TextAlign.top
+    static let `default` = TextAlign.bottom
 }
 
 class TextMenu: UIStackView {
@@ -65,8 +65,19 @@ class TextMenu: UIStackView {
                     view.tintColor = .black
                 }
             }
+            
+            switch selectedItem! {
+            case .top:
+                alignSnapshot = .top
+            case .bottom:
+                alignSnapshot = .bottom
+            default:
+                break
+            }
         }
     }
+    
+    var alignSnapshot: TextAlign = .default
     
     init(host: UIViewController) {
         super.init(frame: .zero)
@@ -84,6 +95,10 @@ class TextMenu: UIStackView {
         setting.setImage(#imageLiteral(resourceName: "cog.png"), for: .normal)
         setting.addTarget(self, action: #selector(onSettingClicked(sender:)), for: .touchUpInside)
         addArrangedSubview(setting)
+        
+        defer {
+            selectedItem = .bottom
+        }
     }
     
     required init(coder: NSCoder) {
@@ -95,7 +110,7 @@ class TextMenu: UIStackView {
         vc?.modalTransitionStyle = .crossDissolve
         vc?.modalPresentationStyle = .custom
         vc?.transitioningDelegate = customTransitioningDelegate
-        vc?.delegate = delegate
+        vc?.delegate = self
         host?.present(vc!, animated: true, completion: nil)
     }
     
@@ -111,5 +126,19 @@ class TextMenu: UIStackView {
         case .top:
             delegate?.onChange(align: .top)
         }
+    }
+}
+
+extension TextMenu: TextMenuInputDelegate {
+    func onChange(text: String?) {
+        if selectedItem == .remove {
+            switch alignSnapshot {
+            case .top:
+                selectedItem = .top
+            case .bottom:
+                selectedItem = .bottom
+            }
+        }
+        delegate?.onChange(text: text)
     }
 }
