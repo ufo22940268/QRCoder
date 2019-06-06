@@ -457,8 +457,8 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="R6r-Js-xp0" secondAttribute="trailing" id="lVf-ne-dee"/>
                                             </constraints>
                                         </view>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="etv-JE-H6O">
-                                            <rect key="frame" x="202" y="222" width="10" height="50"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="etv-JE-H6O">
+                                            <rect key="frame" x="20" y="222" width="374" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="72P-AS-bzL"/>
                                             </constraints>
@@ -468,6 +468,7 @@
                                         </textField>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="etv-JE-H6O" firstAttribute="width" secondItem="4h6-zx-gs2" secondAttribute="width" constant="-40" id="0r1-nx-Iqm"/>
                                         <constraint firstItem="o0W-Sg-EjF" firstAttribute="width" secondItem="4h6-zx-gs2" secondAttribute="width" id="4bO-5Z-tI4"/>
                                         <constraint firstItem="o0W-Sg-EjF" firstAttribute="leading" secondItem="4h6-zx-gs2" secondAttribute="leading" id="VOK-w7-k5o"/>
                                         <constraint firstItem="etv-JE-H6O" firstAttribute="top" secondItem="4h6-zx-gs2" secondAttribute="top" constant="222" id="Y9P-dF-TmX"/>
