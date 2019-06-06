@@ -24,7 +24,7 @@ class ColorPaletteCollectionView: UICollectionView {
     var canvas: ColorPaletteCanvas = .front {
         didSet {
             switch canvas {
-            case .front:
+            case .front, .text:
                 allColors[0] = .black
             case .back:
                 allColors[0] = .white
@@ -34,7 +34,7 @@ class ColorPaletteCollectionView: UICollectionView {
     }
     
     func selectColor(color: UIColor) {
-        selectItem(at: IndexPath(row: allColors.firstIndex(of: color)!, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+        selectItem(at: IndexPath(row: allColors.firstIndex(of: color) ?? 0, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
     
     init() {

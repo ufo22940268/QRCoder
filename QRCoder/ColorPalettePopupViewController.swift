@@ -20,7 +20,7 @@ class ColorPalettePopupCell: UITableViewCell {
 }
 
 enum ColorPaletteCanvas: CaseIterable {
-    case front, back
+    case front, back, text
     
     var icon: UIImage {
         switch self {
@@ -28,6 +28,8 @@ enum ColorPaletteCanvas: CaseIterable {
             return #imageLiteral(resourceName: "th-large.png")
         case .back:
             return #imageLiteral(resourceName: "square.png")
+        case .text:
+            return #imageLiteral(resourceName: "font.png")
         }
     }
     
@@ -37,6 +39,8 @@ enum ColorPaletteCanvas: CaseIterable {
             return "前景色"
         case .back:
             return "背景色"
+        case .text:
+            return "字体颜色"
         }
     }
 }
@@ -47,19 +51,36 @@ protocol ColorPalettePopupDelegate: class {
 
 class ColorPalettePopupViewController: UITableViewController {
     
-    var canvases = ColorPaletteCanvas.allCases
+    lazy var canvases: [ColorPaletteCanvas] = {
+        if haveText {
+            return  ColorPaletteCanvas.allCases
+        } else {
+            return ColorPaletteCanvas.allCases.filter { $0 != ColorPaletteCanvas.text }
+        }
+    }()
     weak var delegate: ColorPalettePopupDelegate?
     var selectedCanvas = ColorPaletteCanvas.front {
         didSet {
             tableView.reloadData()
         }
     }
-        
+    var haveText: Bool!
+    
+    init(haveText: Bool) {
+        super.init(nibName: nil, bundle: nil)
+        self.haveText = haveText
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ColorPalettePopupCell.self, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
         tableView.allowsSelection = true
+        tableView.showsVerticalScrollIndicator = false
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

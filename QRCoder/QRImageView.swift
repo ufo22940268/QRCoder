@@ -80,6 +80,12 @@ class QRImageView: UIStackView {
         }
     }
     
+    var titleColor: UIColor = .black {
+        didSet {
+            titleView.textColor = titleColor
+        }
+    }
+    
     lazy var titleView: UILabel! = {
        let view = UILabel().useAutolayout()
         view.isHidden = true

@@ -96,6 +96,28 @@ struct ChangeBackColorOperation: Operation {
     }
 }
 
+struct ChangeTextColorOperation: Operation {
+    
+    var color: UIColor!
+    var previousColor: UIColor = defaultQRImageFrontColor
+    var qrImageView: QRImageView
+    
+    init(qrImageView: QRImageView, color: UIColor) {
+        self.qrImageView = qrImageView
+        self.color = color
+    }
+    
+    mutating func execute() {
+        previousColor = qrImageView.titleColor
+        qrImageView.titleColor = color
+    }
+    
+    func undo() {
+        qrImageView.titleColor = previousColor
+    }
+}
+
+
 
 struct TextOperation: Operation {
     

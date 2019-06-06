@@ -47,16 +47,16 @@ class ShowQRCodeViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
-        
-        showMenu(.text)
     }
     
     func showMenu(_ menu: QRCodeOptionMenu) {
+        hideMenu()
+        
         self.menu = menu
         let menuView: UIView!
         switch menu {
         case .palette:
-            let paletteView = ColorPaletteMenu(host: self).useAutolayout()
+            let paletteView = ColorPaletteMenu(host: self, qrImageView: qrImageView).useAutolayout()
             paletteView.delegate = self
             menuView = paletteView
         case .text:
@@ -86,15 +86,6 @@ class ShowQRCodeViewController: UIViewController {
         imagePickerVC.mediaTypes = [kUTTypeImage as String]
         imagePickerVC.delegate = self
         present(imagePickerVC, animated: true, completion: nil)
-    }
-
-    
-    @IBAction func onAddTitle(_ sender: Any) {
-        AddTitleDialog().present(by: self) { text in
-            var op = AddTitleOperation(qrImageView: self.qrImageView, title: text)
-            op.execute()
-            self.undoStack.append(op)
-        }
     }
     
     @IBAction func onRedoClicked(_ sender: Any) {
@@ -128,11 +119,11 @@ class ShowQRCodeViewController: UIViewController {
     
     @IBAction func onToolbarClicked(_ sender: UIBarButtonItem) {
         let clickedMenu = QRCodeOptionMenu.allCases.first { $0.rawValue == sender.tag }!
-        toolbarButtons.filter { $0 != sender }.forEach { $0.tintColor = .lightGray }
-        let isOpen = menu != nil
+        toolbarButtons.filter { $0 != sender }.forEach { $0.tintColor = .black }
+        let isOpen = menu == clickedMenu
         if isOpen {
             hideMenu()
-            sender.tintColor = .lightGray
+            sender.tintColor = .black
         } else {
             showMenu(clickedMenu)
             sender.tintColor = view.tintColor
@@ -164,6 +155,8 @@ extension ShowQRCodeViewController: ColorPaletteMenuDelegate {
             operation = ChangeBackColorOperation(qrImageView: qrImageView, color: color)
         case .front:
             operation = ChangeFrontColorOperation(qrImageView: qrImageView, color: color)
+        case .text:
+            operation = ChangeTextColorOperation(qrImageView: qrImageView, color: color)
         }
         operation.execute()
         undoStack.append(operation)

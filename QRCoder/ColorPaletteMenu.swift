@@ -46,10 +46,12 @@ class ColorPaletteMenu: UIStackView {
     
     var backColor = UIColor.white
     var frontColor = UIColor.black
+    var qrImageView: QRImageView!
     
-    init(host: UIViewController) {
+    init(host: UIViewController, qrImageView: QRImageView) {
         super.init(frame: .zero)
         hostViewController = host
+        self.qrImageView = qrImageView
         axis = .horizontal
         addArrangedSubview(colorCollectionView)
         addArrangedSubview(divider)
@@ -62,13 +64,13 @@ class ColorPaletteMenu: UIStackView {
     }
 
     @objc func onMoreClicked(sender: UITapGestureRecognizer) {
-        let vc = ColorPalettePopupViewController()
+        let vc = ColorPalettePopupViewController(haveText: qrImageView.title != nil)
         vc.modalPresentationStyle = .popover
         vc.popoverPresentationController?.sourceView = switcher
         vc.popoverPresentationController?.sourceRect = switcher.bounds.applying(CGAffineTransform(translationX: 0, y: 10))
         vc.popoverPresentationController?.delegate = self
         vc.popoverPresentationController?.permittedArrowDirections = .down
-        vc.preferredContentSize = CGSize(width: 150, height: 88)
+        vc.preferredContentSize = CGSize(width: 150, height: 44*vc.canvases.count)
         vc.selectedCanvas = canvas
         vc.delegate = self
         

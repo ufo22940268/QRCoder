@@ -247,23 +247,23 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
                         <barButtonItem image="add-image-to-qr" id="wUc-8j-VRA" userLabel="Center Image">
-                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="onAddImageWithSender:" destination="Iyy-1m-oht" id="QAJ-rB-XEd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="2jn-Ri-3SE"/>
                         <barButtonItem tag="1" title="Item" image="palette" id="pY7-OP-wwH" userLabel="Palette">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="onToolbarClicked:" destination="Iyy-1m-oht" id="JXa-SN-umY"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Ewx-4f-M2S"/>
-                        <barButtonItem title="Item" image="font" id="any-30-1Hb" userLabel="Title">
-                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem tag="2" title="Item" image="font" id="any-30-1Hb" userLabel="Title">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="onAddTitle:" destination="Iyy-1m-oht" id="ubs-S4-Lpq"/>
+                                <action selector="onToolbarClicked:" destination="Iyy-1m-oht" id="Rug-sK-aCb"/>
                             </connections>
                         </barButtonItem>
                     </items>
