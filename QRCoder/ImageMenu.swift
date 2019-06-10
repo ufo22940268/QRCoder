@@ -46,8 +46,7 @@ class ImageMenu: UIStackView {
         view.clipsToBounds = true
         view.addTarget(self, action: #selector(onSelectItem(sender:)), for: .touchUpInside)
         NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 30),
-            view.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1)
+            view.widthAnchor.constraint(equalToConstant: 30)
             ])
         return view
     }()
