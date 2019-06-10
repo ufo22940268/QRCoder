@@ -47,8 +47,8 @@ class QRImageView: UIStackView {
     lazy var centerImageView: UIImageView = {
         let view = UIImageView().useAutolayout()
         NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 60),
-            view.heightAnchor.constraint(equalToConstant: 60)
+            view.widthAnchor.constraint(equalToConstant: 40),
+            view.heightAnchor.constraint(equalToConstant: 40)
             ])
         view.clipsToBounds = true
         view.layer.cornerRadius = centerRadius

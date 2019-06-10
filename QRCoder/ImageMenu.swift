@@ -55,7 +55,9 @@ class ImageMenu: UIStackView {
         didSet {
             guard let favicon = favicon, faviconButton.superview == nil else { return }
             faviconButton.setImage(favicon, for: .normal)
-            opStackView.insertArrangedSubview(faviconButton, at: 1)
+            UIView.transition(with: self, duration: 0.15, options: [.transitionCrossDissolve], animations: {
+                self.opStackView.insertArrangedSubview(self.faviconButton, at: 1)
+            }, completion: nil)
         }
     }
     

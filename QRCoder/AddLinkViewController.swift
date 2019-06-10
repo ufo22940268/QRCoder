@@ -33,13 +33,17 @@ class AddLinkViewController: UITableViewController {
 
     @IBAction func onNextClicked(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "showQRCode") as? ShowQRCodeViewController
-        vc?.qrCodeMaterial = LinkMaterial(str: linkField.text)
+        vc?.qrCodeMaterial = LinkMaterial(str: text)
         navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    var text: String {
+        return linkField.text.trimmingCharacters(in: .newlines)
     }
 }
 
 extension AddLinkViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        navigationItem.rightBarButtonItem?.isEnabled = textView.text.count > 0 && textView.text.isURL()
+        navigationItem.rightBarButtonItem?.isEnabled = text.count > 0 && text.isURL()
     }
 }
