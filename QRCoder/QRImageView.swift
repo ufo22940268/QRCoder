@@ -13,7 +13,27 @@ import AVKit
 let defaultQRImageFrontColor: UIColor = .black
 let defaultQRImageBackColor: UIColor = .white
 
+struct CenterImage {
+    enum Kind {
+        case normal
+        case icon
+    }
+    var image: UIImage
+    let kind: Kind
+}
+
 class QRImageView: UIStackView {
+    
+    var imageShape: ImageShape = .none {
+        didSet {
+            switch imageShape {
+            case .none:
+                centerImageContainer.isHidden = true
+            case .rectangle:
+                centerImageContainer.isHidden = false
+            }
+        }
+    }
     
     lazy var qrView: UIImageView = {
         let view = UIImageView().useAutolayout()
@@ -32,7 +52,6 @@ class QRImageView: UIStackView {
             ])
         view.clipsToBounds = true
         view.layer.cornerRadius = centerRadius
-        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -56,7 +75,7 @@ class QRImageView: UIStackView {
         }
     }
     
-    var title: String! {
+    @objc var title: String? {
         didSet {
             if let title = self.title, !title.isEmpty {
                 titleView.text = title
@@ -103,10 +122,17 @@ class QRImageView: UIStackView {
         return view
     }()
     
-    var centerImage: UIImage? {
+    var centerImage: CenterImage? {
         didSet {
             if let centerImage = centerImage {
-                centerImageView.image = centerImage
+                centerImageView.image = centerImage.image
+                
+                switch centerImage.kind {
+                case .normal:
+                    centerImageView.contentMode = .scaleAspectFill
+                case .icon:
+                    centerImageView.contentMode = .scaleAspectFit
+                }
                 centerImageContainer.isHidden = false
             } else {
                 centerImageContainer.isHidden = true
@@ -152,15 +178,17 @@ class QRImageView: UIStackView {
         return UIImage(ciImage: ciImage)
     }
     
-    func decorate(withImage image: UIImage?) {
-        if var image = image {
+    func decorate(withImage centerImage: CenterImage?) {
+        if var centerImage = centerImage {
+            var image = centerImage.image
             let outputSize = AVMakeRect(aspectRatio: image.size, insideRect: CGRect(origin: .zero, size: CGSize(width: 100, height: 100))).size
             image = UIGraphicsImageRenderer(size: outputSize).image { (context) in
                 image.draw(in: CGRect(origin: .zero, size: context.format.bounds.size))
              }
-            centerImage = image
+            centerImage.image = image
+            self.centerImage = centerImage
         } else {
-            centerImage = nil
+            self.centerImage = nil
         }
     }
     

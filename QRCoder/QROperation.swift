@@ -14,12 +14,35 @@ protocol Operation {
     func undo()
 }
 
+struct BaseOperation<E> : Operation {
+    
+    var attribute: E?
+    var qrImageView: QRImageView!
+    var previousAttribute: E?
+    var attributeName: String!
+    
+    init(qrImageView: QRImageView, attribute: E?, attributeName: String) {
+        self.qrImageView = qrImageView
+        self.attribute = attribute
+        self.attributeName = attributeName
+    }
+    
+    mutating func execute() {
+        previousAttribute = self.qrImageView.value(forKey: attributeName) as? E
+        qrImageView.setValue(attribute, forKey: attributeName)
+    }
+
+    func undo() {
+        qrImageView.setValue(previousAttribute, forKey: attributeName)
+    }
+}
+
 struct AddCenterImageOperation: Operation {
     var qrImageView: QRImageView
-    var image: UIImage
-    var previousImage: UIImage?
+    var image: CenterImage?
+    var previousImage: CenterImage?
     
-    init(qrImageView: QRImageView, image: UIImage) {
+    init(qrImageView: QRImageView, image: CenterImage?) {
         self.qrImageView = qrImageView
         self.image = image
     }
@@ -117,8 +140,6 @@ struct ChangeTextColorOperation: Operation {
     }
 }
 
-
-
 struct TextOperation: Operation {
     
     var qrImageView: QRImageView
@@ -158,5 +179,26 @@ struct TextAlignOperation: Operation {
     
     func undo() {
         qrImageView.titleAlign = previousAlign
+    }
+}
+
+struct ImageShapeOperation: Operation {
+    
+    var qrImageView: QRImageView
+    var pevious: ImageShape!
+    var value: ImageShape!
+    
+    init(qrImageView: QRImageView, value: ImageShape) {
+        self.qrImageView = qrImageView
+        self.value = value
+    }
+    
+    mutating func execute() {
+        pevious = qrImageView.imageShape
+        qrImageView.imageShape = value
+    }
+    
+    func undo() {
+        qrImageView.imageShape = pevious
     }
 }

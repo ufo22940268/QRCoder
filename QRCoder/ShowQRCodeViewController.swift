@@ -11,6 +11,7 @@ import MobileCoreServices
 import RealmSwift
 
 enum QRCodeOptionMenu: Int, CaseIterable {
+    case image = 0
     case palette = 1
     case text = 2
 }
@@ -47,6 +48,8 @@ class ShowQRCodeViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
+        
+        showMenu(.image)
     }
     
     func showMenu(_ menu: QRCodeOptionMenu) {
@@ -55,6 +58,10 @@ class ShowQRCodeViewController: UIViewController {
         self.menu = menu
         let menuView: UIView!
         switch menu {
+        case .image:
+            let imageView = ImageMenu(host: self).useAutolayout()
+            imageView.delegate = self
+            menuView = imageView
         case .palette:
             let paletteView = ColorPaletteMenu(host: self, qrImageView: qrImageView).useAutolayout()
             paletteView.delegate = self
@@ -78,14 +85,6 @@ class ShowQRCodeViewController: UIViewController {
         menu = nil
         optionMenuContainer.isHidden = true
         optionMenuContainer.subviews.forEach { $0.removeFromSuperview() }
-    }
-    
-    @IBAction func onAddImage(sender: UIBarButtonItem) {
-        let imagePickerVC = UIImagePickerController()
-        imagePickerVC.sourceType = .photoLibrary
-        imagePickerVC.mediaTypes = [kUTTypeImage as String]
-        imagePickerVC.delegate = self
-        present(imagePickerVC, animated: true, completion: nil)
     }
     
     @IBAction func onRedoClicked(_ sender: Any) {
@@ -135,7 +134,7 @@ extension ShowQRCodeViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let image = info.first(where: { $0.key == UIImagePickerController.InfoKey.originalImage })?.value as? UIImage {
-            var operation = AddCenterImageOperation(qrImageView: qrImageView, image: image)
+            var operation = AddCenterImageOperation(qrImageView: qrImageView, image: CenterImage(image: image, kind: .normal))
             undoStack.append(operation)
             redoStack.removeAll()
             operation.execute()
@@ -165,7 +164,7 @@ extension ShowQRCodeViewController: ColorPaletteMenuDelegate {
 
 extension ShowQRCodeViewController: TextMenuDelegate {
     func onChange(text: String?) {
-        var op = TextOperation(qrImageView: qrImageView, text: text)
+        var op = BaseOperation<String>(qrImageView: qrImageView, attribute: text, attributeName: "title")
         op.execute()
         undoStack.append(op)
     }
@@ -174,5 +173,21 @@ extension ShowQRCodeViewController: TextMenuDelegate {
         var op = TextAlignOperation(qrImageView: qrImageView, align: align)
         op.execute()
         undoStack.append(op)
+    }
+}
+
+extension ShowQRCodeViewController: ImageMenuDelegate {
+    func onChange(image: CenterImage?) {
+        var op = AddCenterImageOperation(qrImageView: qrImageView, image: image)
+        op.execute()
+        undoStack.append(op)
+    }
+    
+    func chooseImage() {
+        let imagePickerVC = UIImagePickerController()
+        imagePickerVC.sourceType = .photoLibrary
+        imagePickerVC.mediaTypes = [kUTTypeImage as String]
+        imagePickerVC.delegate = self
+        present(imagePickerVC, animated: true, completion: nil)
     }
 }
