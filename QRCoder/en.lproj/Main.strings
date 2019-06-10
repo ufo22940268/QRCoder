@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "52y-r6-DY8"; */
+"52y-r6-DY8.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "9D7-1N-PGc"; */
+"9D7-1N-PGc.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "9kQ-Py-5NI"; */
+"9kQ-Py-5NI.title" = "Item";
+
+/* Class = "UITableViewSection"; headerTitle = "请输入文本"; ObjectID = "C3t-rA-cWi"; */
+"C3t-rA-cWi.headerTitle" = "请输入文本";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FgF-7P-5Kg"; */
+"FgF-7P-5Kg.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "完成"; ObjectID = "R6r-Js-xp0"; */
+"R6r-Js-xp0.normalTitle" = "完成";
+
+/* Class = "UIBarButtonItem"; title = "下一步"; ObjectID = "Sxh-hs-GgG"; */
+"Sxh-hs-GgG.title" = "下一步";
+
+/* Class = "UIBarButtonItem"; title = "下一步"; ObjectID = "VNj-KR-Bsn"; */
+"VNj-KR-Bsn.title" = "下一步";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "aAe-sg-hoE"; */
+"aAe-sg-hoE.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "any-30-1Hb"; */
+"any-30-1Hb.title" = "Item";
+
+/* Class = "UITableViewController"; title = "历史记录"; ObjectID = "bTf-9I-Gqs"; */
+"bTf-9I-Gqs.title" = "历史记录";
+
+/* Class = "UINavigationItem"; title = "二维码"; ObjectID = "d1R-Uk-4FW"; */
+"d1R-Uk-4FW.title" = "二维码";
+
+/* Class = "UITableViewController"; title = "链接"; ObjectID = "gZY-49-3yi"; */
+"gZY-49-3yi.title" = "链接";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "pY7-OP-wwH"; */
+"pY7-OP-wwH.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "链接"; ObjectID = "syp-DU-O0N"; */
+"syp-DU-O0N.title" = "链接";
+
+/* Class = "UITableViewController"; title = "文本"; ObjectID = "uXA-3e-Hky"; */
+"uXA-3e-Hky.title" = "文本";
+
+/* Class = "UITableViewSection"; headerTitle = "示例: example.com"; ObjectID = "yhJ-ZO-DhF"; */
+"yhJ-ZO-DhF.headerTitle" = "示例: example.com";

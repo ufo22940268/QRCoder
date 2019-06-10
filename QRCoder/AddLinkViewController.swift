@@ -32,7 +32,7 @@ class AddLinkViewController: UITableViewController {
     */
 
     @IBAction func onNextClicked(_ sender: Any) {
-        let vc =  storyboard?.instantiateViewController(withIdentifier: "showQRCode") as? ShowQRCodeViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "showQRCode") as? ShowQRCodeViewController
         vc?.qrCodeMaterial = LinkMaterial(str: linkField.text)
         navigationController?.pushViewController(vc!, animated: true)
     }

@@ -23,10 +23,11 @@ class ImageMenu: UIStackView {
     enum Item: Int, CaseIterable {
         case remove, rectangle
         case qq, wechat, weibo
+        case favicon
         
         var image: UIImage? {
             switch self {
-            case .remove, .rectangle:
+            case .remove, .rectangle, .favicon:
                 return nil
             case .qq:
                 return #imageLiteral(resourceName: "qq-brand.png")
@@ -37,6 +38,26 @@ class ImageMenu: UIStackView {
             }
         }
         
+    }
+    
+    lazy var faviconButton: UIButton = {
+        let view = UIButton().useAutolayout()
+        view.imageView?.contentMode = .scaleAspectFit
+        view.clipsToBounds = true
+        view.addTarget(self, action: #selector(onSelectItem(sender:)), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 30),
+            view.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1)
+            ])
+        return view
+    }()
+    
+    var favicon: UIImage? {
+        didSet {
+            guard let favicon = favicon, faviconButton.superview == nil else { return }
+            faviconButton.setImage(favicon, for: .normal)
+            opStackView.insertArrangedSubview(faviconButton, at: 1)
+        }
     }
     
     lazy var opStackView: UIStackView = {
@@ -58,7 +79,7 @@ class ImageMenu: UIStackView {
         rectangleButton.addTarget(self, action: #selector(onSelectItem(sender:)), for: .touchUpInside)
         rectangleButton.tag = ImageShape.rectangle.rawValue
         
-        for brandItem in Item.allCases.filter({ ![Item.remove, Item.rectangle].contains($0)}) {
+        for brandItem in Item.allCases.filter({ ![Item.remove, Item.rectangle, Item.favicon].contains($0)}) {
             let btn = UIButton().useAutolayout()
             btn.setImage(brandItem.image, for: .normal)
             view.addArrangedSubview(btn)
@@ -80,12 +101,11 @@ class ImageMenu: UIStackView {
     weak var delegate: ImageMenuDelegate?
     var selectedItem: Item! {
         didSet {
-            Item.allCases.forEach {
-                let view = opStackView.subviews[$0.rawValue]
-                if $0 == selectedItem {
-                    view.tintColor = tintColor
+            opStackView.arrangedSubviews.forEach {
+                if let selectedItem = selectedItem, $0.tag == selectedItem.rawValue {
+                    $0.tintColor = tintColor
                 } else {
-                    view.tintColor = .black
+                    $0.tintColor = .black
                 }
             }
         }
@@ -120,6 +140,8 @@ class ImageMenu: UIStackView {
             delegate?.chooseImage()
         case .remove:
             delegate?.onChange(image: nil)
+        case .favicon:
+            delegate?.onChange(image: CenterImage(image: favicon!, kind: .icon))
         default:
             delegate?.onChange(image: CenterImage(image: item.image!, kind: .icon))
         }

@@ -38,6 +38,15 @@ class ShowQRCodeViewController: UIViewController {
     }
     @IBOutlet weak var optionMenuContainer: OptionMenuContainer!
     var menu: QRCodeOptionMenu?
+    var favicon: UIImage? {
+        didSet {
+            if let menuView = menuView as? ImageMenu {
+                menuView.favicon = self.favicon
+            }
+        }
+    }
+    
+    var menuView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +57,25 @@ class ShowQRCodeViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
+        
+        if let linkMaterial = qrCodeMaterial as? LinkMaterial {
+            let url = URL(string: linkMaterial.url)
+            url?.parseFavIcon(complete: { (image) in
+                DispatchQueue.main.async {                    
+                    self.favicon = image
+                }
+            })
+        }
     }
     
     func showMenu(_ menu: QRCodeOptionMenu) {
         hideMenu()
         
         self.menu = menu
-        let menuView: UIView!
         switch menu {
         case .image:
             let imageView = ImageMenu(host: self).useAutolayout()
+            imageView.favicon = self.favicon
             imageView.delegate = self
             menuView = imageView
         case .palette:
@@ -69,14 +87,16 @@ class ShowQRCodeViewController: UIViewController {
             textView.delegate = self
             menuView = textView
         }
-        optionMenuContainer.isHidden = false
-        optionMenuContainer.addSubview(menuView)
-        NSLayoutConstraint.activate([
-            optionMenuContainer.layoutMarginsGuide.leadingAnchor.constraint(equalTo: menuView.leadingAnchor),
-            optionMenuContainer.layoutMarginsGuide.trailingAnchor.constraint(equalTo: menuView.trailingAnchor),
-            optionMenuContainer.topAnchor.constraint(equalTo: menuView.topAnchor),
-            optionMenuContainer.bottomAnchor.constraint(equalTo: menuView.bottomAnchor)
-            ])
+        if let menuView = menuView {
+            optionMenuContainer.isHidden = false
+            optionMenuContainer.addSubview(menuView)
+            NSLayoutConstraint.activate([
+                optionMenuContainer.layoutMarginsGuide.leadingAnchor.constraint(equalTo: menuView.leadingAnchor),
+                optionMenuContainer.layoutMarginsGuide.trailingAnchor.constraint(equalTo: menuView.trailingAnchor),
+                optionMenuContainer.topAnchor.constraint(equalTo: menuView.topAnchor),
+                optionMenuContainer.bottomAnchor.constraint(equalTo: menuView.bottomAnchor)
+                ])
+        }
     }
     
     func hideMenu() {

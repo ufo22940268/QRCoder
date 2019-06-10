@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import QrCoder
+@testable import QRCoder
 
 class QrCoderTests: XCTestCase {
 
@@ -22,13 +22,10 @@ class QrCoderTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let e = expectation(description: "parse favicon")
+        URL(string: "https://www.cnbeta.com")?.parseFavIcon(complete: { (image) in
+            e.fulfill()
+        })
+        wait(for: [e], timeout: 5)
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
