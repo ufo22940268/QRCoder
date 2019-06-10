@@ -48,8 +48,6 @@ class ShowQRCodeViewController: UIViewController {
         navigationController?.isToolbarHidden = false
         qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
-        
-        showMenu(.image)
     }
     
     func showMenu(_ menu: QRCodeOptionMenu) {
