@@ -61,7 +61,7 @@ class ShowQRCodeViewController: UIViewController {
         if let linkMaterial = qrCodeMaterial as? LinkMaterial {
             let url = URL(string: linkMaterial.url)
             url?.parseFavIcon(complete: { (image) in
-                DispatchQueue.main.async {                    
+                DispatchQueue.main.async {
                     self.favicon = image
                 }
             })
