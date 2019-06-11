@@ -13,7 +13,7 @@
         <!--二维码-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="QRCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,7 +101,7 @@
         <!--链接-->
         <scene sceneID="NLK-rt-cDc">
             <objects>
-                <tableViewController storyboardIdentifier="addLink" title="链接" id="gZY-49-3yi" customClass="AddLinkViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addLink" title="链接" id="gZY-49-3yi" customClass="AddLinkViewController" customModule="QRCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wfw-P2-tdH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,7 +161,7 @@
         <!--ShowQR Code View Controller-->
         <scene sceneID="42X-2b-TOM">
             <objects>
-                <viewController storyboardIdentifier="showQRCode" id="Iyy-1m-oht" customClass="ShowQRCodeViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showQRCode" id="Iyy-1m-oht" customClass="ShowQRCodeViewController" customModule="QRCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qvy-pT-hU3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os8-54-azA">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
-                                            <view verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QrCoder" customModuleProvider="target">
+                                            <view verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QRCoder" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="242" width="250" height="246"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -183,7 +183,7 @@
                                             <constraint firstItem="cKY-31-e80" firstAttribute="centerY" secondItem="os8-54-azA" secondAttribute="centerY" id="z7c-Gl-fZo"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iip-2G-wbn" userLabel="Option Menu Container" customClass="OptionMenuContainer" customModule="QrCoder" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iip-2G-wbn" userLabel="Option Menu Container" customClass="OptionMenuContainer" customModule="QRCoder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="665" width="414" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -274,7 +274,7 @@
         <!--文本-->
         <scene sceneID="LSe-SF-c1r">
             <objects>
-                <tableViewController storyboardIdentifier="addNote" title="文本" id="uXA-3e-Hky" customClass="AddNoteViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addNote" title="文本" id="uXA-3e-Hky" customClass="AddNoteViewController" customModule="QRCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="OOg-TF-Jx2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -335,13 +335,13 @@
         <!--历史记录-->
         <scene sceneID="0vd-iP-XuE">
             <objects>
-                <tableViewController title="历史记录" id="bTf-9I-Gqs" customClass="HistoryViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="历史记录" id="bTf-9I-Gqs" customClass="HistoryViewController" customModule="QRCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kPT-jl-l5w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="AOu-ud-3o7" customClass="HistoryCell" customModule="QrCoder" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="AOu-ud-3o7" customClass="HistoryCell" customModule="QRCoder" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AOu-ud-3o7" id="4el-mq-1S9">
@@ -374,7 +374,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vdb-cm-iht">
                                                     <rect key="frame" x="0.0" y="22.5" width="356" height="11"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52y-r6-DY8" customClass="CategoryLabelView" customModule="QrCoder" customModuleProvider="target">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52y-r6-DY8" customClass="CategoryLabelView" customModule="QRCoder" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="31" height="11"/>
                                                             <color key="backgroundColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -425,7 +425,7 @@
         <!--Text Menu Input View Controller-->
         <scene sceneID="yJy-VJ-Jaa">
             <objects>
-                <viewController storyboardIdentifier="textMenuInput" id="S1U-2n-8Za" customClass="TextMenuInputViewController" customModule="QrCoder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="textMenuInput" id="S1U-2n-8Za" customClass="TextMenuInputViewController" customModule="QRCoder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gus-ce-2IM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

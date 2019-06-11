@@ -24,10 +24,10 @@ class MainViewController: UIViewController {
         collectionView.register(UINib(nibName: "ActionCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         
         self.navigationController?.view.backgroundColor = .white
-        self.navigationController?.isToolbarHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isToolbarHidden = true
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         collectionView.visibleCells.forEach { collectionView.deselectItem(at: collectionView.indexPath(for: $0)!, animated: false) }
     }
