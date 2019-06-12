@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class CDNService {
     
@@ -20,8 +21,14 @@ class CDNService {
             multiData.append(image.pngData()!, withName: "file1", fileName: "a.png")
         }, to: URL(string: "\(host)/upload")!)
             .responseJSON { (response) in
-                print(response)
-                complete()
+                switch response.result {
+                case let .success(value):
+                    let json = JSON(value)
+                    print(json["url"])
+                    complete()
+                case let .failure(error):
+                    complete()
+                }
         }
     }
 }

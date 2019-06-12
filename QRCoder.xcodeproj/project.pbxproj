@@ -38,6 +38,7 @@
 		42AEA5D222A0A00F00D4190E /* QRImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA5D122A0A00F00D4190E /* QRImageView.swift */; };
 		42CBFEB922A0FDEC00B8A2E9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */; };
 		42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */; };
+		42DDE32222B0F4FC00D49F99 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */; };
 		42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E47CC722B0DEF800377C0A /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		42AEA5D122A0A00F00D4190E /* QRImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRImageView.swift; path = ../../QRCoder/QRCoder/QRImageView.swift; sourceTree = "<group>"; };
 		42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../QRCoder/QRCoder/Extensions.swift; sourceTree = "<group>"; };
 		42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QROperation.swift; path = ../../QRCoder/QRCoder/QROperation.swift; sourceTree = "<group>"; };
+		42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		42E47CC722B0DEF800377C0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				423253C622A5F41800B44929 /* Realm.framework in Frameworks */,
 				423253C822A5F41D00B44929 /* RealmSwift.framework in Frameworks */,
 				42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */,
+				42DDE32222B0F4FC00D49F99 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +121,7 @@
 		423253C422A5F41800B44929 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */,
 				42E47CC722B0DEF800377C0A /* Alamofire.framework */,
 				423253C722A5F41D00B44929 /* RealmSwift.framework */,
 				423253C522A5F41800B44929 /* Realm.framework */,
@@ -311,6 +315,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -319,6 +324,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
