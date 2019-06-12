@@ -93,8 +93,10 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info.first(where: { $0.key == .originalImage })?.value as? UIImage  {
-            CDNService.shared.upload(image: image, complete: {
-                print("uploaded")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "showQRCode") as! ShowQRCodeViewController
+            vc.imageToUpload = image
+            picker.dismiss(animated: true, completion: {
+                self.navigationController?.pushViewController(vc, animated: true)
             })
         }
     }

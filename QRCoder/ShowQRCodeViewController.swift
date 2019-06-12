@@ -22,8 +22,26 @@ class ShowQRCodeViewController: UIViewController {
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var redoButton: UIBarButtonItem!
     @IBOutlet var undoButton: UIBarButtonItem!
-    var qrCodeMaterial: QRCodeMaterial!
+    
+    var qrCodeMaterial: QRCodeMaterial! {
+        didSet {
+            qrImageView.qrText = qrCodeMaterial.toString()
+            if let linkMaterial = qrCodeMaterial as? LinkMaterial {
+                let url = URL(string: linkMaterial.url)
+                url?.parseFavIcon(complete: { (image) in
+                    DispatchQueue.main.async {
+                        self.favicon = image
+                    }
+                })
+            }
+        }
+    }
+    
+    var imageToUpload: UIImage!
+    
     @IBOutlet var toolbarButtons: [UIBarButtonItem]!
+    
+    var loading: Bool! = false
     
     var undoStack: [Operation] = [Operation]() {
         didSet {
@@ -55,17 +73,22 @@ class ShowQRCodeViewController: UIViewController {
             qrCodeMaterial = LinkMaterial(str: "v2ex.com")
         }
         navigationController?.isToolbarHidden = false
-        qrImageView.qrText = qrCodeMaterial.toString()
         toolbarItems = toolbar.items
         
-        if let linkMaterial = qrCodeMaterial as? LinkMaterial {
-            let url = URL(string: linkMaterial.url)
-            url?.parseFavIcon(complete: { (image) in
-                DispatchQueue.main.async {
-                    self.favicon = image
-                }
-            })
+        if imageToUpload != nil {
+            upload(image: imageToUpload)
         }
+    }
+    
+    func upload(image: UIImage) {
+        loading = true
+        CDNService.shared.upload(image: image, complete: { url in
+            guard let url = url else { return }
+            DispatchQueue.main.async {
+                self.qrCodeMaterial = LinkMaterial(str: url)
+                self.loading = false
+            }
+        })
     }
     
     func showMenu(_ menu: QRCodeOptionMenu) {

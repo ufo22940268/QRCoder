@@ -16,7 +16,7 @@ class CDNService {
     static let shared = CDNService()
     let host = "http://127.0.0.1:3000"
     
-    func upload(image: UIImage, complete: @escaping () -> Void) {
+    func upload(image: UIImage, complete: @escaping (String?) -> Void) {
         AF.upload(multipartFormData: { multiData in
             multiData.append(image.pngData()!, withName: "file1", fileName: "a.png")
         }, to: URL(string: "\(host)/upload")!)
@@ -24,10 +24,9 @@ class CDNService {
                 switch response.result {
                 case let .success(value):
                     let json = JSON(value)
-                    print(json["url"])
-                    complete()
-                case let .failure(error):
-                    complete()
+                    complete(json["url"].rawString())
+                case .failure(_):
+                    complete(nil)
                 }
         }
     }
