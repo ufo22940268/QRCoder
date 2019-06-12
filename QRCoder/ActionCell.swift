@@ -12,9 +12,10 @@ class ActionCell: UICollectionViewCell {
     
     enum Category: Int, CaseIterable {
         
-        case link = 0
-        case note = 1
-        case contact = 2
+        case link
+        case note
+        case contact
+        case image
         
         var icon: UIImage {
             switch  self {
@@ -24,6 +25,8 @@ class ActionCell: UICollectionViewCell {
                 return #imageLiteral(resourceName: "file-solid.png")
             case .contact:
                 return #imageLiteral(resourceName: "address-card-solid.png")
+            case .image:
+                return #imageLiteral(resourceName: "image.png")
             }
         }
         
@@ -35,6 +38,8 @@ class ActionCell: UICollectionViewCell {
                 return "文本"
             case .contact:
                 return "名片"
+            case .image:
+                return "图片"
             }
         }
         

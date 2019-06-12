@@ -28,6 +28,7 @@ class HistoryViewController: UITableViewController {
     
     var qrcodes: Results<QRCodeModel>?
 
+    @IBOutlet var emptyView: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setValue(false, forKey: "hidesShadow")
@@ -40,6 +41,11 @@ class HistoryViewController: UITableViewController {
     
     func loadData() {
         qrcodes = realm?.objects(QRCodeModel.self)
+        if let qrcodes = qrcodes, qrcodes.count > 0 {
+            tableView.backgroundView = nil
+        } else {
+            tableView.backgroundView = emptyView
+        }
     }
 
     // MARK: - Table view data source

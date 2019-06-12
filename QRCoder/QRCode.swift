@@ -99,6 +99,8 @@ class QRCodeModel: Object {
             return NoteMaterial(note: text)
         case .contact:
             return ContactMaterial(contact: try! CNContactVCardSerialization.contacts(with: text.data(using: .utf8)!).first!)
+        case .image:
+            fatalError()
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import ContactsUI
+import MobileCoreServices
 
 class MainViewController: UIViewController {
 
@@ -59,12 +60,16 @@ extension MainViewController: UICollectionViewDataSource {
             vc.delegate = self
             present(vc, animated: true, completion: nil)
             break
+        case .image:
+            let vc = UIImagePickerController()
+            vc.mediaTypes = [kUTTypeImage as String]
+            vc.delegate = self
+            present(vc, animated: true, completion: nil)
         }
     }
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
- 
 }
 
 extension MainViewController: CNContactPickerDelegate {
@@ -78,5 +83,19 @@ extension MainViewController: CNContactPickerDelegate {
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info.first(where: { $0.key == .originalImage })?.value as? UIImage  {
+            CDNService.shared.upload(image: image, complete: {
+                print("uploaded")
+            })
+        }
     }
 }

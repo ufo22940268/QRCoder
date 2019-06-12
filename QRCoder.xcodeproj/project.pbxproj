@@ -24,6 +24,7 @@
 		42581B8322A893D900F1D0C5 /* TextMenuInputTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42581B8222A893D900F1D0C5 /* TextMenuInputTransition.swift */; };
 		42626BED22A8F67E00694F0F /* ImageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42626BEC22A8F67E00694F0F /* ImageMenu.swift */; };
 		42626BF122AE2EBF00694F0F /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42626BF022AE2EBF00694F0F /* Link.swift */; };
+		4268DB6522B0D36D00693AEF /* CDNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4268DB6422B0D36D00693AEF /* CDNService.swift */; };
 		42AEA59C229F6E7200D4190E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59B229F6E7200D4190E /* AppDelegate.swift */; };
 		42AEA59E229F6E7200D4190E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59D229F6E7200D4190E /* MainViewController.swift */; };
 		42AEA5A1229F6E7200D4190E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AEA59F229F6E7200D4190E /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		42AEA5D222A0A00F00D4190E /* QRImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA5D122A0A00F00D4190E /* QRImageView.swift */; };
 		42CBFEB922A0FDEC00B8A2E9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */; };
 		42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */; };
+		42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E47CC722B0DEF800377C0A /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,7 @@
 		42581B8222A893D900F1D0C5 /* TextMenuInputTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMenuInputTransition.swift; sourceTree = "<group>"; };
 		42626BEC22A8F67E00694F0F /* ImageMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMenu.swift; sourceTree = "<group>"; };
 		42626BF022AE2EBF00694F0F /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		4268DB6422B0D36D00693AEF /* CDNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDNService.swift; sourceTree = "<group>"; };
 		42AEA598229F6E7200D4190E /* QRCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AEA59B229F6E7200D4190E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42AEA59D229F6E7200D4190E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		42AEA5D122A0A00F00D4190E /* QRImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QRImageView.swift; path = ../../QRCoder/QRCoder/QRImageView.swift; sourceTree = "<group>"; };
 		42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../QRCoder/QRCoder/Extensions.swift; sourceTree = "<group>"; };
 		42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QROperation.swift; path = ../../QRCoder/QRCoder/QROperation.swift; sourceTree = "<group>"; };
+		42E47CC722B0DEF800377C0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 			files = (
 				423253C622A5F41800B44929 /* Realm.framework in Frameworks */,
 				423253C822A5F41D00B44929 /* RealmSwift.framework in Frameworks */,
+				42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +118,7 @@
 		423253C422A5F41800B44929 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42E47CC722B0DEF800377C0A /* Alamofire.framework */,
 				423253C722A5F41D00B44929 /* RealmSwift.framework */,
 				423253C522A5F41800B44929 /* Realm.framework */,
 			);
@@ -170,6 +176,7 @@
 				42581B8222A893D900F1D0C5 /* TextMenuInputTransition.swift */,
 				42626BEC22A8F67E00694F0F /* ImageMenu.swift */,
 				42626BF022AE2EBF00694F0F /* Link.swift */,
+				4268DB6422B0D36D00693AEF /* CDNService.swift */,
 			);
 			path = QRCoder;
 			sourceTree = "<group>";
@@ -303,6 +310,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -310,6 +318,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -323,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				423253CE22A654B000B44929 /* ColorPaletteMenu.swift in Sources */,
+				4268DB6522B0D36D00693AEF /* CDNService.swift in Sources */,
 				4211EF5922A4A8B30062E37A /* AddNoteViewController.swift in Sources */,
 				42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */,
 				42581B8322A893D900F1D0C5 /* TextMenuInputTransition.swift in Sources */,
