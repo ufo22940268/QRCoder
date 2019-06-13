@@ -39,6 +39,7 @@
 		42CBFEB922A0FDEC00B8A2E9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */; };
 		42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */; };
 		42DDE32222B0F4FC00D49F99 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */; };
+		42DDE32422B1E67600D49F99 /* ChartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDE32322B1E67600D49F99 /* ChartMenu.swift */; };
 		42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E47CC722B0DEF800377C0A /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../QRCoder/QRCoder/Extensions.swift; sourceTree = "<group>"; };
 		42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QROperation.swift; path = ../../QRCoder/QRCoder/QROperation.swift; sourceTree = "<group>"; };
 		42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		42DDE32322B1E67600D49F99 /* ChartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartMenu.swift; sourceTree = "<group>"; };
 		42E47CC722B0DEF800377C0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 				42626BEC22A8F67E00694F0F /* ImageMenu.swift */,
 				42626BF022AE2EBF00694F0F /* Link.swift */,
 				4268DB6422B0D36D00693AEF /* CDNService.swift */,
+				42DDE32322B1E67600D49F99 /* ChartMenu.swift */,
 			);
 			path = QRCoder;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				42AEA5D022A09F4800D4190E /* ShowQRCodeViewController.swift in Sources */,
 				42AEA59E229F6E7200D4190E /* MainViewController.swift in Sources */,
 				42AEA59C229F6E7200D4190E /* AppDelegate.swift in Sources */,
+				42DDE32422B1E67600D49F99 /* ChartMenu.swift in Sources */,
 				42626BF122AE2EBF00694F0F /* Link.swift in Sources */,
 				42581B7F22A7B2EB00F1D0C5 /* TextMenu.swift in Sources */,
 				4211EF5722A3BAEE0062E37A /* QRCode.swift in Sources */,

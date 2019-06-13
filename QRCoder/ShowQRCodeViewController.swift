@@ -11,9 +11,10 @@ import MobileCoreServices
 import RealmSwift
 
 enum QRCodeOptionMenu: Int, CaseIterable {
-    case image = 0
-    case palette = 1
-    case text = 2
+    case image
+    case palette
+    case text
+    case chart
 }
 
 class ShowQRCodeViewController: UIViewController {
@@ -115,6 +116,9 @@ class ShowQRCodeViewController: UIViewController {
             let textView = TextMenu(host: self).useAutolayout()
             textView.delegate = self
             menuView = textView
+        case .chart:
+            let chartView = ChartMenu(host: self).useAutolayout()
+            menuView = chartView
         }
         if let menuView = menuView {
             optionMenuContainer.isHidden = false

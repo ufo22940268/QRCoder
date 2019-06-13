@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UGQ-NS-vJp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Se6-Zh-gU4">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -256,6 +256,7 @@
                         <outletCollection property="toolbarButtons" destination="wUc-8j-VRA" collectionClass="NSMutableArray" id="uPT-3S-7Jx"/>
                         <outletCollection property="toolbarButtons" destination="pY7-OP-wwH" collectionClass="NSMutableArray" id="qYR-Na-GOu"/>
                         <outletCollection property="toolbarButtons" destination="any-30-1Hb" collectionClass="NSMutableArray" id="N3q-Kp-2Rn"/>
+                        <outletCollection property="toolbarButtons" destination="ffK-aj-Jd3" collectionClass="NSMutableArray" id="zQv-pf-OvM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zi1-GR-nXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -281,6 +282,13 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="onToolbarClicked:" destination="Iyy-1m-oht" id="Rug-sK-aCb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="nU6-X9-PB5"/>
+                        <barButtonItem tag="3" title="Item" image="chart-bar-empty" id="ffK-aj-Jd3" userLabel="Chart">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="onToolbarClicked:" destination="Iyy-1m-oht" id="bSR-uu-phh"/>
                             </connections>
                         </barButtonItem>
                     </items>
@@ -526,6 +534,7 @@
     </scenes>
     <resources>
         <image name="add-image-to-qr" width="24" height="18"/>
+        <image name="chart-bar-empty" width="26" height="19"/>
         <image name="font" width="23" height="25"/>
         <image name="history" width="24" height="24"/>
         <image name="palette" width="24" height="24"/>
