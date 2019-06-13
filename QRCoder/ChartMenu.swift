@@ -7,11 +7,23 @@
 //
 import UIKit
 
+protocol ChartMenuDelegate: class {
+    func onEnableChart(_ enabled: Bool)
+}
+
 class ChartMenu: UIStackView {
     
     enum Item: Int, CaseIterable {
         case enabled, disabled
     }
+    
+    lazy var switcher: UISwitch = {
+        let view = UISwitch()
+        view.addTarget(self, action: #selector(onSwitchChanged(sender:)), for: .valueChanged)
+        return view
+    }()
+    
+    weak var delegate: ChartMenuDelegate?
     
     lazy var opStackView: UIStackView = {
         let view = UIStackView().useAutolayout()
@@ -19,8 +31,16 @@ class ChartMenu: UIStackView {
         view.layoutMargins = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 20)
         
         view.axis = .horizontal
+        view.alignment = .center
         view.distribution = .equalSpacing
-                
+        
+        let label = UILabel().useAutolayout()
+        label.text = "二维码记录"
+        view.addArrangedSubview(label)
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        view.addArrangedSubview(switcher)
+        
         return view
     }()
     
@@ -55,10 +75,6 @@ class ChartMenu: UIStackView {
         setting.setImage(#imageLiteral(resourceName: "cog.png"), for: .normal)
         setting.addTarget(self, action: #selector(onSettingClicked(sender:)), for: .touchUpInside)
         addArrangedSubview(setting)
-        
-//        defer {
-//            selectedItem = .disabled
-//        }
     }
     
     required init(coder: NSCoder) {
@@ -66,6 +82,11 @@ class ChartMenu: UIStackView {
     }
     
     @objc func onSettingClicked(sender: UIButton) {
+    }
+    
+    @objc func onSwitchChanged(sender: UISwitch)  {
+        print(sender.isOn)
+        delegate?.onEnableChart(sender.isOn)
     }
     
     @objc func onSelectItem(sender: UIButton) {

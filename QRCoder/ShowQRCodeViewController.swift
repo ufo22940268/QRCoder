@@ -25,6 +25,7 @@ class ShowQRCodeViewController: UIViewController {
     @IBOutlet var undoButton: UIBarButtonItem!
     
     @IBOutlet weak var loadingContainer: UIStackView!
+    @IBOutlet weak var chartBarButton: UIBarButtonItem!
     
     var qrCodeMaterial: QRCodeMaterial! {
         didSet {
@@ -118,6 +119,7 @@ class ShowQRCodeViewController: UIViewController {
             menuView = textView
         case .chart:
             let chartView = ChartMenu(host: self).useAutolayout()
+            chartView.delegate = self
             menuView = chartView
         }
         if let menuView = menuView {
@@ -240,5 +242,19 @@ extension ShowQRCodeViewController: ImageMenuDelegate {
         imagePickerVC.mediaTypes = [kUTTypeImage as String]
         imagePickerVC.delegate = self
         present(imagePickerVC, animated: true, completion: nil)
+    }
+}
+
+extension ShowQRCodeViewController: ChartMenuDelegate {
+    func onEnableChart(_ enabled: Bool) {
+        UIView.transition(with: toolbar, duration: 0.15, options: .transitionCrossDissolve, animations: {
+            let icon: UIImage!
+            if enabled {
+                icon = #imageLiteral(resourceName: "chart-bar.png")
+            } else {
+                icon = #imageLiteral(resourceName: "chart-bar-empty.png")
+            }
+            self.chartBarButton.image = icon
+        }, completion: nil)
     }
 }
