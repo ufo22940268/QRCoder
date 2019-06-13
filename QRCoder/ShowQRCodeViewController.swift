@@ -23,6 +23,8 @@ class ShowQRCodeViewController: UIViewController {
     @IBOutlet var redoButton: UIBarButtonItem!
     @IBOutlet var undoButton: UIBarButtonItem!
     
+    @IBOutlet weak var loadingContainer: UIStackView!
+    
     var qrCodeMaterial: QRCodeMaterial! {
         didSet {
             qrImageView.qrText = qrCodeMaterial.toString()
@@ -41,7 +43,11 @@ class ShowQRCodeViewController: UIViewController {
     
     @IBOutlet var toolbarButtons: [UIBarButtonItem]!
     
-    var loading: Bool! = false
+    var loading: Bool! = false {
+        didSet {
+            loadingContainer.isHidden = !loading
+        }
+    }
     
     var undoStack: [Operation] = [Operation]() {
         didSet {

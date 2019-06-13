@@ -176,9 +176,25 @@
                                                 <rect key="frame" x="82" y="242" width="250" height="246"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3GA-bC-FFg">
+                                                <rect key="frame" x="141" y="352.5" width="132" height="20.5"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wU7-vl-XZw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在上传图片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbT-4D-1yn">
+                                                        <rect key="frame" x="28" y="0.0" width="104" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="3GA-bC-FFg" firstAttribute="centerY" secondItem="os8-54-azA" secondAttribute="centerY" id="071-wc-myo"/>
+                                            <constraint firstItem="3GA-bC-FFg" firstAttribute="centerX" secondItem="os8-54-azA" secondAttribute="centerX" id="Eya-Fu-jCb"/>
                                             <constraint firstItem="cKY-31-e80" firstAttribute="centerX" secondItem="os8-54-azA" secondAttribute="centerX" id="axP-7G-fx0"/>
                                             <constraint firstItem="cKY-31-e80" firstAttribute="centerY" secondItem="os8-54-azA" secondAttribute="centerY" id="z7c-Gl-fZo"/>
                                         </constraints>
@@ -231,6 +247,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadingContainer" destination="3GA-bC-FFg" id="RlB-uL-ews"/>
                         <outlet property="optionMenuContainer" destination="Iip-2G-wbn" id="s1g-zK-WyB"/>
                         <outlet property="qrImageView" destination="cKY-31-e80" id="3Jj-Ky-1Zb"/>
                         <outlet property="redoButton" destination="9D7-1N-PGc" id="yad-YB-MCo"/>
