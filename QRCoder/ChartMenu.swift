@@ -72,7 +72,7 @@ class ChartMenu: UIStackView {
         let setting = UIButton().useAutolayout()
         NSLayoutConstraint.activate([
             setting.widthAnchor.constraint(equalToConstant: 60)])
-        setting.setImage(#imageLiteral(resourceName: "cog.png"), for: .normal)
+        setting.setImage(#imageLiteral(resourceName: "info-circle.png"), for: .normal)
         setting.addTarget(self, action: #selector(onSettingClicked(sender:)), for: .touchUpInside)
         addArrangedSubview(setting)
     }

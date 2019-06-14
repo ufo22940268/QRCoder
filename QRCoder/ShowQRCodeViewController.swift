@@ -283,7 +283,7 @@ extension ShowQRCodeViewController: ChartMenuDelegate {
         
         if enabled {
             `switch`.isEnabled = false
-            AF.request("/record/add".buildURL(), method: .post, parameters: ["url": qrCodeMaterial.toString()])
+            AF.request("/redirectionh/add".buildURL(), method: .post, parameters: ["url": qrCodeMaterial.toString()])
                 .responseJSON(queue: .main) { resp in
                     switch resp.result {
                     case let .success(data):
