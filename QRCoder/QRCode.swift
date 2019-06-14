@@ -76,6 +76,7 @@ class QRCodeModel: Object {
     @objc dynamic var text: String = ""
     @objc dynamic var category: Int = 0
     @objc dynamic var createdDate: Date = Date()
+    @objc dynamic var redirectURL: String? = nil
     
     var formatTitle: String {
         switch categoryEntity {
@@ -102,5 +103,10 @@ class QRCodeModel: Object {
         case .image:
             fatalError()
         }
+    }
+    
+    var redirectMaterial: QRCodeMaterial? {
+        guard let redirectURL = redirectURL else { return nil }
+        return LinkMaterial(str: redirectURL)
     }
 }

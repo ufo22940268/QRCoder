@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import RealmSwift
 
+let apiHost = "http://127.0.0.1:3000"
+
 extension UIView {
     @discardableResult
     func useAutolayout() -> Self {
@@ -34,6 +36,10 @@ extension String {
         let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
         let result = urlTest.evaluate(with: self)
         return result
+    }
+    
+    func buildURL() -> String {
+        return "\(apiHost)\(self)"
     }
 }
 

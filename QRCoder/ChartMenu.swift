@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ChartMenuDelegate: class {
-    func onEnableChart(_ enabled: Bool)
+    func onEnableChart(_ enabled: Bool, switch: UISwitch)
 }
 
 class ChartMenu: UIStackView {
@@ -86,7 +86,7 @@ class ChartMenu: UIStackView {
     
     @objc func onSwitchChanged(sender: UISwitch)  {
         print(sender.isOn)
-        delegate?.onEnableChart(sender.isOn)
+        delegate?.onEnableChart(sender.isOn, switch: sender)
     }
     
     @objc func onSelectItem(sender: UIButton) {

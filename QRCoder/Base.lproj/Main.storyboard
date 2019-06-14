@@ -249,6 +249,7 @@
                     <connections>
                         <outlet property="chartBarButton" destination="ffK-aj-Jd3" id="Rcs-Xw-DPW"/>
                         <outlet property="loadingContainer" destination="3GA-bC-FFg" id="RlB-uL-ews"/>
+                        <outlet property="loadingLabel" destination="vbT-4D-1yn" id="t1g-Wp-0o7"/>
                         <outlet property="optionMenuContainer" destination="Iip-2G-wbn" id="s1g-zK-WyB"/>
                         <outlet property="qrImageView" destination="cKY-31-e80" id="3Jj-Ky-1Zb"/>
                         <outlet property="redoButton" destination="9D7-1N-PGc" id="yad-YB-MCo"/>

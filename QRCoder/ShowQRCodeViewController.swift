@@ -9,6 +9,8 @@
 import UIKit
 import MobileCoreServices
 import RealmSwift
+import Alamofire
+import SwiftyJSON
 
 enum QRCodeOptionMenu: Int, CaseIterable {
     case image
@@ -26,10 +28,12 @@ class ShowQRCodeViewController: UIViewController {
     
     @IBOutlet weak var loadingContainer: UIStackView!
     @IBOutlet weak var chartBarButton: UIBarButtonItem!
+    @IBOutlet weak var loadingLabel: UILabel!
     
     var qrCodeMaterial: QRCodeMaterial! {
         didSet {
             qrImageView.qrText = qrCodeMaterial.toString()
+            print("qr text: \(qrCodeMaterial.toString())")
             if let linkMaterial = qrCodeMaterial as? LinkMaterial {
                 let url = URL(string: linkMaterial.url)
                 url?.parseFavIcon(complete: { (image) in
@@ -40,6 +44,8 @@ class ShowQRCodeViewController: UIViewController {
             }
         }
     }
+    
+    var qrCodeModel: QRCodeModel?
     
     var imageToUpload: UIImage!
     
@@ -86,17 +92,39 @@ class ShowQRCodeViewController: UIViewController {
         if imageToUpload != nil {
             upload(image: imageToUpload)
         }
+        
+        if qrCodeMaterial != nil {
+            createQRModal()
+        }
     }
     
     func upload(image: UIImage) {
-        loading = true
+        showLoading(true, label: "正在上传图片")
         CDNService.shared.upload(image: image, complete: { url in
             guard let url = url else { return }
             DispatchQueue.main.async {
                 self.qrCodeMaterial = LinkMaterial(str: url)
-                self.loading = false
+                self.createQRModal()
+                self.showLoading(false)
             }
         })
+    }
+    
+    func createQRModal() {
+        if let qrCodeMaterial = qrCodeMaterial {
+            let model = qrCodeMaterial.exportToModel()
+            try! self.realm?.write {
+                self.realm?.add(model)
+            }
+            qrCodeModel = model
+        }
+    }
+    
+    func showLoading(_ show: Bool, label: String? = nil) {
+        loading = true
+        if let label = label {
+            loadingLabel.text = label
+        }
     }
     
     func showMenu(_ menu: QRCodeOptionMenu) {
@@ -162,10 +190,6 @@ class ShowQRCodeViewController: UIViewController {
         let image = qrImageView.snapshot()
         let shareVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(shareVC, animated: true, completion: {
-            let model = self.qrCodeMaterial.exportToModel()
-            try! self.realm?.write {
-                self.realm?.add(model)
-            }
         })
     }
     
@@ -246,7 +270,7 @@ extension ShowQRCodeViewController: ImageMenuDelegate {
 }
 
 extension ShowQRCodeViewController: ChartMenuDelegate {
-    func onEnableChart(_ enabled: Bool) {
+    func onEnableChart(_ enabled: Bool, switch: UISwitch) {
         UIView.transition(with: toolbar, duration: 0.15, options: .transitionCrossDissolve, animations: {
             let icon: UIImage!
             if enabled {
@@ -256,5 +280,31 @@ extension ShowQRCodeViewController: ChartMenuDelegate {
             }
             self.chartBarButton.image = icon
         }, completion: nil)
+        
+        if enabled {
+            `switch`.isEnabled = false
+            AF.request("/record/add".buildURL(), method: .post, parameters: ["url": qrCodeMaterial.toString()])
+                .responseJSON(queue: .main) { resp in
+                    switch resp.result {
+                    case let .success(data):
+                        let json = JSON(data)
+                        if let to = json["to"].string {
+                            self.qrCodeMaterial = LinkMaterial(str: to)
+                            `switch`.isEnabled = true
+                            try? self.realm?.write {
+                                self.qrCodeModel?.redirectURL = to
+                            }
+                        }
+                    case let .failure(error):
+                        print(error)
+                        break;
+                    }
+            }
+        } else {
+            try? self.realm?.write {
+                self.qrCodeModel?.redirectURL = nil
+            }
+            self.qrCodeMaterial = qrCodeModel?.material
+        }
     }
 }
