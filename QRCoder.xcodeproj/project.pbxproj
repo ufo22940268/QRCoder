@@ -40,6 +40,8 @@
 		42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */; };
 		42DDE32222B0F4FC00D49F99 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */; };
 		42DDE32422B1E67600D49F99 /* ChartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDE32322B1E67600D49F99 /* ChartMenu.swift */; };
+		42DDE32822B3CAEF00D49F99 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DDE32722B3CAEF00D49F99 /* Charts.framework */; };
+		42DDE32A22B3D9CF00D49F99 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDE32922B3D9CF00D49F99 /* ChartViewController.swift */; };
 		42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E47CC722B0DEF800377C0A /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QROperation.swift; path = ../../QRCoder/QRCoder/QROperation.swift; sourceTree = "<group>"; };
 		42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		42DDE32322B1E67600D49F99 /* ChartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartMenu.swift; sourceTree = "<group>"; };
+		42DDE32722B3CAEF00D49F99 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		42DDE32922B3D9CF00D49F99 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		42E47CC722B0DEF800377C0A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42DDE32822B3CAEF00D49F99 /* Charts.framework in Frameworks */,
 				423253C622A5F41800B44929 /* Realm.framework in Frameworks */,
 				423253C822A5F41D00B44929 /* RealmSwift.framework in Frameworks */,
 				42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */,
@@ -123,6 +128,7 @@
 		423253C422A5F41800B44929 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42DDE32722B3CAEF00D49F99 /* Charts.framework */,
 				42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */,
 				42E47CC722B0DEF800377C0A /* Alamofire.framework */,
 				423253C722A5F41D00B44929 /* RealmSwift.framework */,
@@ -184,6 +190,7 @@
 				42626BF022AE2EBF00694F0F /* Link.swift */,
 				4268DB6422B0D36D00693AEF /* CDNService.swift */,
 				42DDE32322B1E67600D49F99 /* ChartMenu.swift */,
+				42DDE32922B3D9CF00D49F99 /* ChartViewController.swift */,
 			);
 			path = QRCoder;
 			sourceTree = "<group>";
@@ -319,6 +326,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -328,6 +336,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -357,6 +366,7 @@
 				42626BF122AE2EBF00694F0F /* Link.swift in Sources */,
 				42581B7F22A7B2EB00F1D0C5 /* TextMenu.swift in Sources */,
 				4211EF5722A3BAEE0062E37A /* QRCode.swift in Sources */,
+				42DDE32A22B3D9CF00D49F99 /* ChartViewController.swift in Sources */,
 				42626BED22A8F67E00694F0F /* ImageMenu.swift in Sources */,
 				42AEA5D222A0A00F00D4190E /* QRImageView.swift in Sources */,
 				423253D222A6888E00B44929 /* OptionMenuDivider.swift in Sources */,

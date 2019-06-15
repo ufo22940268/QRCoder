@@ -91,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Iyy-1m-oht" kind="relationship" relationship="rootViewController" id="hzS-tY-kOf"/>
+                        <segue destination="aQy-gG-yHB" kind="relationship" relationship="rootViewController" id="dQX-ME-XdO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPa-fC-NCJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,17 +167,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11a-1z-KhW">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="os8-54-azA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <view verifyAmbiguity="off" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-31-e80" customClass="QRImageView" customModule="QRCoder" customModuleProvider="target">
                                                 <rect key="frame" x="82" y="242" width="250" height="246"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3GA-bC-FFg">
-                                                <rect key="frame" x="141" y="352.5" width="132" height="20.5"/>
+                                                <rect key="frame" x="141" y="399" width="132" height="20.5"/>
                                                 <subviews>
                                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wU7-vl-XZw">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -200,7 +200,7 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iip-2G-wbn" userLabel="Option Menu Container" customClass="OptionMenuContainer" customModule="QRCoder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="665" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="758" width="414" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Bh4-NH-Dqh"/>
@@ -532,6 +532,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmf-zQ-0I0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2562" y="565"/>
+        </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="FWc-wq-2mt">
+            <objects>
+                <viewController id="aQy-gG-yHB" customClass="ChartViewController" customModule="QRCoder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nku-wi-Aso">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zhz-6f-gnj" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zhz-6f-gnj" firstAttribute="leading" secondItem="m4i-X1-ac6" secondAttribute="leading" id="JOd-2a-G06"/>
+                            <constraint firstItem="m4i-X1-ac6" firstAttribute="bottom" secondItem="Zhz-6f-gnj" secondAttribute="bottom" id="Vlg-TF-xcj"/>
+                            <constraint firstItem="Zhz-6f-gnj" firstAttribute="top" secondItem="m4i-X1-ac6" secondAttribute="top" id="iSq-rj-I1X"/>
+                            <constraint firstItem="m4i-X1-ac6" firstAttribute="trailing" secondItem="Zhz-6f-gnj" secondAttribute="trailing" id="uib-eK-5OQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m4i-X1-ac6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jok-ej-Q76"/>
+                    <connections>
+                        <outlet property="chartView" destination="Zhz-6f-gnj" id="nsx-ua-MIP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f77-H3-YJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10" y="-978"/>
         </scene>
     </scenes>
     <resources>
