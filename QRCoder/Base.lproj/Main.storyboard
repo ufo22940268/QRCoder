@@ -542,16 +542,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zhz-6f-gnj" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="225.5" width="414" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="msP-N6-uYT"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Zhz-6f-gnj" firstAttribute="width" secondItem="m4i-X1-ac6" secondAttribute="width" id="7N4-0w-dfe"/>
                             <constraint firstItem="Zhz-6f-gnj" firstAttribute="leading" secondItem="m4i-X1-ac6" secondAttribute="leading" id="JOd-2a-G06"/>
-                            <constraint firstItem="m4i-X1-ac6" firstAttribute="bottom" secondItem="Zhz-6f-gnj" secondAttribute="bottom" id="Vlg-TF-xcj"/>
-                            <constraint firstItem="Zhz-6f-gnj" firstAttribute="top" secondItem="m4i-X1-ac6" secondAttribute="top" id="iSq-rj-I1X"/>
-                            <constraint firstItem="m4i-X1-ac6" firstAttribute="trailing" secondItem="Zhz-6f-gnj" secondAttribute="trailing" id="uib-eK-5OQ"/>
+                            <constraint firstItem="Zhz-6f-gnj" firstAttribute="centerY" secondItem="m4i-X1-ac6" secondAttribute="centerY" id="lOC-XA-dwL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m4i-X1-ac6"/>
                     </view>

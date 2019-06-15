@@ -13,8 +13,7 @@ class CustomDateFormatter: NumberFormatter {
     override func string(from number: NSNumber) -> String? {
         let date =  Date(timeIntervalSinceNow: 3600*24*Double(truncating: number))
         let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .short
+        formatter.dateFormat = "MM-dd"
         return formatter.string(from: date)
     }
 }
@@ -41,6 +40,7 @@ class ChartViewController: UIViewController {
             }
         }
         
+        chartView.animate(yAxisDuration: 0.5)
         chartView.maxVisibleCount = 10
         chartView.xAxis.labelCount = 5
         chartView.xAxis.labelWidth = 10
@@ -50,7 +50,7 @@ class ChartViewController: UIViewController {
         let dateFormatter = CustomDateFormatter()
         chartView.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: dateFormatter)
         var set1: BarChartDataSet! = nil
-        set1 = BarChartDataSet(entries: yVals, label: "The year 2017")
+        set1 = BarChartDataSet(entries: yVals, label: "最近两周的访问")
         set1.colors = ChartColorTemplates.material()
         set1.drawValuesEnabled = false
         
@@ -59,7 +59,8 @@ class ChartViewController: UIViewController {
         data.barWidth = 0.9
         chartView.data = data
         
-        chartView.setVisibleXRangeMaximum(7)
+        chartView.setVisibleXRangeMaximum(5)
+        chartView.moveViewToX(data.xMax)
         chartView.notifyDataSetChanged()
     }
 }
