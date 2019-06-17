@@ -557,7 +557,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m4i-X1-ac6"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jok-ej-Q76"/>
+                    <navigationItem key="navigationItem" title="图表" id="jok-ej-Q76"/>
                     <connections>
                         <outlet property="chartView" destination="Zhz-6f-gnj" id="nsx-ua-MIP"/>
                     </connections>

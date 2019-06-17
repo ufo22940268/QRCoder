@@ -66,6 +66,11 @@ class HistoryViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryCell
         
         let qrcode = qrcodes![indexPath.row]
+        if qrcode.isRedirection {
+             cell.accessoryType = .detailDisclosureButton
+        } else {
+            cell.accessoryType = .none
+        }
         cell.title.text = qrcode.formatTitle
         cell.category.text = qrcode.categoryEntity.title
         let formatter = DateFormatter()
@@ -80,6 +85,13 @@ class HistoryViewController: UITableViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "showQRCode") as! ShowQRCodeViewController
         let qrcode = qrcodes![indexPath.row]
         vc.qrCodeMaterial = qrcode.material
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let qrcode = qrcodes![indexPath.row]
+        let vc = storyboard?.instantiateViewController(withIdentifier: "chart") as! ChartViewController
+        vc.redirectionId = qrcode.redirectionId
         navigationController?.pushViewController(vc, animated: true)
     }
 }

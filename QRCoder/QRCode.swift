@@ -113,8 +113,12 @@ class QRCodeModel: Object {
     var redirectionId: String {
         guard let redirectURL = redirectURL else { fatalError() }
         let reg = try! NSRegularExpression(pattern: #".+/(\w+)$"#, options: .caseInsensitive)
-        let match = reg.firstMatch(in: redirectURL, options: [], range: NSRange(redirectURL.startIndex...redirectURL.endIndex, in: redirectURL))
+        let match = reg.firstMatch(in: redirectURL, options: [], range: NSRange(redirectURL.startIndex..<redirectURL.endIndex, in: redirectURL))
         let range = Range(match!.range(at: 1), in: redirectURL)!
         return String(redirectURL[range])
+    }
+    
+    var isRedirection: Bool {
+        return redirectURL != nil
     }
 }
