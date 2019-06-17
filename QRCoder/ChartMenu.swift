@@ -76,6 +76,8 @@ class ChartMenu: UIStackView {
         summaryView.setImage(#imageLiteral(resourceName: "info-circle.png"), for: .normal)
         summaryView.addTarget(self, action: #selector(onSummaryClicked), for: .touchUpInside)
         addArrangedSubview(summaryView)
+        
+        summaryView.isEnabled = false
     }
     
     required init(coder: NSCoder) {
