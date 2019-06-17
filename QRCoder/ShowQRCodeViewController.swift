@@ -9,7 +9,7 @@
 import UIKit
 import MobileCoreServices
 import RealmSwift
-import Alamofire
+//import Alamofire
 import SwiftyJSON
 
 enum QRCodeOptionMenu: Int, CaseIterable {
@@ -283,23 +283,23 @@ extension ShowQRCodeViewController: ChartMenuDelegate {
         
         if enabled {
             `switch`.isEnabled = false
-            AF.request("/redirectionh/add".buildURL(), method: .post, parameters: ["url": qrCodeMaterial.toString()])
-                .responseJSON(queue: .main) { resp in
-                    switch resp.result {
-                    case let .success(data):
-                        let json = JSON(data)
-                        if let to = json["to"].string {
-                            self.qrCodeMaterial = LinkMaterial(str: to)
-                            `switch`.isEnabled = true
-                            try? self.realm?.write {
-                                self.qrCodeModel?.redirectURL = to
-                            }
-                        }
-                    case let .failure(error):
-                        print(error)
-                        break;
-                    }
-            }
+//            AF.request("/redirectionh/add".buildURL(), method: .post, parameters: ["url": qrCodeMaterial.toString()])
+//                .responseJSON(queue: .main) { resp in
+//                    switch resp.result {
+//                    case let .success(data):
+//                        let json = JSON(data)
+//                        if let to = json["to"].string {
+//                            self.qrCodeMaterial = LinkMaterial(str: to)
+//                            `switch`.isEnabled = true
+//                            try? self.realm?.write {
+//                                self.qrCodeModel?.redirectURL = to
+//                            }
+//                        }
+//                    case let .failure(error):
+//                        print(error)
+//                        break;
+//                    }
+//            }
         } else {
             try? self.realm?.write {
                 self.qrCodeModel?.redirectURL = nil

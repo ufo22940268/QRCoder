@@ -8,7 +8,18 @@
 
 import Foundation
 import UIKit
+import RxAlamofire
+import RxSwift
+import SwiftyJSON
 
 class RedirectionService {
     static let shared = RedirectionService()
+    
+    func getLogs(id: String) -> Observable<JSON> {
+        return json(.get, "/redirection/summary/\(id)".buildURL())
+            .observeOn(MainScheduler.instance)
+            .map({ (resp) -> JSON in
+                JSON(resp)["summary"]
+            })
+    }
 }

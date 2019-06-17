@@ -8,6 +8,9 @@
 
 import UIKit
 import Charts
+import RxAlamofire
+import RxSwift
+import SwiftyJSON
 
 class CustomDateFormatter: NumberFormatter {
     override func string(from number: NSNumber) -> String? {
@@ -21,6 +24,7 @@ class CustomDateFormatter: NumberFormatter {
 class ChartViewController: UIViewController {
 
     @IBOutlet weak var chartView: BarChartView!
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,16 +53,36 @@ class ChartViewController: UIViewController {
         chartView.leftAxis.axisMinimum = 0
         let dateFormatter = CustomDateFormatter()
         chartView.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: dateFormatter)
-        var set1: BarChartDataSet! = nil
-        set1 = BarChartDataSet(entries: yVals, label: "最近两周的访问")
-        set1.colors = ChartColorTemplates.material()
-        set1.drawValuesEnabled = false
         
-        let data = BarChartData(dataSet: set1)
+        let loadData = RedirectionService.shared.getLogs(id: "5d02fd18698abe31106fabfd")
+            .subscribe(onNext: self.loadData, onError: nil)
+        loadData.disposed(by: disposeBag)
+    }
+    
+    func loadData(_ json: JSON) -> Void {
+        let toDate: (String) -> Date = { str in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY-MM-dd"
+            return formatter.date(from: str)!
+        }
+        
+        var dic = [Int: Int]()
+        for (_, obj): (String, JSON) in json {
+            let date = toDate(obj["date"].string!)
+            let delta = Calendar.current.dateComponents([.day], from: Date(), to: date).day!
+            dic[delta] = obj["count"].int!
+        }
+        
+        let entries = (-13...0).reversed().map { i in
+            BarChartDataEntry(x: Double(i), y: Double(dic[i] ?? 0))
+        }
+        let set = BarChartDataSet(entries: entries, label: "最近两周的访问")
+        set.colors = ChartColorTemplates.material()
+        set.drawValuesEnabled = false
+        let data = BarChartData(dataSet: set)
         data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 10)!)
         data.barWidth = 0.9
         chartView.data = data
-        
         chartView.setVisibleXRangeMaximum(5)
         chartView.moveViewToX(data.xMax)
         chartView.notifyDataSetChanged()

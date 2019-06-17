@@ -25,6 +25,11 @@
 		42626BED22A8F67E00694F0F /* ImageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42626BEC22A8F67E00694F0F /* ImageMenu.swift */; };
 		42626BF122AE2EBF00694F0F /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42626BF022AE2EBF00694F0F /* Link.swift */; };
 		4268DB6522B0D36D00693AEF /* CDNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4268DB6422B0D36D00693AEF /* CDNService.swift */; };
+		4269774B22B5D749002ECB8C /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E1279622B5CE7B005A79DF /* RxAlamofire.framework */; };
+		4269774D22B5D74F002ECB8C /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4269774C22B5D74F002ECB8C /* RxBlocking.framework */; };
+		4269774F22B5D756002ECB8C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4269774E22B5D755002ECB8C /* RxCocoa.framework */; };
+		4269775122B5D75B002ECB8C /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4269775022B5D75B002ECB8C /* RxRelay.framework */; };
+		4269775322B5D760002ECB8C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4269775222B5D760002ECB8C /* RxSwift.framework */; };
 		42AEA59C229F6E7200D4190E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59B229F6E7200D4190E /* AppDelegate.swift */; };
 		42AEA59E229F6E7200D4190E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA59D229F6E7200D4190E /* MainViewController.swift */; };
 		42AEA5A1229F6E7200D4190E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AEA59F229F6E7200D4190E /* Main.storyboard */; };
@@ -38,12 +43,10 @@
 		42AEA5D222A0A00F00D4190E /* QRImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AEA5D122A0A00F00D4190E /* QRImageView.swift */; };
 		42CBFEB922A0FDEC00B8A2E9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEB822A0FDEC00B8A2E9 /* Extensions.swift */; };
 		42CBFEBB22A1190A00B8A2E9 /* QROperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CBFEBA22A1190A00B8A2E9 /* QROperation.swift */; };
-		42DDE32222B0F4FC00D49F99 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */; };
 		42DDE32422B1E67600D49F99 /* ChartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDE32322B1E67600D49F99 /* ChartMenu.swift */; };
 		42DDE32822B3CAEF00D49F99 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DDE32722B3CAEF00D49F99 /* Charts.framework */; };
 		42DDE32A22B3D9CF00D49F99 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDE32922B3D9CF00D49F99 /* ChartViewController.swift */; };
 		42E1279522B4B953005A79DF /* RedirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E1279422B4B953005A79DF /* RedirectionService.swift */; };
-		42E1279722B5CE7B005A79DF /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E1279622B5CE7B005A79DF /* RxAlamofire.framework */; };
 		42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E47CC722B0DEF800377C0A /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,11 @@
 		42626BEC22A8F67E00694F0F /* ImageMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMenu.swift; sourceTree = "<group>"; };
 		42626BF022AE2EBF00694F0F /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		4268DB6422B0D36D00693AEF /* CDNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDNService.swift; sourceTree = "<group>"; };
+		4269774C22B5D74F002ECB8C /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		4269774E22B5D755002ECB8C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		4269775022B5D75B002ECB8C /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		4269775222B5D760002ECB8C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		4269775422B5D765002ECB8C /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		42AEA598229F6E7200D4190E /* QRCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AEA59B229F6E7200D4190E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42AEA59D229F6E7200D4190E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -112,11 +120,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				42DDE32822B3CAEF00D49F99 /* Charts.framework in Frameworks */,
-				42E1279722B5CE7B005A79DF /* RxAlamofire.framework in Frameworks */,
 				423253C622A5F41800B44929 /* Realm.framework in Frameworks */,
 				423253C822A5F41D00B44929 /* RealmSwift.framework in Frameworks */,
+				4269774B22B5D749002ECB8C /* RxAlamofire.framework in Frameworks */,
+				4269774D22B5D74F002ECB8C /* RxBlocking.framework in Frameworks */,
+				4269774F22B5D756002ECB8C /* RxCocoa.framework in Frameworks */,
+				4269775122B5D75B002ECB8C /* RxRelay.framework in Frameworks */,
+				4269775322B5D760002ECB8C /* RxSwift.framework in Frameworks */,
 				42E47CC822B0DEF800377C0A /* Alamofire.framework in Frameworks */,
-				42DDE32222B0F4FC00D49F99 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +144,11 @@
 		423253C422A5F41800B44929 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4269775422B5D765002ECB8C /* RxTest.framework */,
+				4269775222B5D760002ECB8C /* RxSwift.framework */,
+				4269775022B5D75B002ECB8C /* RxRelay.framework */,
+				4269774E22B5D755002ECB8C /* RxCocoa.framework */,
+				4269774C22B5D74F002ECB8C /* RxBlocking.framework */,
 				42E1279622B5CE7B005A79DF /* RxAlamofire.framework */,
 				42DDE32722B3CAEF00D49F99 /* Charts.framework */,
 				42DDE32122B0F4FC00D49F99 /* SwiftyJSON.framework */,
@@ -334,6 +350,12 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -344,6 +366,12 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Charts.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxAlamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxBlocking.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRelay.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
