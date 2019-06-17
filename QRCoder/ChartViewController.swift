@@ -26,6 +26,8 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var chartView: BarChartView!
     var disposeBag = DisposeBag()
     
+    var redirectionId: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,7 +56,10 @@ class ChartViewController: UIViewController {
         let dateFormatter = CustomDateFormatter()
         chartView.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: dateFormatter)
         
-        let loadData = RedirectionService.shared.getLogs(id: "5d02fd18698abe31106fabfd")
+        if isInitial() {
+            redirectionId = "5d02fd18698abe31106fabfd"
+        }
+        let loadData = RedirectionService.shared.getLogs(id: redirectionId)
             .subscribe(onNext: self.loadData, onError: nil)
         loadData.disposed(by: disposeBag)
     }

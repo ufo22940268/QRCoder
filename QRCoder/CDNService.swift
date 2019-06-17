@@ -8,25 +8,34 @@
 
 import Foundation
 import UIKit
-//import Alamofire
+import Alamofire
 import SwiftyJSON
+import RxAlamofire
+import RxSwift
 
 class CDNService {
     
     static let shared = CDNService()
 
     func upload(image: UIImage, complete: @escaping (String?) -> Void) {
-//        AF.upload(multipartFormData: { multiData in
-//            multiData.append(image.pngData()!, withName: "file1", fileName: "a.png")
-//        }, to: URL(string: "/upload".buildURL())!)
-//            .responseJSON { (response) in
-//                switch response.result {
-//                case let .success(value):
-//                    let json = JSON(value)
-//                    complete(json["url"].rawString())
-//                case .failure(_):
-//                    complete(nil)
-//                }
-//        }
+        Alamofire.upload(multipartFormData: { multiData in
+            multiData.append(image.pngData()!, withName: "file1", fileName: "a.png", mimeType: "image")
+        }, to: URL(string: "/upload".buildURL())!,
+           encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseJSON { (response) in
+                        switch response.result {
+                        case let .success(value):
+                            let json = JSON(value)
+                            complete(json["url"].rawString())
+                        case .failure(_):
+                            complete(nil)
+                        }
+                }
+            case .failure(let encodingError):
+                print(encodingError)
+            }
+        })
     }
 }

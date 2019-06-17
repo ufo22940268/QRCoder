@@ -9,7 +9,8 @@
 import UIKit
 import MobileCoreServices
 import RealmSwift
-//import Alamofire
+import RxAlamofire
+import RxSwift
 import SwiftyJSON
 
 enum QRCodeOptionMenu: Int, CaseIterable {
@@ -30,8 +31,11 @@ class ShowQRCodeViewController: UIViewController {
     @IBOutlet weak var chartBarButton: UIBarButtonItem!
     @IBOutlet weak var loadingLabel: UILabel!
     
+    var disposeBag = DisposeBag()
+    
     var qrCodeMaterial: QRCodeMaterial! {
         didSet {
+            let _ = view
             qrImageView.qrText = qrCodeMaterial.toString()
             print("qr text: \(qrCodeMaterial.toString())")
             if let linkMaterial = qrCodeMaterial as? LinkMaterial {
@@ -98,6 +102,11 @@ class ShowQRCodeViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isToolbarHidden = false
+    }
+    
     func upload(image: UIImage) {
         showLoading(true, label: "正在上传图片")
         CDNService.shared.upload(image: image, complete: { url in
@@ -121,7 +130,7 @@ class ShowQRCodeViewController: UIViewController {
     }
     
     func showLoading(_ show: Bool, label: String? = nil) {
-        loading = true
+        loading = show
         if let label = label {
             loadingLabel.text = label
         }
@@ -283,23 +292,26 @@ extension ShowQRCodeViewController: ChartMenuDelegate {
         
         if enabled {
             `switch`.isEnabled = false
-//            AF.request("/redirectionh/add".buildURL(), method: .post, parameters: ["url": qrCodeMaterial.toString()])
-//                .responseJSON(queue: .main) { resp in
-//                    switch resp.result {
-//                    case let .success(data):
-//                        let json = JSON(data)
-//                        if let to = json["to"].string {
-//                            self.qrCodeMaterial = LinkMaterial(str: to)
-//                            `switch`.isEnabled = true
-//                            try? self.realm?.write {
-//                                self.qrCodeModel?.redirectURL = to
-//                            }
-//                        }
-//                    case let .failure(error):
-//                        print(error)
-//                        break;
-//                    }
-//            }
+            let _ = request(.post, "/redirection/add".buildURL(), parameters: ["url": qrCodeMaterial.toString()])
+                .responseJSON()
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { resp in
+                    switch resp.result {
+                    case let .success(data):
+                        let json = JSON(data)
+                        if let to = json["to"].string {
+                            self.qrCodeMaterial = LinkMaterial(str: to)
+                            `switch`.isEnabled = true
+                            try? self.realm?.write {
+                                self.qrCodeModel?.redirectURL = to
+                            }
+                        }
+                    case let .failure(error):
+                        print(error)
+                        break;
+                    }
+                }, onError: nil)
+                .disposed(by: disposeBag)
         } else {
             try? self.realm?.write {
                 self.qrCodeModel?.redirectURL = nil

@@ -23,6 +23,7 @@ class ChartMenu: UIStackView {
         return view
     }()
     
+    var summaryView: UIButton!
     weak var delegate: ChartMenuDelegate?
     
     lazy var opStackView: UIStackView = {
@@ -69,23 +70,28 @@ class ChartMenu: UIStackView {
         addArrangedSubview(divider)
         divider.setContentHuggingPriority(.required, for: .horizontal)
         
-        let setting = UIButton().useAutolayout()
+        summaryView = UIButton().useAutolayout()
         NSLayoutConstraint.activate([
-            setting.widthAnchor.constraint(equalToConstant: 60)])
-        setting.setImage(#imageLiteral(resourceName: "info-circle.png"), for: .normal)
-        setting.addTarget(self, action: #selector(onSettingClicked(sender:)), for: .touchUpInside)
-        addArrangedSubview(setting)
+            summaryView.widthAnchor.constraint(equalToConstant: 60)])
+        summaryView.setImage(#imageLiteral(resourceName: "info-circle.png"), for: .normal)
+        summaryView.addTarget(self, action: #selector(onSummaryClicked), for: .touchUpInside)
+        addArrangedSubview(summaryView)
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func onSettingClicked(sender: UIButton) {
+    @objc func onSummaryClicked(sender: UIButton) {
+        let vc = host.storyboard!.instantiateViewController(withIdentifier: "chart") as! ChartViewController
+        if let host = host as? ShowQRCodeViewController, let redirectionId = host.qrCodeModel?.redirectionId {
+            vc.redirectionId = redirectionId
+            host.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc func onSwitchChanged(sender: UISwitch)  {
-        print(sender.isOn)
+        summaryView.isEnabled = sender.isOn
         delegate?.onEnableChart(sender.isOn, switch: sender)
     }
     

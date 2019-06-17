@@ -41,6 +41,7 @@ class HistoryViewController: UITableViewController {
     
     func loadData() {
         qrcodes = realm?.objects(QRCodeModel.self)
+        .sorted(byKeyPath: "createdDate", ascending: false)
         if let qrcodes = qrcodes, qrcodes.count > 0 {
             tableView.backgroundView = nil
         } else {
