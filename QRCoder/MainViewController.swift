@@ -113,6 +113,9 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
                     self.alertVideoTooLong()
                 } else {
                     print(movie.duration.seconds)
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "showQRCode") as! ShowQRCodeViewController
+                    vc.movieToUpload = movieURL
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }

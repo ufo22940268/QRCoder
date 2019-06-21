@@ -52,6 +52,7 @@ class ShowQRCodeViewController: UIViewController {
     var qrCodeModel: QRCodeModel?
     
     var imageToUpload: UIImage!
+    var movieToUpload: URL?
     
     @IBOutlet var toolbarButtons: [UIBarButtonItem]!
     
@@ -94,6 +95,8 @@ class ShowQRCodeViewController: UIViewController {
         
         if imageToUpload != nil {
             upload(image: imageToUpload)
+        } else if let movieToUpload = movieToUpload {
+            upload(movie: movieToUpload)
         }
         
         if qrCodeMaterial != nil {
@@ -114,6 +117,18 @@ class ShowQRCodeViewController: UIViewController {
     func upload(image: UIImage) {
         showLoading(true, label: "正在上传图片")
         CDNService.shared.upload(image: image, complete: { url in
+            guard let url = url else { return }
+            DispatchQueue.main.async {
+                self.qrCodeMaterial = LinkMaterial(str: url)
+                self.createQRModal()
+                self.showLoading(false)
+            }
+        })
+    }
+    
+    func upload(movie: URL) {
+        showLoading(true, label: "正在上传视频")
+        CDNService.shared.upload(movie: movie, complete: { url in
             guard let url = url else { return }
             DispatchQueue.main.async {
                 self.qrCodeMaterial = LinkMaterial(str: url)
