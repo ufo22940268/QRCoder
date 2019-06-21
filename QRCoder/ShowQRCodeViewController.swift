@@ -91,7 +91,6 @@ class ShowQRCodeViewController: UIViewController {
             qrCodeMaterial = LinkMaterial(str: "v2ex.com")
         }
         navigationController?.isToolbarHidden = false
-        toolbarItems = toolbar.items
         
         if imageToUpload != nil {
             upload(image: imageToUpload)
@@ -100,6 +99,11 @@ class ShowQRCodeViewController: UIViewController {
         if qrCodeMaterial != nil {
             createQRModal()
         }
+        
+        if let qrCodeModel = qrCodeModel, let items = toolbar.items, !qrCodeModel.canConvertToRedirection {
+            toolbar.setItems(Array(items[0..<items.count - 2]), animated: false)
+        }
+        toolbarItems = toolbar.items
     }
     
     override func viewWillAppear(_ animated: Bool) {

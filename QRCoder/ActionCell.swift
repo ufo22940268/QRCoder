@@ -16,6 +16,7 @@ class ActionCell: UICollectionViewCell {
         case note
         case contact
         case image
+        case video
         
         var icon: UIImage {
             switch  self {
@@ -27,6 +28,8 @@ class ActionCell: UICollectionViewCell {
                 return #imageLiteral(resourceName: "address-card-solid.png")
             case .image:
                 return #imageLiteral(resourceName: "image.png")
+            case .video:
+                return #imageLiteral(resourceName: "video.png")
             }
         }
         
@@ -40,6 +43,8 @@ class ActionCell: UICollectionViewCell {
                 return "名片"
             case .image:
                 return "图片"
+            case .video:
+                return "视频"
             }
         }
         

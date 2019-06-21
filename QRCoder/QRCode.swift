@@ -102,6 +102,8 @@ class QRCodeModel: Object {
             return ContactMaterial(contact: try! CNContactVCardSerialization.contacts(with: text.data(using: .utf8)!).first!)
         case .image:
             fatalError()
+        case .video:
+            fatalError()
         }
     }
     
@@ -120,5 +122,14 @@ class QRCodeModel: Object {
     
     var isRedirection: Bool {
         return redirectURL != nil
+    }
+    
+    var canConvertToRedirection: Bool {
+        switch categoryEntity {
+        case .contact, .note:
+            return false
+        default:
+            return true
+        }
     }
 }

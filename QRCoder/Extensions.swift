@@ -10,7 +10,13 @@ import Foundation
 import UIKit
 import RealmSwift
 
-let apiHost = "http://127.0.0.1:3000"
+let localApiHost = "http://192.168.31.77:3000"
+let remoteApiHost = "http://106.12.82.179:3000"
+#if DEBUG
+let apiHost = localApiHost
+#else
+let apiHost = remoteApiHost
+#endif
 
 extension UIView {
     @discardableResult

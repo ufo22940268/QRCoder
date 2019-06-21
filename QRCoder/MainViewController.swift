@@ -9,6 +9,7 @@
 import UIKit
 import ContactsUI
 import MobileCoreServices
+import AVKit
 
 class MainViewController: UIViewController {
 
@@ -19,7 +20,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view
 
-        let itemWidth = (view.bounds.width - 16*2 - 10)/2
+        let itemWidth: CGFloat = (view.bounds.width - 16*2 - 10)/2
         collectionLayout.itemSize = CGSize(width: itemWidth, height: 80)
         collectionLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         collectionView.register(UINib(nibName: "ActionCell", bundle: nil), forCellWithReuseIdentifier: "cell")
@@ -65,6 +66,12 @@ extension MainViewController: UICollectionViewDataSource {
             vc.mediaTypes = [kUTTypeImage as String]
             vc.delegate = self
             present(vc, animated: true, completion: nil)
+        case .video:
+            let vc = UIImagePickerController()
+            vc.mediaTypes = [kUTTypeMovie as String]
+            vc.videoQuality = .typeLow
+            vc.delegate = self
+            present(vc, animated: true, completion: nil)
         }
     }
 }
@@ -98,6 +105,22 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
             picker.dismiss(animated: true, completion: {
                 self.navigationController?.pushViewController(vc, animated: true)
             })
+        } else if let movieURL = (info.first { $0.key == UIImagePickerController.InfoKey.mediaURL })?.value as? URL {
+            picker.dismiss(animated: true) {
+                print("movieURL: \(movieURL)")
+                let movie = AVAsset(url: movieURL)
+                if movie.duration.seconds > 60*3 {
+                    self.alertVideoTooLong()
+                } else {
+                    print(movie.duration.seconds)
+                }
+            }
         }
+    }
+    
+    func alertVideoTooLong() {
+        let vc = UIAlertController(title: nil, message: "视频太大", preferredStyle: .alert)
+        vc.addAction(UIAlertAction(title: "确定", style: .cancel, handler: nil))
+        present(vc, animated: true, completion: nil)
     }
 }
