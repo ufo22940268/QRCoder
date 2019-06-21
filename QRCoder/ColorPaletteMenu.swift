@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol  ColorPaletteMenuDelegate: class {
+protocol ColorPaletteMenuDelegate: class {
     func onColorSelected(canvas: ColorPaletteCanvas, color: UIColor)
 }
 

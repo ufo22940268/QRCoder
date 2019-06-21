@@ -8,6 +8,29 @@
 
 import UIKit
 
+class ColorPaletteAttachView: UICollectionReusableView {
+    lazy var button: UIButton = {
+        let view = UIButton().useAutolayout()
+        view.setImage(#imageLiteral(resourceName: "paperclip.png"), for: .normal)
+        view.imageView?.contentMode = .scaleAspectFit
+        return view
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(button)
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 26),
+            button.heightAnchor.constraint(equalToConstant: 26),
+            button.leadingAnchor.constraint(equalTo: leadingAnchor),
+            button.centerYAnchor.constraint(equalTo: centerYAnchor)])
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 class ColorPaletteCollectionView: UICollectionView {
     
     var allColors = [
@@ -41,12 +64,14 @@ class ColorPaletteCollectionView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 32, height: 32)
         layout.scrollDirection = .horizontal
+        layout.headerReferenceSize = CGSize(width: 40, height: 32)
         super.init(frame: .zero, collectionViewLayout: layout)
 
         showsHorizontalScrollIndicator = false
         backgroundColor = .clear
         dataSource = self
         register(ColorPaletteCircle.self, forCellWithReuseIdentifier: "cell")
+        register(ColorPaletteAttachView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         
         selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
     }
@@ -65,5 +90,10 @@ extension ColorPaletteCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ColorPaletteCircle
         cell.color = allColors[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath)
+        return view
     }
 }
