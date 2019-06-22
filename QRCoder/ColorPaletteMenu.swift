@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 protocol ColorPaletteMenuDelegate: class {
     func onColorSelected(canvas: ColorPaletteCanvas, color: UIColor)
+    func onBackgroundImageSelected(image: UIImage)
 }
 
 class ColorPaletteMenu: UIStackView {
@@ -53,6 +55,7 @@ class ColorPaletteMenu: UIStackView {
         hostViewController = host
         self.qrImageView = qrImageView
         axis = .horizontal
+        colorCollectionView.customDelegate = self
         addArrangedSubview(colorCollectionView)
         addArrangedSubview(divider)
         divider.setContentHuggingPriority(.required, for: .horizontal)
@@ -100,5 +103,27 @@ extension ColorPaletteMenu: ColorPalettePopupDelegate {
 extension ColorPaletteMenu: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.onColorSelected(canvas: canvas, color: colorCollectionView.allColors[indexPath.row])
+    }
+}
+
+extension ColorPaletteMenu: ColorPaletteCollectionDelegate {
+    func onSelectAttach() {
+        let vc = UIImagePickerController()
+        vc.mediaTypes = [kUTTypeImage as String]
+        vc.delegate = self
+        hostViewController?.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension ColorPaletteMenu: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        if let image = (info.first { $0.key == UIImagePickerController.InfoKey.originalImage })?.value as? UIImage {
+            delegate?.onBackgroundImageSelected(image: image)
+        }
     }
 }

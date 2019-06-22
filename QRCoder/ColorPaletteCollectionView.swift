@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class ColorPaletteAttachView: UICollectionReusableView {
     lazy var button: UIButton = {
         let view = UIButton().useAutolayout()
         view.setImage(#imageLiteral(resourceName: "paperclip.png"), for: .normal)
         view.imageView?.contentMode = .scaleAspectFit
+        view.tintColor = .black
         return view
     }()
     
@@ -31,6 +33,10 @@ class ColorPaletteAttachView: UICollectionReusableView {
     }
 }
 
+protocol ColorPaletteCollectionDelegate: class {
+    func onSelectAttach()
+}
+
 class ColorPaletteCollectionView: UICollectionView {
     
     var allColors = [
@@ -44,9 +50,18 @@ class ColorPaletteCollectionView: UICollectionView {
         UIColor.fromHexString(hex: "5756d6")
     ]
     
-    var canvas: ColorPaletteCanvas = .front {
+    weak var customDelegate: ColorPaletteCollectionDelegate?
+    
+    var canvas: ColorPaletteCanvas! {
         didSet {
-            switch canvas {
+            let layout = collectionViewLayout as! UICollectionViewFlowLayout
+            if canvas == .back {
+                layout.headerReferenceSize = CGSize(width: 40, height: 32)
+            } else {
+                layout.headerReferenceSize = .zero
+            }
+
+            switch canvas! {
             case .front, .text:
                 allColors[0] = .black
             case .back:
@@ -64,7 +79,6 @@ class ColorPaletteCollectionView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 32, height: 32)
         layout.scrollDirection = .horizontal
-        layout.headerReferenceSize = CGSize(width: 40, height: 32)
         super.init(frame: .zero, collectionViewLayout: layout)
 
         showsHorizontalScrollIndicator = false
@@ -74,6 +88,10 @@ class ColorPaletteCollectionView: UICollectionView {
         register(ColorPaletteAttachView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         
         selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        
+        defer {
+            canvas = .front
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -93,7 +111,13 @@ extension ColorPaletteCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath)
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath) as! ColorPaletteAttachView
+        view.button.addTarget(self, action: #selector(onSelectAttach), for: .touchUpInside)
         return view
+    }
+    
+    @objc func onSelectAttach() {
+        indexPathsForSelectedItems?.forEach { deselectItem(at: $0, animated: false) }
+        customDelegate?.onSelectAttach()
     }
 }

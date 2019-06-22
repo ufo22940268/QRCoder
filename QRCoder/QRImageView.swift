@@ -11,7 +11,7 @@ import CoreImage
 import AVKit
 
 let defaultQRImageFrontColor: UIColor = .black
-let defaultQRImageBackColor: UIColor = .white
+let defaultQRImageBackColor: UIColor = .clear
 
 struct CenterImage {
     enum Kind {
@@ -44,6 +44,14 @@ class QRImageView: UIStackView {
         return view
     }()
     
+    lazy var backImageView: UIImageView = {
+        let view = UIImageView().useAutolayout()
+        view.contentMode = .scaleAspectFill
+        view.isHidden = true
+        view.clipsToBounds = true
+        return view
+    }()
+    
     lazy var centerImageView: UIImageView = {
         let view = UIImageView().useAutolayout()
         NSLayoutConstraint.activate([
@@ -63,11 +71,21 @@ class QRImageView: UIStackView {
     
     var backColor: UIColor = defaultQRImageBackColor {
         didSet {
+            backImage = nil
+            backImageView.isHidden = true
             qrView.image = buildQRImage()
         }
     }
 
     var centerRadius: CGFloat = 8
+    
+    var backImage: UIImage! {
+        didSet {
+            backImageView.isHidden = false
+            backImageView.image = backImage
+            qrView.image = buildQRImage()
+        }
+    }
     
     var qrText: String! {
         didSet {
@@ -160,6 +178,14 @@ class QRImageView: UIStackView {
             ])
         
         addArrangedSubview(titleView)
+        
+        addSubview(backImageView)
+        NSLayoutConstraint.activate([
+            backImageView.leadingAnchor.constraint(equalTo: qrView.leadingAnchor),
+            backImageView.topAnchor.constraint(equalTo: qrView.topAnchor),
+            backImageView.widthAnchor.constraint(equalTo: qrView.widthAnchor),
+            backImageView.heightAnchor.constraint(equalTo: qrView.heightAnchor)])
+        sendSubviewToBack(backImageView)
     }
     
     func buildQRImage() -> UIImage {
@@ -169,7 +195,9 @@ class QRImageView: UIStackView {
         
         let colorFilter = CIFilter(name: "CIFalseColor")!
         colorFilter.setValue(ciImage, forKey: "inputImage")
-        colorFilter.setValue(backColor.coreImageColor, forKey: "inputColor1")
+        if backImage != nil {
+            colorFilter.setValue(backColor.coreImageColor, forKey: "inputColor1")
+        }
         colorFilter.setValue(frontColor.coreImageColor, forKey: "inputColor0")
         ciImage = colorFilter.outputImage!
         

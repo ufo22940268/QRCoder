@@ -265,6 +265,10 @@ extension ShowQRCodeViewController: ColorPaletteMenuDelegate {
         operation.execute()
         undoStack.append(operation)
     }
+
+    func onBackgroundImageSelected(image: UIImage) {
+        qrImageView.backImage = image
+    }
 }
 
 extension ShowQRCodeViewController: TextMenuDelegate {
