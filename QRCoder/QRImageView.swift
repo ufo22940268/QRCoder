@@ -79,13 +79,7 @@ class QRImageView: UIStackView {
 
     var centerRadius: CGFloat = 8
     
-    var backImage: UIImage! {
-        didSet {
-            backImageView.isHidden = false
-            backImageView.image = backImage
-            qrView.image = buildQRImage()
-        }
-    }
+    private var backImage: UIImage!    
     
     var qrText: String! {
         didSet {
@@ -188,6 +182,14 @@ class QRImageView: UIStackView {
         sendSubviewToBack(backImageView)
     }
     
+    func setBackImage(_ image: UIImage) {
+        backImage = image
+        backImageView.image = backImage
+        backColor = defaultQRImageBackColor
+        backImageView.isHidden = false
+        qrView.image = buildQRImage()
+    }
+    
     func buildQRImage() -> UIImage {
         let filter = CIFilter(name: "CIQRCodeGenerator")!
         filter.setValue(self.qrText.data(using: .utf8), forKey: "inputMessage")
@@ -195,9 +197,7 @@ class QRImageView: UIStackView {
         
         let colorFilter = CIFilter(name: "CIFalseColor")!
         colorFilter.setValue(ciImage, forKey: "inputImage")
-        if backImage != nil {
-            colorFilter.setValue(backColor.coreImageColor, forKey: "inputColor1")
-        }
+        colorFilter.setValue(backColor.coreImageColor, forKey: "inputColor1")
         colorFilter.setValue(frontColor.coreImageColor, forKey: "inputColor0")
         ciImage = colorFilter.outputImage!
         

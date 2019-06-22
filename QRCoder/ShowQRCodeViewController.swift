@@ -267,7 +267,7 @@ extension ShowQRCodeViewController: ColorPaletteMenuDelegate {
     }
 
     func onBackgroundImageSelected(image: UIImage) {
-        qrImageView.backImage = image
+        qrImageView.setBackImage(image)
     }
 }
 
